@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 
 const inter = Inter({ subsets: ["latin"] });
 const myFont = localFont({ src: "../public/font.otf" });
@@ -19,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <div className="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
-      <body className={myFont.className}>{children}</body>
+      <body className={GeistMono.className}>{children}</body>
     </html>
   );
 }

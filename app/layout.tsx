@@ -4,6 +4,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import Header from "./components/header";
 
 const inter = Inter({ subsets: ["latin"] });
 const myFont = localFont({ src: "../public/font.otf" });
@@ -19,9 +20,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <div className="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
-      <body className={GeistMono.className}>{children}</body>
+      <body className={myFont.className}>
+        <div className="flex flex-col w-screen h-screen items-center p-10">
+          <Header />
+          {children}
+        </div>
+      </body>
     </html>
   );
 }

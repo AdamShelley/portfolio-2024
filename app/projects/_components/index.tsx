@@ -11,7 +11,6 @@ const projects = [
       description:
         "An interactive coding bootcamp experience delivered online.",
       imageName: "breathe-screenshot.png",
-      // No imageName provided
     },
     // customPage: "CodeCampDetails.html",
   },
@@ -21,7 +20,7 @@ const projects = [
       skills: ["React Native", "NodeJS", "Supabase", "ChatGPT"],
       description:
         "A platform for builders to create and share web development projects.",
-      imageName: "LangAI-Screenshot.png",
+      imageName: "LangAI-screenshot.png",
     },
     // customPage: "AboutUs.html",
   },
@@ -51,7 +50,7 @@ const projects = [
 
 const ProjectList = (props: Props) => {
   return (
-    <section className="grid grid-cols-2 items-center gap-3 mt-2 lg:mt-0">
+    <section className="grid md:grid-cols-2 items-center gap-3 mt-2 lg:mt-0 ">
       {projects.map((project, index) => (
         <Card
           project={project.project}

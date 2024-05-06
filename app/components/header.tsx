@@ -5,13 +5,12 @@ type Props = {};
 
 const Header = (props: Props) => {
   return (
-    <div className="flex flex-col w-[40vw] mb-20 lg:w-[50vw]">
+    <div className="w-[80vw] lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] flex flex-col mb-20 ml-3">
       <Link href="/">
         <h1 className="text-md ">Adam Shelley</h1>
       </Link>
       <h2 className="text-md text-gray-400 ">Web Developer</h2>
     </div>
-    
   );
 };
 

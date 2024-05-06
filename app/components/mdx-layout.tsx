@@ -1,11 +1,13 @@
+import Link from "next/link";
+
 export default function MdxLayout({ children }: { children: React.ReactNode }) {
-  // Create any shared layout or styles here
   return (
     <div
-      className="prose dark:prose-invert 
-    prose-headings:mt-8 prose-headings:font-semibold prose-headings:text-black prose-h1:text-2xl 
-    prose-h2:text-xl prose-h3:text-3xl prose-h4:text-2xl prose-h5:text-xl prose-h6:text-lg dark:prose-headings:text-white"
+      className="max-w-[40vw] lg:max-w-[50vw] prose dark:prose-invert 
+    prose-headings:mt-8 prose-headings:font-semibold prose-headings:text-black prose-h1:text-base
+    prose-h2:text-base prose-h3:text-sm prose-h4:text-sm prose-h5:text-xs prose-h6:text-xs dark:prose-headings:text-white"
     >
+      <Link href="/projects">Back</Link>
       {children}
     </div>
   );

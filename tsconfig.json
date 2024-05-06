@@ -21,6 +21,13 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/projects/[projectId]/page.mdx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "app/projects/[projectId]/page.mdx",
+    "app/projects/page.tsx"
+, "app/projects/Breathe/page.mdx"  ],
   "exclude": ["node_modules"]
 }

@@ -25,9 +25,9 @@ const Card = ({ project, customPage }: Project) => {
               alt={`${name} picture`}
               layout="fill"
               objectFit="cover"
-              className="transition-opacity duration-300 ease-in-out opacity-60 "
+              className="transition-opacity duration-500 ease-in-out opacity-40"
             />
-            <div className="absolute top-0 left-0 w-full h-full pointer-events-none bg-custom-gradient transition-all duration-500 ease-in-out z-10 group-hover:opacity-80"></div>
+            <div className="absolute top-0 left-0 w-full h-full pointer-events-none bg-custom-gradient transition-all duration-500 ease-in-out z-10 group-hover:opacity-70"></div>
             <div className="absolute inset-x-0 bottom-0 flex flex-col justify-start flex-1 w-full p-3">
               <div className="p-3 text-white z-20 absolute bottom-0 mb-2">
                 <h3 className="text-xl mt-1">{name}</h3>

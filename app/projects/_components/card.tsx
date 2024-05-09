@@ -15,8 +15,13 @@ interface Project {
 const Card = ({ project, customPage }: Project) => {
   const { name, skills, description, imageName } = project;
 
+  const cardBackgroundGradient =
+    "linear-gradient(0deg, rgb(34, 35, 38) 9%, rgba(33, 34, 37, 0.89) 42%, rgba(34, 35, 38, 0) 156%)";
+  const cardBackgroundGradientHover =
+    "background: linear-gradient(0deg,rgb(34, 35, 38) 9%,rgba(33, 34, 37, 0.89) 42%,rgba(34, 35, 38, 0) 156%)";
+
   return (
-    <article className="flex flex-col items-center justify-start w-full transition-all ease-in-out duration-500 rounded-xl p-2 relative overflow-hidden shadow-lg m-0.5 lg:w-95/100 lg:flex-col dark:shadow-none">
+    <article className="flex flex-col items-center justify-start w-full transition-all ease-in-out duration-300 rounded-xl p-2 relative overflow-hidden shadow-lg m-0.5 lg:w-95/100 lg:flex-col dark:shadow-none">
       <div className="relative w-full h-96 rounded-xl overflow-hidden ">
         <Link href={customPage || `/projects/${name}`} passHref>
           <div className="w-full h-full relative block cursor-pointer group ">
@@ -25,11 +30,12 @@ const Card = ({ project, customPage }: Project) => {
               alt={`${name} picture`}
               layout="fill"
               objectFit="cover"
-              className="transition-opacity duration-500 ease-in-out opacity-40"
+              className="transition-opacity duration-300 ease-in-out "
             />
-            <div className="absolute top-0 left-0 w-full h-full pointer-events-none bg-custom-gradient transition-all duration-500 ease-in-out z-10 group-hover:opacity-70"></div>
-            <div className="absolute inset-x-0 bottom-0 flex flex-col justify-start flex-1 w-full p-3">
-              <div className="p-3 text-white z-20 absolute bottom-0 mb-2">
+            <div className="absolute top-0 left-0 w-full h-full pointer-events-none bg-custom-gradient group-hover:bg-custom-gradient-hover transition-all duration-300 ease-in-out z-10 opacity-100 group-hover:opacity-80 hover:scale-50"></div>
+
+            <div className="absolute inset-x-0 bottom-0 flex flex-col justify-start flex-1 w-full p-3 ">
+              <div className="p-3 text-white z-20 absolute bottom-0 mb-2 ">
                 <h3 className="text-xl mt-1">{name}</h3>
                 <p className="mt-3 flex-1 text-sm tracking-normal text-gray-400">
                   {description}

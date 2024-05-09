@@ -12,6 +12,7 @@ const config: Config = {
       xxs: "0.4rem",
       xs: "0.6rem",
       sm: "0.8rem",
+      md: "0.9rem",
       base: "1rem",
       xl: "1.25rem",
       "2xl": "1.563rem",
@@ -69,6 +70,8 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "custom-gradient":
           "linear-gradient(0deg, rgb(34, 35, 38) 9%, rgba(33, 34, 37, 0.89) 42%, rgba(34, 35, 38, 0) 156%)",
+        "custom-gradient-hover":
+          "linear-gradient(0deg,rgb(34, 35, 38) 9%,rgba(33, 34, 37, 0.89) 42%,rgba(34, 35, 38, 0) 156%)",
       },
     },
   },

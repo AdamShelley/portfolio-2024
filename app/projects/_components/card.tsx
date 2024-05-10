@@ -22,7 +22,7 @@ const Card = ({ project, customPage }: Project) => {
 
   return (
     <article className="flex flex-col items-center justify-start w-full transition-all ease-in-out duration-300 rounded-xl p-2 relative overflow-hidden shadow-lg m-0.5 lg:w-95/100 lg:flex-col dark:shadow-none">
-      <div className="relative w-full h-96 rounded-xl overflow-hidden ">
+      <div className="relative w-full h-96 rounded-3xl overflow-hidden ">
         <Link href={customPage || `/projects/${name}`} passHref>
           <div className="w-full h-full relative block cursor-pointer group ">
             <Image

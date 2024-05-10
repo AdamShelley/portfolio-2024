@@ -1,18 +1,59 @@
-import MdxLayout from '../../components/mdx-layout'
+import Link from 'next/link';
+import MdxLayout from "../../components/mdx-layout";
 
+# Calm Moments
 
-# Breathe 
+## Introduction
 
+In today's fast-paced environment, finding a moment to relax and rejuvenate is more crucial than ever. "Calm Moments" is a Raycast extension designed to integrate seamlessly into your workflow, allowing you to take brief meditation breaks without leaving your desktop workspace. This extension aims to provide easy access to quick relaxation techniques that help maintain mental clarity and focus.
 
+![Calm Moments Screenshot 1](/assets/CalmMoments/CalmMoments1.png)
 
-## Background
- Blah blah
+## Features
 
+### Quick Meditation Sessions
 
+Choose from a variety of short guided meditation sessions that range from one to five minutes, tailored to fit into any schedule.
+
+### Breathing Exercises
+
+Simple and effective breathing techniques that you can practice to relieve stress quickly.
+
+### Ambient Sounds
+
+Select from a range of soothing sounds to play in the background as you work or relax.
+
+### Scheduled Reminders
+
+Set personal reminders to take mindful breaks throughout your workday to help you stay at your best.
+
+### Customizable
+
+Fully customizable settings allow you to set the length of sessions and choose your preferred ambient noises.
+
+## Usage
+
+-  Start a session directly from the Raycast command bar.
+-  Easily configure reminders and session settings from the extension's preferences.
+
+![Calm Moments Screenshot 2](/assets/CalmMoments/CalmMoments2.png)
+![Calm Moments Screenshot 3](/assets/CalmMoments/CalmMoments3.png)
+
+## Download
+
+This Raycast extension is designed to make meditation moments effortlessly accessible at your fingertips. Click the link below to install the extension and start incorporating relaxation into your daily routine.
+
+<Link
+  download
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Install Calm Moments for Raycast."
+  href='#'
+>
+  Install Now
+</Link>
 
 export default function MDXPage({ children }) {
   return <MdxLayout>
-   
-  {children}</MdxLayout>
- 
+    {children}</MdxLayout>
 }

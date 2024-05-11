@@ -31,8 +31,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {/* <div className="dark:block hidden fixed z-[-2] min-h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" /> */}
-          <div className="flex flex-col w-screen min-h-screen items-center p-10 dark:text-white bg-background ">
+          <div className="hidden dark:block absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+          <div className="flex flex-col w-screen min-h-screen items-center p-10 dark:text-white ">
             <Header />
 
             {children}

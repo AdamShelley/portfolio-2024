@@ -28,6 +28,6 @@
     ".next/types/**/*.ts",
     "app/projects/[projectId]/page.mdx",
     "app/projects/page.tsx"
-, "app/projects/Breathe/page.mdx"  ],
+, "app/projects/Breathe/page.mdx", "app/projects/React-onboarder-tool/page.mdx", "app/projects/Guessagram/page.mdx"  ],
   "exclude": ["node_modules"]
 }

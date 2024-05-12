@@ -1,0 +1,32 @@
+import Link from 'next/link';
+import MdxLayout from "../../components/mdx-layout";
+import {CarouselComponent} from '../../components/carousel';
+
+# Guessagram
+
+With the success of Wordle, many have tried making their own small addictive game. This is my version. I used NextJS to handle the frontend and Tailwind for the styling. I used Prisma to link to a postgres database hosted on Railway. The database is automatically reset daily using a cron job.
+
+<CarouselComponent images={[
+  "/assets/Guessagram/Guessagram2.png",
+  "/assets/Guessagram/Guessagram3.png",
+  "/assets/Guessagram/Guessagram4.png"
+]}/>
+
+NPM Link
+GITHUB Link
+LIVE DEMO
+
+<Link
+  download
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Install Calm Moments for Raycast."
+  href='#'
+>
+  Github
+</Link>
+
+export default function MDXPage({ children }) {
+  return <MdxLayout>
+    {children}</MdxLayout>
+}

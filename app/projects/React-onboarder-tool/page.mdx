@@ -1,0 +1,34 @@
+import Link from 'next/link';
+import MdxLayout from "../../components/mdx-layout";
+import {CarouselComponent} from '../../components/carousel';
+
+# React Onboarder Tool
+Developed to offer an engaging introduction to new users across websites, this tool replaced the need for individual guides with a uniform, interactive experience.
+
+Learnings:
+Creating this tool was a lesson in package development and distribution. It was my first experience publishing to NPM, and I learned a lot about the process of creating a package, documenting and versioning it in an understandable way.
+
+<CarouselComponent images={[
+  "/assets/react-onboarder-tool/onboarding2.png",
+  "/assets/react-onboarder-tool/onboarding3.png"
+]}/>
+
+NPM Link
+GITHUB Link
+LIVE DEMO
+
+<Link
+  download
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Install Calm Moments for Raycast."
+  href='#'
+>
+  Install Now
+</Link>
+
+export default function MDXPage({ children }) {
+  return <MdxLayout>
+    {children}</MdxLayout>
+}
+

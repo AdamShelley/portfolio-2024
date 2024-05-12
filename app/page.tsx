@@ -8,7 +8,7 @@ export default function Home() {
           <h3 className="text-base text-primary dark:hover:text-white group-hover:text-slate-100">
             Projects
           </h3>
-          <p className="text-md text-gray-800 dark:text-gray-300 group-hover:text-slate-100">
+          <p className="text-md text-gray-800 dark:text-gray-300 group-hover:text-slate-100 mt-1">
             Check out what I have been working on
           </p>
         </div>
@@ -18,7 +18,7 @@ export default function Home() {
           <h3 className="text-base text-primary dark:hover:text-white group-hover:text-slate-100">
             About
           </h3>
-          <p className="text-md text-gray-800 dark:text-gray-300 group-hover:text-slate-100">
+          <p className="text-md text-gray-800 dark:text-gray-300 group-hover:text-slate-100 mt-1">
             Who am I?
           </p>
         </div>
@@ -28,7 +28,7 @@ export default function Home() {
           <h3 className="text-base text-primary dark:hover:text-white group-hover:text-slate-100">
             Contact
           </h3>
-          <p className="text-md text-gray-800 dark:text-gray-300 group-hover:text-slate-100">
+          <p className="text-md text-gray-800 dark:text-gray-300 group-hover:text-slate-100 mt-1">
             Send me a message
           </p>
         </div>

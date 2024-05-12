@@ -4,7 +4,7 @@ type Props = {};
 
 const AboutPage = (props: Props) => {
   return (
-    <div className="min-h-screen flex items-start justify-start">
+    <div className="w-[85vw] lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw]  min-h-screen flex items-start justify-start">
       <div className="bg-white p-6 rounded-lg shadow-lg">
         <h1 className="text-md font-semibold text-left text-slate-900">
           About

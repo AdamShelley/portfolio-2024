@@ -11,7 +11,9 @@ const Header = (props: Props) => {
         <Link href="/">
           <h1 className="text-base font-medium">Adam Shelley</h1>
         </Link>
-        <h2 className="text-base text-gray-400 font-medium ">Web Developer</h2>
+        <h2 className="text-base text-gray-500 dark:text-gray-400 font-medium ">
+          Web Developer
+        </h2>
       </div>
       <ModeToggle />
     </div>

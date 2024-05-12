@@ -18,7 +18,6 @@ const Footer = (props: Props) => {
           className="mb-2 hover:text-gray-900 hover:bg-gray-300 transition-all ease-in rounded-full p-2"
         />
       </Link>
-      {/* <p>Adam Shelley</p> */}
     </div>
   );
 };

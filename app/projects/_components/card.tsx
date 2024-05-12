@@ -15,14 +15,9 @@ interface Project {
 const Card = ({ project, customPage }: Project) => {
   const { name, skills, description, imageName } = project;
 
-  const cardBackgroundGradient =
-    "linear-gradient(0deg, rgb(34, 35, 38) 9%, rgba(33, 34, 37, 0.89) 42%, rgba(34, 35, 38, 0) 156%)";
-  const cardBackgroundGradientHover =
-    "background: linear-gradient(0deg,rgb(34, 35, 38) 9%,rgba(33, 34, 37, 0.89) 42%,rgba(34, 35, 38, 0) 156%)";
-
   return (
-    <article className="flex flex-col items-center justify-start w-full transition-all ease-in-out duration-300 rounded-xl p-2 relative overflow-hidden shadow-lg m-0.5 lg:w-95/100 lg:flex-col dark:shadow-none">
-      <div className="relative w-full h-96 rounded-3xl overflow-hidden ">
+    <article className="flex flex-col px-5 py-3 lg:px-0 lg:py-0 items-center justify-start w-full transition-all ease-in-out duration-300 rounded-xl relative overflow-hidden shadow-none m-0.5 lg:w-95/100 lg:flex-col dark:shadow-none">
+      <div className="relative w-full h-96 rounded-xl overflow-hidden bg-transparent">
         <Link href={customPage || `/projects/${name}`} passHref>
           <div className="w-full h-full relative block cursor-pointer group ">
             <Image

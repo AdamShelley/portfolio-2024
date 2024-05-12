@@ -13,7 +13,7 @@ export default function Home() {
       </Link>
       <Link href="/about">
         <div className="py-3 flex flex-col w-full hover:bg-gradient-to-r hover:from-gray-800 hover:to-gray-90 rounded-md  cursor-pointer transition duration-200">
-          <h3 className="text-base">About Me</h3>
+          <h3 className="text-base">About</h3>
           <p className="text-md text-gray-800 dark:text-gray-300">Who am I?</p>
         </div>
       </Link>

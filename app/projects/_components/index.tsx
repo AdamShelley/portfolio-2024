@@ -9,7 +9,7 @@ const projects = [
       name: "Breathe",
       skills: ["ReactJS", "Typescript", "Raycast"],
       description:
-        "An interactive coding bootcamp experience delivered online.",
+        "A small extension for Raycast, to give you quick, and simple mindfulness exercises.",
       imageName: "breathe-screenshot.png",
     },
     // customPage: "CodeCampDetails.html",
@@ -19,7 +19,7 @@ const projects = [
       name: "LangAI",
       skills: ["React Native", "NodeJS", "Supabase", "ChatGPT"],
       description:
-        "A platform for builders to create and share web development projects.",
+        "A language learning app that uses AI to generate stories for your level.",
       imageName: "LangAI-screenshot.png",
     },
     // customPage: "AboutUs.html",
@@ -28,8 +28,7 @@ const projects = [
     project: {
       name: "Guessagram",
       skills: ["NextJS", "Tailwind", "Typescript", "Railway"],
-      description:
-        "An app for tracking personal carbon footprint and eco-friendly activities.",
+      description: "A word guessing game, automatically resets daily",
 
       imageName: "guesswords-screenshot.png",
     },
@@ -40,8 +39,8 @@ const projects = [
       name: "React-onboarder-tool",
       skills: ["React", "NPM"],
       description:
-        "A comprehensive tool for personal finance management and budget tracking.",
-      imageName: "scribbler-screenshot.png",
+        "A tool for react to create an onboarding experience for your users.",
+      imageName: "onboarder-tool.png",
       // imageName: "financeflow.png",
     },
     // customPage: "FinancialToolsOverview.html",

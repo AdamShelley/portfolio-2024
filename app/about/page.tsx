@@ -13,11 +13,11 @@ const AboutPage = (props: Props) => {
           Hi! My name is <strong>Adam</strong>, and I am a developer from the UK
           🇬🇧.
         </p>
-        <p className="mt-2 text-md text-gray-700 text-left">
+        <p className="mt-5 text-md text-gray-700 text-left">
           I&apos;m currently working as a <strong>Web Developer</strong> for a
           leading Energy Consultancy based in Warwickshire.
         </p>
-        <p className="mt-2 text-md text-gray-700 text-left">
+        <p className="mt-5 text-md text-gray-700 text-left">
           I am <strong>open to opportunities</strong> and excited to explore new
           challenges.
         </p>

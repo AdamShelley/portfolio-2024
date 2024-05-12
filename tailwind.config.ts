@@ -103,6 +103,10 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "custom-gradient-light":
+          "linear-gradient(0deg, rgb(34, 35, 38) 9%, rgba(33, 34, 37, 0.89) 42%, rgba(34, 35, 38, 0) 100%)",
+        "custom-gradient-light-hover":
+          "linear-gradient(0deg,rgb(34, 35, 38) 9%,rgba(33, 34, 37, 0.89) 42%,rgba(34, 35, 38, 0) 90%)",
         "custom-gradient":
           "linear-gradient(0deg, rgb(34, 35, 38) 9%, rgba(33, 34, 37, 0.89) 42%, rgba(34, 35, 38, 0) 156%)",
         "custom-gradient-hover":

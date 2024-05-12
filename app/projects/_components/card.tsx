@@ -27,7 +27,7 @@ const Card = ({ project, customPage }: Project) => {
               objectFit="cover"
               className="transition-opacity duration-300 ease-in-out "
             />
-            <div className="absolute top-0 left-0 w-full h-full pointer-events-none bg-custom-gradient group-hover:bg-custom-gradient-hover transition-all duration-300 ease-in-out z-10 opacity-100 group-hover:opacity-80 hover:scale-50"></div>
+            <div className="absolute top-0 left-0 w-full h-full pointer-events-none bg-custom-gradient-light dark:bg-custom-gradient group-hover:bg-custom-gradient-light-hover dark:group-hover:bg-custom-gradient-hover transition-all duration-300 ease-in-out z-10 opacity-100 group-hover:opacity-80 hover:scale-50"></div>
 
             <div className="absolute inset-x-0 bottom-0 flex flex-col justify-start flex-1 w-full p-3 ">
               <div className="p-3 text-white z-20 absolute bottom-0 mb-2 ">

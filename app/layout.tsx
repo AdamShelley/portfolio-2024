@@ -15,6 +15,9 @@ const myFont = localFont({ src: "../public/font.otf" });
 export const metadata: Metadata = {
   title: "Adam Shelley",
   description: "Adam Shelley's Web Development Portfolio",
+  icons: {
+    icon: "/favicon-196x196.png",
+  },
 };
 
 export default function RootLayout({

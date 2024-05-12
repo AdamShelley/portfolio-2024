@@ -14,7 +14,7 @@ const ContactForm = (props: Props) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col items-start justify-center w-full mt-8 md:w-1/2"
+      className="w-[85vw] lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw]  flex flex-col items-start justify-center mt-8 md:w-1/2"
     >
       <label htmlFor="email" className="text-md mt-4 font-medium">
         Email Address

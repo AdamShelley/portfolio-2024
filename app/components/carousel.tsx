@@ -14,11 +14,11 @@ export const CarouselComponent = ({ images }: Props) => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     slidesToScroll: 1,
     slidesToShow: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
   };
 
   console.log(images);

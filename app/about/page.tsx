@@ -14,7 +14,7 @@ const AboutPage = (props: Props) => {
           🇬🇧.
         </p>
         <p className="mt-2 text-md text-gray-700 text-left">
-          I'm currently working as a <strong>Web Developer</strong> for a
+          I&apos;m currently working as a <strong>Web Developer</strong> for a
           leading Energy Consultancy based in Warwickshire.
         </p>
         <p className="mt-2 text-md text-gray-700 text-left">

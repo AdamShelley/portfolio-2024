@@ -8,7 +8,7 @@ export default function MdxLayout({ children }: { children: React.ReactNode }) {
     prose-headings:mt-8 prose-headings:font-semibold prose-headings:text-black prose-h1:text-base
     prose-h2:text-base prose-h3:text-sm prose-h4:text-sm prose-h5:text-xs prose-h6:text-xs 
     dark:prose-headings:text-white prose-img:rounded-md   prose-p:leading-2 prose-li:text-md
-    prose-img:flex prose-img:mx-auto "
+    prose-img:flex prose-img:mx-auto mb-10"
     >
       {/* <Link href="/projects">Back</Link> */}
       <div className="mb-4">

@@ -6,7 +6,7 @@ type Props = {};
 
 const Header = (props: Props) => {
   return (
-    <div className="w-[85vw] lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] flex justify-between mb-20">
+    <div className="w-[85vw] lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] flex justify-between mb-10">
       <div className="flex-col">
         <Link href="/">
           <h1 className="text-base font-medium">Adam Shelley</h1>

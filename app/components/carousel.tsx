@@ -25,36 +25,27 @@ export const CarouselComponent = ({ images, videoArray }: Props) => {
   return (
     <Slider {...settings} className="mt-10">
       {images.map((img: any) => (
-        <div key={img}>
+        <div key={img} className="flex justify-center items-center h-80">
           <img
             src={img}
             alt="Carousel Image"
-            style={{ width: "50%", height: "auto", display: "block" }}
+            className="h-full w-auto mx-auto"
           />
-          {/* <Image src={"/assets/LangAI/LangAI2.png"} alt="carousel-image" fill /> */}
         </div>
       ))}
       {videoArray?.map((vid: any) => (
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          key={vid}
-          className="rounded-md max-h-[600px]"
-          style={{ maxHeight: "50%", display: "block" }}
-        >
-          <source
-            src={vid}
-            type="video/mp4"
-            style={{
-              maxHeight: "50%",
-              width: "50%",
-              display: "block",
-            }}
-          />
-          Your browser does not support the video tag.
-        </video>
+        <div key={vid} className="flex justify-center items-center h-80">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="h-full w-auto mx-auto"
+          >
+            <source src={vid} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
       ))}
     </Slider>
   );

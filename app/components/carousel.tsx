@@ -8,23 +8,22 @@ import Image from "next/image";
 
 type Props = {
   images: string[];
+  videoArray?: string[];
 };
 
-export const CarouselComponent = ({ images }: Props) => {
+export const CarouselComponent = ({ images, videoArray }: Props) => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 1000,
+    speed: 3000,
     slidesToScroll: 1,
     slidesToShow: 1,
     autoplay: true,
     autoplaySpeed: 3000,
   };
 
-  console.log(images);
-
   return (
-    <Slider {...settings}>
+    <Slider {...settings} className="mt-10">
       {images.map((img: any) => (
         <div key={img}>
           <img
@@ -34,6 +33,28 @@ export const CarouselComponent = ({ images }: Props) => {
           />
           {/* <Image src={"/assets/LangAI/LangAI2.png"} alt="carousel-image" fill /> */}
         </div>
+      ))}
+      {videoArray?.map((vid: any) => (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          key={vid}
+          className="rounded-md max-h-[600px]"
+          style={{ maxHeight: "50%", display: "block" }}
+        >
+          <source
+            src={`../../assets/LangAI/voting.mp4`}
+            type="video/mp4"
+            style={{
+              maxHeight: "50%",
+              width: "50%",
+              display: "block",
+            }}
+          />
+          Your browser does not support the video tag.
+        </video>
       ))}
     </Slider>
   );

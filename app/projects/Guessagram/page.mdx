@@ -1,10 +1,20 @@
 import Link from 'next/link';
 import MdxLayout from "../../components/mdx-layout";
 import {CarouselComponent} from '../../components/carousel';
+import MarkdownButtons from '../../components/markdown-buttons';
+import Badges from '../../components/badges';
+
+<Badges badges={['NextJS','Tailwind', 'Typescript', 'Railway']}/>
 
 # Guessagram
 
+
 With the success of Wordle, many have tried making their own small addictive game. This is my version. I used NextJS to handle the frontend and Tailwind for the styling. I used Prisma to link to a postgres database hosted on Railway. The database is automatically reset daily using a cron job.
+
+
+<MarkdownButtons github="https://github.com/AdamShelley/Guessagram" demo="https://guessagram.vercel.app/" />
+
+
 
 <CarouselComponent images={[
   "/assets/Guessagram/Guessagram2.png",
@@ -12,19 +22,7 @@ With the success of Wordle, many have tried making their own small addictive gam
   "/assets/Guessagram/Guessagram4.png"
 ]}/>
 
-NPM Link
-GITHUB Link
-LIVE DEMO
 
-<Link
-  download
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Install Calm Moments for Raycast."
-  href='#'
->
-  Github
-</Link>
 
 export default function MDXPage({ children }) {
   return <MdxLayout>

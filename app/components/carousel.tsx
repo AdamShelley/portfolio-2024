@@ -23,7 +23,7 @@ export const CarouselComponent = ({ images, videoArray }: Props) => {
   };
 
   return (
-    <Slider {...settings} className="mt-10">
+    <Slider {...settings} className="mt-10 mx-5">
       {images.map((img: any) => (
         <div key={img} className="flex justify-center items-center h-[40rem]">
           <img

@@ -15,10 +15,10 @@ export const CarouselComponent = ({ images, videoArray }: Props) => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 3000,
+    speed: 1000,
     slidesToScroll: 1,
     slidesToShow: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3000,
   };
 
@@ -45,7 +45,7 @@ export const CarouselComponent = ({ images, videoArray }: Props) => {
           style={{ maxHeight: "50%", display: "block" }}
         >
           <source
-            src={`../../assets/LangAI/voting.mp4`}
+            src={vid}
             type="video/mp4"
             style={{
               maxHeight: "50%",

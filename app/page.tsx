@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="w-[85vw] lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mt-20 text-primary translate-x-[-0.5rem] flex flex-col min-h-screen">
+    <main className="w-[85vw] lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mt-20 text-primary translate-x-[-0.5rem] flex flex-col">
       <Link href="/projects">
         <div className="p-3 group flex flex-col w-full hover:bg-gradient-to-r hover:from-gray-800 hover:to-gray-90 rounded-md  cursor-pointer transition duration-200">
           <h3 className="text-base text-primary dark:hover:text-white group-hover:text-slate-100">
@@ -34,7 +34,7 @@ export default function Home() {
         </div>
       </Link>
 
-      <div className="p-3 mt-auto">
+      <div className="p-3 mt-20">
         <p className="text-md ">
           You can see more of my work on{" "}
           <Link href="" className="text-slate-300 ">

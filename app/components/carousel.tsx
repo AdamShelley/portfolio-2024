@@ -25,7 +25,7 @@ export const CarouselComponent = ({ images, videoArray }: Props) => {
   return (
     <Slider {...settings} className="mt-10">
       {images.map((img: any) => (
-        <div key={img} className="flex justify-center items-center h-80">
+        <div key={img} className="flex justify-center items-center h-[40rem]">
           <img
             src={img}
             alt="Carousel Image"
@@ -34,7 +34,7 @@ export const CarouselComponent = ({ images, videoArray }: Props) => {
         </div>
       ))}
       {videoArray?.map((vid: any) => (
-        <div key={vid} className="flex justify-center items-center h-80">
+        <div key={vid} className="flex justify-center items-center h-[40rem]">
           <video
             autoPlay
             muted

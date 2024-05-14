@@ -37,7 +37,12 @@ export default function Home() {
       <div className="p-3 mt-20">
         <p className="text-md ">
           You can see more of my work on{" "}
-          <Link href="" className="text-slate-300 ">
+          <Link
+            href="https://github.com/AdamShelley"
+            className="text-slate-300 "
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             Github.
           </Link>
         </p>

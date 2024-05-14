@@ -17,7 +17,7 @@ const Card = ({ project, customPage }: Project) => {
 
   return (
     <article className="flex flex-col px-5 py-3 lg:px-0 lg:py-0 items-center justify-start w-full transition-all ease-in-out duration-300 rounded-xl relative overflow-hidden shadow-none m-0.5 lg:w-95/100 lg:flex-col dark:shadow-none">
-      <div className="relative w-full h-96 rounded-xl overflow-hidden bg-transparent">
+      <div className="relative w-full h-96 rounded-lg overflow-hidden bg-transparent">
         <Link href={customPage || `/projects/${name}`} passHref>
           <div className="w-full h-full relative block cursor-pointer group ">
             <Image
@@ -32,7 +32,7 @@ const Card = ({ project, customPage }: Project) => {
             <div className="absolute inset-x-0 bottom-0 flex flex-col justify-start flex-1 w-full p-3 ">
               <div className="p-3 text-white z-20 absolute bottom-0 mb-2 ">
                 <h3 className="text-xl mt-1">{name}</h3>
-                <p className="mt-3 flex-1 text-sm tracking-normal text-gray-400">
+                <p className="mt-3 flex-1 text-sm tracking-normal text-gray-300 dark:text-gray-400">
                   {description}
                 </p>
                 <div className="flex flex-wrap items-center justify-start w-full pt-1  z-10">

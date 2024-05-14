@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -12,8 +12,8 @@ import {
 import Image from "next/image";
 
 type Props = {
-  images: string[];
-  videoArray?: string[];
+  images: { path: string; caption?: string }[];
+  videoArray?: { path: string; caption?: string }[];
 };
 
 export function CarouselComponent({ images, videoArray }: Props) {
@@ -31,13 +31,18 @@ export function CarouselComponent({ images, videoArray }: Props) {
               <Card className="border-none bg-transparent ">
                 <CardContent className="flex items-center justify-center ">
                   <Image
-                    src={image}
+                    src={image.path}
                     alt={`Carousel Image ${index}`}
                     width={mediaWidth}
                     height={mediaHeight}
                     className=""
                   />
                 </CardContent>
+                <CardFooter className="flex items-center justify-center">
+                  <span className="text-md font-base text-primary">
+                    {image?.caption}
+                  </span>
+                </CardFooter>
               </Card>
             </CarouselItem>
           ))}
@@ -45,11 +50,16 @@ export function CarouselComponent({ images, videoArray }: Props) {
             <CarouselItem key={`video-${index}`}>
               <Card className="border-none bg-transparent">
                 <CardContent className="flex items-center justify-center p-2">
-                  <video width={mediaWidth} autoPlay>
-                    <source src={video} type="video/mp4" />
+                  <video width={mediaWidth} autoPlay loop muted>
+                    <source src={video.path} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </CardContent>
+                <CardFooter className="flex items-center justify-center">
+                  <span className="text-md font-base text-primary">
+                    {video?.caption}
+                  </span>
+                </CardFooter>
               </Card>
             </CarouselItem>
           ))}

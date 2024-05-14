@@ -1,9 +1,14 @@
 "use client";
 
-import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import * as React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import Image from "next/image";
 
 type Props = {
@@ -11,42 +16,51 @@ type Props = {
   videoArray?: string[];
 };
 
-export const CarouselComponent = ({ images, videoArray }: Props) => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 1000,
-    slidesToScroll: 1,
-    slidesToShow: 1,
-    autoplay: false,
-    autoplaySpeed: 3000,
-  };
+export function CarouselComponent({ images, videoArray }: Props) {
+  // Set a fixed dimension for visual media displayed in the carousel
+  const hasContent = images.length > 0 || (videoArray && videoArray.length > 0);
+  const mediaWidth = 300; // Adjust as needed
+  const mediaHeight = 200; // Adjust as needed
 
   return (
-    <Slider {...settings} className="mt-10">
-      {images.map((img: any) => (
-        <div key={img} className="flex justify-center items-center h-[35rem]">
-          <img
-            src={img}
-            alt="Carousel Image"
-            className="h-full w-auto mx-auto"
-          />
-        </div>
-      ))}
-      {videoArray?.map((vid: any) => (
-        <div key={vid} className="flex justify-center items-center h-[35rem]">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="h-full w-auto mx-auto"
-          >
-            <source src={vid} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      ))}
-    </Slider>
+    <div className="flex justify-center items-center w-full">
+      <Carousel className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg justify-center">
+        <CarouselContent>
+          {images.map((image, index) => (
+            <CarouselItem key={`image-${index}`}>
+              <Card className="border-none bg-transparent ">
+                <CardContent className="flex items-center justify-center ">
+                  <Image
+                    src={image}
+                    alt={`Carousel Image ${index}`}
+                    width={mediaWidth}
+                    height={mediaHeight}
+                    className=""
+                  />
+                </CardContent>
+              </Card>
+            </CarouselItem>
+          ))}
+          {videoArray?.map((video, index) => (
+            <CarouselItem key={`video-${index}`}>
+              <Card className="border-none bg-transparent">
+                <CardContent className="flex items-center justify-center p-2">
+                  <video width={mediaWidth} autoPlay>
+                    <source src={video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </CardContent>
+              </Card>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        {hasContent && (
+          <>
+            <CarouselPrevious />
+            <CarouselNext />
+          </>
+        )}
+      </Carousel>
+    </div>
   );
-};
+}

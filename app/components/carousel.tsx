@@ -50,7 +50,7 @@ export function CarouselComponent({ images, videoArray }: Props) {
             <CarouselItem key={`video-${index}`}>
               <Card className="border-none bg-transparent">
                 <CardContent className="flex items-center justify-center p-2">
-                  <video width={mediaWidth} autoPlay loop muted>
+                  <video width={mediaWidth} autoPlay loop muted playsInline>
                     <source src={video.path} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>

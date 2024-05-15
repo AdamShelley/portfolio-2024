@@ -6,8 +6,7 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+  CarouselDots,
 } from "@/components/ui/carousel";
 import Image from "next/image";
 
@@ -17,28 +16,27 @@ type Props = {
 };
 
 export function CarouselComponent({ images, videoArray }: Props) {
-  // Set a fixed dimension for visual media displayed in the carousel
   const hasContent = images.length > 0 || (videoArray && videoArray.length > 0);
-  const mediaWidth = 300; // Adjust as needed
-  const mediaHeight = 300; // Adjust as needed
+  const mediaWidth = 300;
+  const mediaHeight = 200;
 
   return (
     <div className="flex justify-center items-center w-full ">
-      <Carousel className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg justify-center ">
+      <Carousel className="w-full md:max-w-md lg:max-w-lg justify-center ">
         <CarouselContent>
           {images.map((image, index) => (
             <CarouselItem key={`image-${index}`}>
-              <Card className="border-none bg-transparent ">
-                <CardContent className="flex items-center justify-center ">
+              <Card className="border-none bg-transparent shadow-none">
+                <CardContent className="flex items-center justify-center p-0 ">
                   <Image
                     src={image.path}
                     alt={`Carousel Image ${index}`}
                     width={mediaWidth}
                     height={mediaHeight}
-                    className=""
+                    className="mb-0 shadow-md"
                   />
                 </CardContent>
-                <CardFooter className="flex items-center justify-center">
+                <CardFooter className="flex items-center justify-center pt-5 mx-5">
                   <span className="text-md font-base text-primary">
                     {image?.caption}
                   </span>
@@ -48,14 +46,21 @@ export function CarouselComponent({ images, videoArray }: Props) {
           ))}
           {videoArray?.map((video, index) => (
             <CarouselItem key={`video-${index}`}>
-              <Card className="border-none bg-transparent">
+              <Card className="border-none bg-transparent shadow-none">
                 <CardContent className="flex items-center justify-center p-2">
-                  <video width={mediaWidth} autoPlay loop muted playsInline>
+                  <video
+                    width={mediaWidth}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="shadow-md"
+                  >
                     <source src={video.path} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </CardContent>
-                <CardFooter className="flex items-center justify-center">
+                <CardFooter className="flex items-center justify-center pt-5 mx-5 ">
                   <span className="text-md font-base text-primary">
                     {video?.caption}
                   </span>
@@ -66,8 +71,9 @@ export function CarouselComponent({ images, videoArray }: Props) {
         </CarouselContent>
         {hasContent && (
           <>
-            <CarouselPrevious />
-            <CarouselNext />
+            {/* <CarouselPrevious />
+            <CarouselNext /> */}
+            <CarouselDots />
           </>
         )}
       </Carousel>

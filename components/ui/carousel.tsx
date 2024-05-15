@@ -28,13 +28,9 @@ type CarouselContextProps = {
   scrollNext: () => void;
   canScrollPrev: boolean;
   canScrollNext: boolean;
-} & CarouselProps;
-
-type UseDotButtonType = {
   selectedIndex: number;
-  scrollSnaps: number[];
-  onDotButtonClick: (index: number) => void;
-};
+  scrollTo: (index: number) => void;
+} & CarouselProps;
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null);
 
@@ -73,6 +69,7 @@ const Carousel = React.forwardRef<
     );
     const [canScrollPrev, setCanScrollPrev] = React.useState(false);
     const [canScrollNext, setCanScrollNext] = React.useState(false);
+    const [selectedIndex, setSelectedIndex] = React.useState(0);
 
     const onSelect = React.useCallback((api: CarouselApi) => {
       if (!api) {
@@ -81,6 +78,7 @@ const Carousel = React.forwardRef<
 
       setCanScrollPrev(api.canScrollPrev());
       setCanScrollNext(api.canScrollNext());
+      setSelectedIndex(api.selectedScrollSnap());
     }, []);
 
     const scrollPrev = React.useCallback(() => {
@@ -104,6 +102,13 @@ const Carousel = React.forwardRef<
       [scrollPrev, scrollNext]
     );
 
+    const scrollTo = React.useCallback(
+      (index: number) => {
+        api?.scrollTo(index);
+      },
+      [api]
+    );
+
     React.useEffect(() => {
       if (!api || !setApi) {
         return;
@@ -118,6 +123,8 @@ const Carousel = React.forwardRef<
       }
 
       onSelect(api);
+      api.on("reInit", onSelect);
+      api.on("select", onSelect);
       api.on("reInit", onSelect);
       api.on("select", onSelect);
 
@@ -138,6 +145,8 @@ const Carousel = React.forwardRef<
           scrollNext,
           canScrollPrev,
           canScrollNext,
+          selectedIndex,
+          scrollTo,
         }}
       >
         <div
@@ -258,6 +267,40 @@ const CarouselNext = React.forwardRef<
 });
 CarouselNext.displayName = "CarouselNext";
 
+const CarouselDots = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
+  const { selectedIndex, scrollTo, api } = useCarousel();
+  console.log(selectedIndex);
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "embla__dots z-50 mt-4 flex items-center justify-center gap-4",
+        className
+      )}
+      {...props}
+    >
+      {api
+        ?.scrollSnapList()
+        .map((_, index) => (
+          <Button
+            key={index}
+            className={cn(
+              "embla__dot h-1 w-1 rounded-full px-2",
+              index === selectedIndex
+                ? "embla__dot--selected border-2 border-gray-900  dark:border-white"
+                : "border-2 border-gray-900 bg-white dark:bg-background dark:border-gray-500"
+            )}
+            onClick={() => scrollTo(index)}
+          />
+        ))}
+    </div>
+  );
+});
+CarouselDots.displayName = "CarouselDots";
+
 export {
   type CarouselApi,
   Carousel,
@@ -265,4 +308,5 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CarouselDots,
 };

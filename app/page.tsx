@@ -39,7 +39,7 @@ export default function Home() {
           You can see more of my work on{" "}
           <Link
             href="https://github.com/AdamShelley"
-            className="text-slate-300 "
+            className="text-slate-500 font-medium dark:text-slate-300 "
             rel="noopener noreferrer"
             target="_blank"
           >

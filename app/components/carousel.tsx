@@ -20,11 +20,11 @@ export function CarouselComponent({ images, videoArray }: Props) {
   // Set a fixed dimension for visual media displayed in the carousel
   const hasContent = images.length > 0 || (videoArray && videoArray.length > 0);
   const mediaWidth = 300; // Adjust as needed
-  const mediaHeight = 200; // Adjust as needed
+  const mediaHeight = 300; // Adjust as needed
 
   return (
-    <div className="flex justify-center items-center w-full">
-      <Carousel className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg justify-center">
+    <div className="flex justify-center items-center w-full ">
+      <Carousel className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg justify-center ">
         <CarouselContent>
           {images.map((image, index) => (
             <CarouselItem key={`image-${index}`}>

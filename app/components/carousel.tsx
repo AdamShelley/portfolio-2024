@@ -17,7 +17,7 @@ type Props = {
 
 export function CarouselComponent({ images, videoArray }: Props) {
   const hasContent = images.length > 0 || (videoArray && videoArray.length > 0);
-  const mediaWidth = 300;
+  const mediaWidth = 250;
   const mediaHeight = 200;
 
   return (
@@ -36,7 +36,7 @@ export function CarouselComponent({ images, videoArray }: Props) {
                     className="mb-0 shadow-md"
                   />
                 </CardContent>
-                <CardFooter className="flex items-center justify-center pt-5 mx-5">
+                <CardFooter className="flex items-center justify-center pt-5 mx-7">
                   <span className="text-md font-base text-primary">
                     {image?.caption}
                   </span>
@@ -47,20 +47,20 @@ export function CarouselComponent({ images, videoArray }: Props) {
           {videoArray?.map((video, index) => (
             <CarouselItem key={`video-${index}`}>
               <Card className="border-none bg-transparent shadow-none">
-                <CardContent className="flex items-center justify-center p-2">
+                <CardContent className="flex items-center justify-center p-0">
                   <video
                     width={mediaWidth}
                     autoPlay
                     loop
                     muted
                     playsInline
-                    className="shadow-md"
+                    className="shadow-md mb-0"
                   >
                     <source src={video.path} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </CardContent>
-                <CardFooter className="flex items-center justify-center pt-5 mx-5 ">
+                <CardFooter className="flex items-center justify-center pt-5 mx-7">
                   <span className="text-md font-base text-primary">
                     {video?.caption}
                   </span>
@@ -73,7 +73,7 @@ export function CarouselComponent({ images, videoArray }: Props) {
           <>
             {/* <CarouselPrevious />
             <CarouselNext /> */}
-            <CarouselDots />
+            <CarouselDots className="-mt-5" />
           </>
         )}
       </Carousel>

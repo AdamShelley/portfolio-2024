@@ -288,7 +288,7 @@ const CarouselDots = React.forwardRef<
           <Button
             key={index}
             className={cn(
-              "embla__dot h-1 w-1 rounded-full px-2",
+              "embla__dot h-1 w-1 rounded-full p-0",
               index === selectedIndex
                 ? "embla__dot--selected border-2 border-gray-900  dark:border-white"
                 : "border-2 border-gray-900 bg-white dark:bg-background dark:border-gray-500"

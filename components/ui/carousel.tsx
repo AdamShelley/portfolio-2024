@@ -291,7 +291,7 @@ const CarouselDots = React.forwardRef<
               "embla__dot h-1 w-1 rounded-full p-0",
               index === selectedIndex
                 ? "embla__dot--selected border-2 border-gray-900  dark:border-white"
-                : "border-2 border-gray-900 bg-white dark:bg-background dark:border-gray-500"
+                : "border-2 border-gray-300  bg-white dark:bg-background dark:border-gray-500"
             )}
             onClick={() => scrollTo(index)}
           />

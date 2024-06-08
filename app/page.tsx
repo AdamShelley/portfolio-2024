@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BlogLinks from "./(bloglinks)/bloglinks";
 
 export default function Home() {
   return (
@@ -33,6 +34,11 @@ export default function Home() {
           </p>
         </div>
       </Link>
+
+      <div className="mt-10">
+        <h2 className="p-3 font-semibold border-t border-gray-500">Posts</h2>
+        <BlogLinks />
+      </div>
 
       <div className="p-3 mt-20">
         <p className="text-md ">

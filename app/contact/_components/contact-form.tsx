@@ -23,7 +23,7 @@ const ContactForm = (props: Props) => {
         id="email"
         type="email"
         name="email"
-        className="mt-1 p-2 w-full rounded border border-gray-400 bg-gray-100"
+        className="mt-1 p-2 w-full rounded border border-gray-400 "
       />
       <ValidationError
         prefix="Email"
@@ -37,7 +37,7 @@ const ContactForm = (props: Props) => {
       <textarea
         id="message"
         name="message"
-        className="mt-1 p-2 w-full h-40 rounded border border-gray-400 resize-none bg-gray-100"
+        className="mt-1 p-2 w-full h-40 rounded border border-gray-400 resize-none "
       />
       <ValidationError prefix="Message" field="message" errors={state.errors} />
 

@@ -36,7 +36,6 @@ export default function Home() {
       </Link>
 
       <div className="mt-10" style={{ "--stagger": 4 } as React.CSSProperties}>
-        <h2 className="p-3 font-normal text-md dark:text-slate-300 ">Posts</h2>
         <BlogLinks />
       </div>
 

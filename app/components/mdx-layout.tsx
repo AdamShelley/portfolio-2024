@@ -10,7 +10,6 @@ export default function MdxLayout({ children }: { children: React.ReactNode }) {
     dark:prose-headings:text-white prose-img:rounded-md   prose-p:leading-2 prose-li:text-md
     prose-img:flex prose-img:mx-auto prose-img:max-h-[800px] mb-10"
     >
-      {/* <Link href="/projects">Back</Link> */}
       <div className="mb-4">
         <Link
           href="/projects"

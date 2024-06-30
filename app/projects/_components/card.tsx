@@ -16,7 +16,7 @@ const Card = ({ project, customPage }: Project) => {
   const { name, skills, description, imageName } = project;
 
   return (
-    <article className="flex flex-col px-5 py-3 lg:px-0 lg:py-0 items-center justify-start w-full transition-all ease-in-out duration-300 rounded-xl relative overflow-hidden shadow-none m-0.5 lg:w-95/100 lg:flex-col dark:shadow-none">
+    <article className="flex flex-col px-0 py-3 lg:px-0 lg:py-0 items-center justify-start w-full transition-all ease-in-out duration-300 rounded-xl relative overflow-hidden shadow-none m-0.5 lg:w-95/100 lg:flex-col dark:shadow-none">
       <div className="relative w-full h-96 rounded-lg overflow-hidden bg-transparent">
         <Link href={customPage || `/projects/${name}`} passHref>
           <div className="w-full h-full relative block cursor-pointer group ">

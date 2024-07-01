@@ -14,6 +14,19 @@ function slugify(str: any) {
     .replace(/\-\-+/g, "-"); // Replace multiple - with single -
 }
 
+function RoundedImage(props: any) {
+  return <Image alt={props.alt} className="rounded-lg" {...props} />;
+}
+
+let components = {
+  Image: RoundedImage,
+};
+
 export function CustomMDX(props: any) {
-  return <MDXRemote {...props} components={{ ...(props.components || {}) }} />;
+  return (
+    <MDXRemote
+      {...props}
+      components={{ ...components, ...(props.components || {}) }}
+    />
+  );
 }

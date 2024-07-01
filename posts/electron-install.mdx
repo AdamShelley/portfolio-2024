@@ -1,12 +1,14 @@
+
+
 ---
 title: 'Setting up Electron + Tailwind + Shadcn'
-publishedAt: '2024-06-20'
-summary: 'A guide to setting up Electron with Tailwind CSS and Shadcn'
-published: 'false'
+publishedAt: '2024-06-30'
+summary: 'A guide to setting up Electron with Tailwind CSS and Shadcn.'
+published: 'true'
 ---
 
 
-<img src="/code1.jpg" alt="heading-picture" className="rounded-md shadow-inner" />
+{/* <Image src="/code1.jpg" alt="heading-picture" className="rounded-md shadow-inner" width={2248} height={1590}/> */}
 
 I have been experimenting recently with ElectronJS, and have wanted a nice solution for the styling side. With my latest projects I have been implementing Tailwind and Shadcn with allows quick building of some nice, simple looking components.
 
@@ -20,9 +22,11 @@ Check it out, you can use another vite based template if you wish but I cannot p
 
 So without further ado, with your fresh new project. How do you go about getting Tailwind and shadcn to play nice with it?
 
-Check it works as expected: 
+Fork, clone and install to your file system.
 
-PICTURE 1 HERE
+Check it works as expected: 
+<Image src="/blog_posts/electron_install/pic1.png" alt="working electron app"  width={2248} height={1590} />
+
 
 ## The Tailwind Part
 
@@ -30,12 +34,15 @@ PICTURE 1 HERE
 
 Firstly run the following two commands: 
 
-`npm install -D tailwindcss`
-`npx tailwindcss init`
+```
+bun add -D tailwindcss postcss autoprefixer
+```
 
-You should now have a tailwind.config.js file in your project root. 
+```
+bunx tailwindcss init
+```
 
-Add the following as suggested: 
+You should now have a **tailwind.config.js** file in your project root. 
 
 ```
 /** @type {import('tailwindcss').Config} */ 
@@ -63,6 +70,18 @@ module.exports = {
 
 Or make sure it is targeting the correct renderer folder if you have a different/modified template.
 
+Also create a **postcss.config.js** file in the root of your project.
+Add the following to the file:
+
+```
+module.exports = {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    }
+  };
+```
+
 Next add the following to your main entry point CSS file. For me in this template, it is 
 
 *App.css*
@@ -75,25 +94,35 @@ Next add the following to your main entry point CSS file. For me in this templat
 Tailwind should work as intended now. Test it out to see if it works.
 
 
-PICTURE 2 (Tailwind working)
+<Image src="/blog_posts/electron_install/pic2.png" alt="working electron app"  width={2248} height={1590} />
 
 
-## The Shadcn Part
+
+## Adding Shadcn
 
 This bit is slightly trickier, and depending on what you want to do you can take this in two direction. First decide if you intend to use the Shadcn CLI to install components or you want to copy/paste them manually.
 
 
 With that in mind continue on.
 
-Install the following: 
+WIP - I will update this post with the next steps soon.
 
-`npm install tailwindcss-animate class-variance-authority clsx tailwind-merge`
 
-`npm add lucide-react`
+{/* Install the following: 
+
+```
+bun add tailwindcss-animate class-variance-authority clsx tailwind-merge
+```
+
+```
+bun add lucide-react
+```
+
 
 
 
 ### Copy / Paste Version
+Docs: [Shadcn](https://ui.shadcn.com/docs/installation/manual)
 
 
 
@@ -144,7 +173,7 @@ errors when pushing to github:
 
 Put this in eslintrc.json in renderer folder: 
 
-`"react/prop-types": "off",`
+`"react/prop-types": "off",` */}
 
 
 

@@ -10,7 +10,7 @@ import Footer from "./components/footer";
 
 import { ThemeProvider } from "@/components/theme-provider";
 
-// const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] });
 const myFont = localFont({ src: "../public/font.otf" });
 
 export const metadata: Metadata = {

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { unstable_noStore as noStore } from "next/cache";
 import { getBlogPosts } from "@/lib/blog";
 import { CustomMDX } from "@/app/components/mdx-remote";
+import Image from "next/image";
 
 export default function Blog({ params }: any) {
   let post = getBlogPosts().find((post) => post.slug === params.slug);

@@ -12,7 +12,6 @@ const projects = [
         "A small extension for Raycast, to give you quick, and simple mindfulness exercises.",
       imageName: "breathe-screenshot.png",
     },
-    // customPage: "CodeCampDetails.html",
   },
   {
     project: {
@@ -22,7 +21,6 @@ const projects = [
         "A language learning app that uses AI to generate stories for your level.",
       imageName: "LangAI-screenshot.png",
     },
-    // customPage: "AboutUs.html",
   },
   {
     project: {
@@ -32,7 +30,6 @@ const projects = [
 
       imageName: "guesswords-screenshot.png",
     },
-    // customPage: "EnvironmentImpact.html",
   },
   {
     project: {
@@ -43,7 +40,6 @@ const projects = [
       imageName: "onboarder-tool.png",
       // imageName: "financeflow.png",
     },
-    // customPage: "FinancialToolsOverview.html",
   },
 ];
 

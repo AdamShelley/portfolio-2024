@@ -6,7 +6,7 @@ export default function Home() {
     <main className="w-[85vw] lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mt-10 text-primary translate-x-[-0.5rem] flex flex-col orchestration">
       <Link href="/projects" style={{ "--stagger": 1 } as React.CSSProperties}>
         <div className="p-3 group flex flex-col w-full hover:bg-gradient-to-r hover:from-slate-500 hover:to-slate-300 dark:hover:from-gray-800 dark:hover:to-gray-90 rounded-md  cursor-pointer transition duration-200">
-          <h3 className="text-lg  text-primary dark:hover:text-white group-hover:text-slate-100">
+          <h3 className="text-lg underline underline-offset-4 decoration-1 decoration-slate-600 transition group-hover:decoration-slate-400 dark:text-slate-200  dark:hover:text-white group-hover:text-slate-100">
             Projects
           </h3>
           <p className="text-lg text-gray-800 dark:text-gray-400 group-hover:text-slate-100 mt-1">
@@ -16,7 +16,7 @@ export default function Home() {
       </Link>
       <Link href="/about" style={{ "--stagger": 2 } as React.CSSProperties}>
         <div className="p-3 group flex flex-col w-full hover:bg-gradient-to-r hover:from-slate-500 hover:to-slate-300 dark:hover:from-gray-800 dark:hover:to-gray-90 rounded-md  cursor-pointer transition duration-200">
-          <h3 className="text-lg text-primary dark:hover:text-white group-hover:text-slate-100">
+          <h3 className="text-lg  underline underline-offset-4 decoration-1 decoration-slate-600 transition group-hover:decoration-slate-400 dark:text-slate-200  dark:hover:text-white group-hover:text-slate-100">
             About
           </h3>
           <p className="text-lg text-gray-800 dark:text-gray-400 group-hover:text-slate-100 mt-1">
@@ -26,7 +26,7 @@ export default function Home() {
       </Link>
       <Link href="/contact" style={{ "--stagger": 3 } as React.CSSProperties}>
         <div className="p-3 group flex flex-col w-full hover:bg-gradient-to-r hover:from-slate-500 hover:to-slate-300 dark:hover:from-gray-800 dark:hover:to-gray-90 rounded-md  cursor-pointer transition duration-200">
-          <h3 className="text-lg text-primary dark:hover:text-white group-hover:text-slate-100">
+          <h3 className="text-lg  underline underline-offset-4 decoration-1 decoration-slate-600 transition group-hover:decoration-slate-400 dark:text-slate-200  dark:hover:text-white group-hover:text-slate-100">
             Contact
           </h3>
           <p className="text-lg text-gray-800 dark:text-gray-400 group-hover:text-slate-100 mt-1">

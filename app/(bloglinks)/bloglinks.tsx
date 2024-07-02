@@ -7,7 +7,9 @@ const BlogLinks = () => {
 
   return (
     <div className="mt-1">
-      <h2 className="p-3 font-normal text-lg dark:text-slate-300 ">Posts</h2>
+      <h2 className="p-3 font-normal text-lg dark:text-slate-200 underline underline-offset-4 decoration-1 decoration-slate-500 ">
+        Posts
+      </h2>
       {allBlogs.map(
         (post) =>
           post.metadata.published === "true" && (
@@ -23,7 +25,7 @@ const BlogLinks = () => {
                 <p className="text-lg text-gray-500 dark:text-gray-400 group-hover:text-slate-100 mt-1 leading-6">
                   {post.metadata.summary}
                 </p>
-                <span className="text-sm font-normal text-slate-500  dark:text-slate-300  mt-2">
+                <span className="text-sm font-normal text-slate-500 dark:text-slate-300 group-hover:text-slate-100  mt-2">
                   {post.metadata.publishedAt}
                 </span>
                 <Suspense fallback={<p className="h-6" />}></Suspense>

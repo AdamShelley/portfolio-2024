@@ -45,7 +45,7 @@ const projects = [
 
 const ProjectList = (props: Props) => {
   return (
-    <section className="grid md:grid-cols-2 items-center gap-1 mt-2 lg:mt-0 ">
+    <section className="grid md:grid-cols-2 items-center gap-5 mt-2 lg:mt-0 ">
       {projects.map((project, index) => (
         <Card
           project={project.project}

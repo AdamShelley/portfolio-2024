@@ -16,8 +16,8 @@ const Card = ({ project, customPage }: Project) => {
   const { name, skills, description, imageName } = project;
 
   return (
-    <article className="flex flex-col px-0 py-3 lg:px-0 lg:py-0 items-center justify-start w-full transition-all ease-in-out duration-300 rounded-2xl relative overflow-hidden shadow-none m-0.5 lg:w-95/100 lg:flex-col dark:shadow-none">
-      <div className="relative w-[300px] h-[250px] rounded-2xl overflow-hidden bg-transparent">
+    <article className="flex flex-col px-0 py-3 lg:px-0 lg:py-0 items-center justify-start w-full transition-all ease-in-out duration-300 rounded-2xl relative overflow-hidden  m-0.5 lg:w-full   dark:shadow-none">
+      <div className="relative w-full h-[250px] rounded-2xl overflow-hidden bg-transparent ">
         <Link href={customPage || `/projects/${name}`} passHref>
           <div className="w-full h-full relative block cursor-pointer group ">
             <Image
@@ -25,7 +25,7 @@ const Card = ({ project, customPage }: Project) => {
               alt={`${name} picture`}
               layout="fill"
               objectFit="cover"
-              className="transition-opacity duration-300 ease-in-out dark:opacity-50 bg-transparent"
+              className="transition-opacity duration-300 ease-in-out dark:opacity-50 bg-transparent "
             />
             <div
               className="absolute top-0 left-0 w-full h-full pointer-events-none 

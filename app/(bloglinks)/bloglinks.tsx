@@ -18,14 +18,14 @@ const BlogLinks = () => {
               className="flex flex-col space-y-1 mb-4"
               href={`/posts/${post.slug}`}
             >
-              <div className="group p-3 group flex flex-col w-full hover:bg-gradient-to-r hover:from-slate-500 hover:to-slate-300 dark:hover:from-gray-800 dark:hover:to-gray-90 rounded-md  cursor-pointer transition duration-200">
-                <p className="text-lg text-primary dark:hover:text-white group-hover:text-slate-100">
+              <div className="group p-3 group flex flex-col w-full hover:bg-gradient-to-r hover:from-slate-200 hover:to-slate-100 dark:hover:from-gray-800 dark:hover:to-gray-90 rounded-md  cursor-pointer transition duration-200">
+                <p className="text-lg text-primary dark:hover:text-white ">
                   {post.metadata.title}
                 </p>
-                <p className="text-lg text-gray-500 dark:text-gray-400 group-hover:text-slate-100 mt-1 leading-6">
+                <p className="text-lg text-gray-500 dark:text-gray-400  mt-1 leading-6">
                   {post.metadata.summary}
                 </p>
-                <span className="text-sm font-normal text-slate-500 dark:text-slate-300 group-hover:text-slate-100  mt-2">
+                <span className="text-sm font-normal text-slate-500 dark:text-slate-300   mt-2">
                   {post.metadata.publishedAt}
                 </span>
                 <Suspense fallback={<p className="h-6" />}></Suspense>

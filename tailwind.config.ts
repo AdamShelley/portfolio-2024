@@ -104,9 +104,9 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "custom-gradient-light":
-          "linear-gradient(0deg, rgba(68, 68, 72, 0.9) 9%, rgba(88, 88, 92, 0.7) 42%, transparent 100%)",
+          "linear-gradient(0deg, rgba(68, 68, 72, 0.95) 50%, rgba(88, 88, 92, 0.7) 80%, transparent 100%)",
         "custom-gradient-light-hover":
-          "linear-gradient(0deg, rgba(68, 68, 72, 0.9) 9%, rgba(88, 88, 92, 0.7) 42%, transparent 90%)",
+          "linear-gradient(0deg, rgba(68, 68, 72, 0.9) 40%, rgba(88, 88, 92, 0.7) 70%, transparent 90%)",
         "custom-gradient":
           "linear-gradient(0deg, rgb(34, 35, 38) 9%, rgba(33, 34, 37, 0.89) 42%, rgba(34, 35, 38, 0) 156%)",
         "custom-gradient-hover":

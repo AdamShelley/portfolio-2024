@@ -25,11 +25,11 @@ export default function Home() {
         style={{ "--stagger": 1 } as React.CSSProperties}
         className="mt-10"
       >
-        <div className="p-3 group flex flex-col w-full hover:bg-gradient-to-r hover:from-slate-500 hover:to-slate-300 dark:hover:from-gray-800 dark:hover:to-gray-90 rounded-md  cursor-pointer transition duration-200">
-          <h3 className="text-lg underline underline-offset-4 decoration-1 decoration-slate-600 transition group-hover:decoration-slate-400 dark:text-slate-200  dark:hover:text-white group-hover:text-slate-100">
+        <div className="p-3 group flex flex-col w-full hover:bg-gradient-to-r hover:from-slate-200 hover:to-slate-100 dark:hover:from-gray-800 dark:hover:to-gray-90 rounded-md  cursor-pointer transition duration-200">
+          <h3 className="text-lg underline underline-offset-4 decoration-1 decoration-slate-600 transition group-hover:decoration-slate-400 dark:text-slate-200  dark:hover:text-white ">
             Projects
           </h3>
-          <p className="text-lg text-gray-800 dark:text-gray-400 group-hover:text-slate-100 mt-1">
+          <p className="text-lg text-gray-800 dark:text-gray-400  mt-1">
             Check out what I have been working on
           </p>
         </div>
@@ -45,11 +45,11 @@ export default function Home() {
         </div>
       </Link> */}
       <Link href="/contact" style={{ "--stagger": 3 } as React.CSSProperties}>
-        <div className="p-3 group flex flex-col w-full hover:bg-gradient-to-r hover:from-slate-500 hover:to-slate-300 dark:hover:from-gray-800 dark:hover:to-gray-90 rounded-md  cursor-pointer transition duration-200">
-          <h3 className="text-lg  underline underline-offset-4 decoration-1 decoration-slate-600 transition group-hover:decoration-slate-400 dark:text-slate-200  dark:hover:text-white group-hover:text-slate-100">
+        <div className="p-3 group flex flex-col w-full hover:bg-gradient-to-r hover:from-slate-200 hover:to-slate-100 dark:hover:from-gray-800 dark:hover:to-gray-90 rounded-md  cursor-pointer transition duration-200">
+          <h3 className="text-lg  underline underline-offset-4 decoration-1 decoration-slate-600 transition group-hover:decoration-slate-400 dark:text-slate-200  dark:hover:text-white ">
             Contact
           </h3>
-          <p className="text-lg text-gray-800 dark:text-gray-400 group-hover:text-slate-100 mt-1">
+          <p className="text-lg text-gray-800 dark:text-gray-400 g mt-1">
             Send me a message
           </p>
         </div>

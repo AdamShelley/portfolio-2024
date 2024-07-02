@@ -40,7 +40,7 @@ export default function RootLayout({
           <div className="flex flex-col w-screen min-h-screen items-center pt-10 dark:text-white ">
             <Header />
 
-            <div className="flex-1">{children}</div>
+            <div className="flex-1 mb-20">{children}</div>
             <Analytics />
             <Footer />
           </div>

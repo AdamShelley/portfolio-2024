@@ -37,10 +37,10 @@ export default function RootLayout({
         >
           <div className="dark:hidden block fixed top-0 z-[-2] h-screen w-screen min-h-[100%] bg-white bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
           <div className="hidden dark:block fixed top-0 z-[-2] h-full min-h-[100%] w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
-          <div className="flex flex-col w-screen min-h-screen items-center p-10 dark:text-white ">
+          <div className="flex flex-col w-screen min-h-screen items-center pt-10 dark:text-white ">
             <Header />
 
-            {children}
+            <div className="flex-1">{children}</div>
             <Analytics />
             <Footer />
           </div>

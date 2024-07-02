@@ -40,7 +40,7 @@ export default function Blog({ params }: any) {
         </Suspense>
         <Suspense fallback={<p className="h-4" />}></Suspense>
       </div>
-      <article className="mt-10 prose prose-quoteless prose-neutral dark:prose-invert w-[85vw] lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw]">
+      <article className="mt-10 prose prose-quoteless prose-neutral dark:prose-invert w-[85vw] lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mb-20">
         <CustomMDX source={post.content} />
       </article>
     </section>

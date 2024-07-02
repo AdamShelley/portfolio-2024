@@ -6,19 +6,22 @@ type Props = {};
 
 const Footer = (props: Props) => {
   return (
-    <div className=" m-2 fixed bottom-0 right-0 text-sm flex flex-col items-center z-50 bg-white/90 dark:bg-transparent rounded-full">
-      <Link
-        href="https://github.com/AdamShelley"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="github link"
-      >
-        <Github
-          size={40}
-          className="mb-2 hover:text-gray-900 hover:bg-gray-300 transition-all ease-in rounded-full p-2"
-        />
-      </Link>
-    </div>
+    <footer className="w-full text-sm flex items-center justify-evenly border-t border-gray-600">
+      <div className="w-[85vw] lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] flex items-center justify-between my-1">
+        <span className="dark:text-gray-400">Adam Shelley</span>
+        <Link
+          href="https://github.com/AdamShelley"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="github link"
+        >
+          <Github
+            size={40}
+            className=" dark:text-gray-400 hover:dark:text-gray-300 transition-all ease-in rounded-full p-2"
+          />
+        </Link>
+      </div>
+    </footer>
   );
 };
 

@@ -16,8 +16,8 @@ const Card = ({ project, customPage }: Project) => {
   const { name, skills, description, imageName } = project;
 
   return (
-    <article className="flex flex-col px-0 py-3 lg:px-0 lg:py-0 items-center justify-start w-full transition-all ease-in-out duration-300 rounded-xl relative overflow-hidden shadow-none m-0.5 lg:w-95/100 lg:flex-col dark:shadow-none">
-      <div className="relative w-full h-96 rounded-lg overflow-hidden bg-transparent">
+    <article className="flex flex-col px-0 py-3 lg:px-0 lg:py-0 items-center justify-start w-full transition-all ease-in-out duration-300 rounded-lg relative overflow-hidden shadow-none m-0.5 lg:w-95/100 lg:flex-col dark:shadow-none">
+      <div className="relative w-full h-[250px] rounded-md overflow-hidden bg-transparent">
         <Link href={customPage || `/projects/${name}`} passHref>
           <div className="w-full h-full relative block cursor-pointer group ">
             <Image
@@ -25,9 +25,14 @@ const Card = ({ project, customPage }: Project) => {
               alt={`${name} picture`}
               layout="fill"
               objectFit="cover"
-              className="transition-opacity duration-300 ease-in-out "
+              className="transition-opacity duration-300 ease-in-out dark:opacity-50 bg-transparent"
             />
-            <div className="absolute top-0 left-0 w-full h-full pointer-events-none bg-custom-gradient-light dark:bg-custom-gradient group-hover:bg-custom-gradient-light-hover dark:group-hover:bg-custom-gradient-hover transition-all duration-300 ease-in-out z-10 opacity-100 group-hover:opacity-80 hover:scale-50"></div>
+            <div
+              className="absolute top-0 left-0 w-full h-full pointer-events-none 
+            bg-custom-gradient-light dark:bg-custom-gradient group-hover:bg-custom-gradient-light-hover 
+            dark:group-hover:bg-custom-gradient-hover 
+            transition-all duration-300 ease-in-out z-10 opacity-100 group-hover:opacity-80 hover:scale-50"
+            ></div>
 
             <div className="absolute inset-x-0 bottom-0 flex flex-col justify-start flex-1 w-full p-3 ">
               <div className="p-3 text-white z-20 absolute bottom-0 mb-2 ">

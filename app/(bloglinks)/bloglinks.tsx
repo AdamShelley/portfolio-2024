@@ -20,10 +20,10 @@ const BlogLinks = () => {
                 <p className="text-lg text-primary dark:hover:text-white group-hover:text-slate-100">
                   {post.metadata.title}
                 </p>
-                <p className="text-lg text-gray-400 group-hover:text-slate-100 mt-1 leading-6">
+                <p className="text-lg text-gray-500 dark:text-gray-400 group-hover:text-slate-100 mt-1 leading-6">
                   {post.metadata.summary}
                 </p>
-                <span className="text-sm font-normal  text-slate-300 mt-2">
+                <span className="text-sm font-normal text-slate-500  dark:text-slate-300  mt-2">
                   {post.metadata.publishedAt}
                 </span>
                 <Suspense fallback={<p className="h-6" />}></Suspense>

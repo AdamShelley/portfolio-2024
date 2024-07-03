@@ -27,6 +27,7 @@ Fork, clone and install to your file system.
 Check it works as expected: 
 <Image src="/blog_posts/electron_install/pic1.png" alt="working electron app"  width={2248} height={1590} />
 
+---
 
 ## The Tailwind Part
 
@@ -97,84 +98,123 @@ Tailwind should work as intended now. Test it out to see if it works.
 <Image src="/blog_posts/electron_install/pic2.png" alt="working electron app"  width={2248} height={1590} />
 
 
+---
 
 ## Adding Shadcn
 
-This bit is slightly trickier, and depending on what you want to do you can take this in two direction. First decide if you intend to use the Shadcn CLI to install components or you want to copy/paste them manually.
+This bit is slightly trickier, if you want to use the shadcn CLI then follow these steps. 
+Otherwise you can copy/paste components as you please and integrate them as you wish.
 
 
 With that in mind continue on.
 
-WIP - I will update this post with the next steps soon.
+The base docs for this installation is using the CLI instructions from: [Shadcn](https://ui.shadcn.com/docs/cli)
 
 
-{/* Install the following: 
-
-```
-bun add tailwindcss-animate class-variance-authority clsx tailwind-merge
-```
+First init Shadcn
 
 ```
-bun add lucide-react
+bunx --bun shadcn-ui@latest init
 ```
 
+You have to be careful with the settings now, as the wrong paths will cause issues: 
 
+Here is what I used: 
 
+<Image src="/blog_posts/electron_install/init.png" alt="working electron app"  width={2248} height={1590} />
 
-### Copy / Paste Version
-Docs: [Shadcn](https://ui.shadcn.com/docs/installation/manual)
+The key things to note are: 
 
+**Globals CSS**: This is the path to the global css file in your project. For me it was the App.css file. 
+```
+packages/renderer/src/App.css
+```
 
+**Component Path**: This is the path to the components folder in your project. For me it was the renderer folder.
 
+```
+packages/renderer/src/components
+```
 
-### CLI Version
+**Utils Path**: This will be a relative path, the components will use this for the cn function.
+```
+/@/components/lib/utils
+```
 
-You will then need to create tsconfig.json in the root project folder if you haven't already.
+But if you need to edit it later, its possible - just go into the newly generated components.json in your root folder.
 
-Copy the following code: 
+Here are the contents of mine: 
 
-*tsconfig.json*
 ```
 {
-	"compilerOptions": {
-		"baseUrl": ".",
-		"paths": {
-			"@od/shadcn-ui": ["libs/shadcn-ui/src/index.ts"],
-			"@od/shadcn-ui/*": ["libs/shadcn-ui/src/*"]
-		}
-	}
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "packages/renderer/src/App.css",
+    "baseColor": "slate",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "packages/renderer/src/components",
+    "utils": "/@/lib/utils"
+  }
 }
 ```
 
+Doing this will reset your tailwind.config.ts to the defaults so you will need to add back the content as before: 
 
-Issues: 
-
-Classname issue:
-
-https://github.com/shadcn-ui/ui/issues/120
-Turned off with 
-
-````
- "react/prop-types": "off"
-````
+```
+content: ["./packages/renderer/index.html","./packages/renderer/src/**/*.{js,ts,jsx,tsx}"],
+```
 
 
+ Now you should be able to use shadcn within your electron project, test it out:
+
+ I installed a button and the sonner components: 
+
+e.g.
+```
+bunx --bun shadcn-ui@latest add button
+```
+
+ <Image src="/blog_posts/electron_install/final.png" alt="working electron app"  width={2248} height={1590} />
 
 
-Oh but we are not done yet
+ I hope this helps to get Electron running with Tailwind and Shadcn. Get building!
 
-**Issues to fix:**
+--- 
 
-errors when pushing to github: 
+ ### Potential Issues
 
-   × eslint --cache --fix
+*Class Name errors* 
 
- 'className' is missing in props validation
+Class names might give you errors due to the linting rules in the template. You can disable these in the **eslintrc.json** file in the renderer folder.
+Add the following: 
+```
+"rules": {
+    "react/prop-types": "off"
+  },
+```
 
-Put this in eslintrc.json in renderer folder: 
 
-`"react/prop-types": "off",` */}
+*Pushing to githhub* 
 
+You might get errors when pushing to github
 
+You can remove the test for this in .nano-staged.mjs. I just commented it out for now.
 
- 
+```
+ // "*.{js,mjs,cjs,ts,mts,cts,tsx}": "eslint --cache --fix",
+```
+
+--- 
+
+ ### Helpful Links
+ - [Shadcn](https://ui.shadcn.com/docs/cli)
+ - [Tailwind](https://tailwindcss.com/docs/installation)
+ - [Electron](https://www.electronjs.org/docs)
+ - [Vite](https://vitejs.dev/guide/)

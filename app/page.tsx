@@ -5,9 +5,7 @@ export default function Home() {
   return (
     <main className="w-[85vw] lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mt-10 text-primary translate-x-[-0.5rem] flex flex-col orchestration">
       <div className="p-3 group flex flex-col w-full rounded-md  transition duration-200">
-        <h1 className="text-lg underline underline-offset-4 decoration-1 decoration-slate-600 mb-3">
-          About
-        </h1>
+        <h1 className="text-lg dark:text-gray-300 mb-5">About</h1>
         <p className="text-lg text-left  text-gray-800 dark:text-gray-300 leading-7 ">
           My name is <span className="italic">Adam</span>, and I am a developer
           from the UK. I am currently working as a
@@ -60,7 +58,7 @@ export default function Home() {
       </div>
 
       <div className="p-3 mt-10">
-        <p className="text-md ">
+        <p className="text-md dark:text-gray-300">
           You can see more of my work on{" "}
           <Link
             href="https://github.com/AdamShelley"

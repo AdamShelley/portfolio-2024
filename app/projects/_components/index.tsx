@@ -24,6 +24,15 @@ const projects = [
   },
   {
     project: {
+      name: "Electron-tailwind-template",
+      skills: ["Electron", "Tailwind", "Shadcn", "Template"],
+      description:
+        "A template for creating electron apps with tailwind and shadcn.",
+      imageName: "template-screenshot.png",
+    },
+  },
+  {
+    project: {
       name: "Guessagram",
       skills: ["NextJS", "Tailwind", "Typescript", "Railway"],
       description: "A word guessing game, automatically resets daily",

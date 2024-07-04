@@ -8,9 +8,10 @@ published: 'true'
 ---
 
 
-{/* <Image src="/code1.jpg" alt="heading-picture" className="rounded-md shadow-inner" width={2248} height={1590}/> */}
 
 I have been experimenting recently with ElectronJS, and have wanted a nice solution for the styling side. With my latest projects I have been implementing Tailwind and Shadcn with allows quick building of some nice, simple looking components.
+
+If you don't want to do it yourself and would just like a template to start you off <a href="http://localhost:3000/projects/Electron-tailwind-template">then you can find that here.</a>
 
 Documentation is pretty thin on the ground when it comes to using Electron-vite with Tailwind and shadcn, so after failing to get it working a few times, I thought I would explain what *did* work for me eventually in the hope it will help someone else or even myself in future when i refer back to this post.
 
@@ -186,11 +187,11 @@ bunx --bun shadcn-ui@latest add button
 
  I hope this helps to get Electron running with Tailwind and Shadcn. Get building!
 
---- 
+---
 
- ### Potential Issues
+ ## Potential Issues
 
-*Class Name errors* 
+#### Class Name errors
 
 Class names might give you errors due to the linting rules in the template. You can disable these in the **eslintrc.json** file in the renderer folder.
 Add the following: 
@@ -201,7 +202,7 @@ Add the following:
 ```
 
 
-*Pushing to githhub* 
+#### Pushing to githhub
 
 You might get errors when pushing to github
 
@@ -214,6 +215,7 @@ You can remove the test for this in .nano-staged.mjs. I just commented it out fo
 --- 
 
  ### Helpful Links
+ - [Electron Vite Builder (React version)](https://github.com/ldlac/vite-electron-builder)
  - [Shadcn](https://ui.shadcn.com/docs/cli)
  - [Tailwind](https://tailwindcss.com/docs/installation)
  - [Electron](https://www.electronjs.org/docs)

@@ -1,0 +1,36 @@
+import Link from 'next/link';
+import MdxLayout from "../../components/mdx-layout";
+import {CarouselComponent} from '../../components/carousel';
+import MarkdownButtons from '../../components/markdown-buttons';
+import Badges from '../../components/badges';
+import Image from 'next/image';
+
+<Badges badges={['Electron','Tailwind', 'Shadcn', 'Template']}/>
+
+# Electron + Tailwind + Shadcn Template
+
+This is a supplement to<Link className="text-gray-
+400" href="/posts/electron-install"> my post about using Tailwind and Shadcn successfully with Electron.</Link> 
+
+It is based off a forked version of the vite electron builder, you can check out both here: 
+
+<ul>
+  <li><Link href="https://github.com/ldlac/vite-electron-builder">Electron Vite builder (React) </Link></li>
+  <li><Link href="https://github.com/cawa-93/vite-electron-builder">Electron Vite builder</Link></li>
+</ul>
+
+
+<img src='/blog_posts/electron_install/final.png' alt="electon-template-final"  width={2248} height={1590} />
+
+
+
+
+<MarkdownButtons github="https://github.com/AdamShelley/electron-tailwind-shadcn-template"  />
+
+
+
+
+export default function MDXPage({ children }) {
+  return <MdxLayout>
+    {children}</MdxLayout>
+}

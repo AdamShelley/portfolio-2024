@@ -52,7 +52,7 @@ bunx tailwindcss init
 
 You should now have a **tailwind.config.js** file in your project root. 
 
-```
+```typescript
 /** @type {import('tailwindcss').Config} */ 
 module.exports = { 
 	content: ["./src/**/*.{html,js}"], 
@@ -65,7 +65,7 @@ module.exports = {
 
 **However**, this will not work, the content array will be searching the wrong area, so this will need to modified with the following to scan the correct Electron folders: 
 
-```
+```typescript
 /** @type {import('tailwindcss').Config} */ 
 module.exports = { 
 	content:["./packages/renderer/index.html","./packages/renderer/src/**/*.{js,ts,jsx,tsx}"], 
@@ -81,7 +81,7 @@ Or make sure it is targeting the correct renderer folder if you have a different
 Also create a **postcss.config.js** file in the root of your project.
 Add the following to the file:
 
-```
+```typescript
 module.exports = {
     plugins: {
       tailwindcss: {},
@@ -93,7 +93,7 @@ module.exports = {
 Next add the following to your main entry point CSS file. For me in this template, it is 
 
 *App.css*
-```
+```css
 @tailwind base; 
 @tailwind components; 
 @tailwind utilities;
@@ -133,18 +133,18 @@ Here is what I used:
 The key things to note are: 
 
 **Globals CSS**: This is the path to the global css file in your project. For me it was the App.css file. 
-```
+```typescript
 packages/renderer/src/App.css
 ```
 
 **Component Path**: This is the path to the components folder in your project. For me it was the renderer folder.
 
-```
+```typescript
 packages/renderer/src/components
 ```
 
 **Utils Path**: This will be a relative path, the components will use this for the cn function.
-```
+```typescript
 /@/components/lib/utils
 ```
 
@@ -152,7 +152,7 @@ But if you need to edit it later, its possible - just go into the newly generate
 
 Here are the contents of mine: 
 
-```
+```typescript
 {
   "$schema": "https://ui.shadcn.com/schema.json",
   "style": "default",
@@ -174,7 +174,7 @@ Here are the contents of mine:
 
 Doing this will reset your tailwind.config.ts to the defaults so you will need to add back the content as before: 
 
-```
+```typescript
 content: ["./packages/renderer/index.html","./packages/renderer/src/**/*.{js,ts,jsx,tsx}"],
 ```
 
@@ -201,7 +201,7 @@ bunx --bun shadcn-ui@latest add button
 
 Class names might give you errors due to the linting rules in the template. You can disable these in the **eslintrc.json** file in the renderer folder.
 Add the following: 
-```
+```typescript
 "rules": {
     "react/prop-types": "off"
   },
@@ -215,7 +215,7 @@ You might get errors when pushing to github
 You can remove the test for this in .nano-staged.mjs. I just commented it out for now.
 
 
-```
+```typescript
  // "*.{js,mjs,cjs,ts,mts,cts,tsx}": "eslint --cache --fix",
 ```
 

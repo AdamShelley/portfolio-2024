@@ -31,25 +31,25 @@ const projects = [
       imageName: "template-screenshot.png",
     },
   },
-  {
-    project: {
-      name: "Guessagram",
-      skills: ["NextJS", "Tailwind", "Typescript", "Railway"],
-      description: "A word guessing game, automatically resets daily",
+  // {
+  //   project: {
+  //     name: "Guessagram",
+  //     skills: ["NextJS", "Tailwind", "Typescript", "Railway"],
+  //     description: "A word guessing game, automatically resets daily",
 
-      imageName: "guesswords-screenshot.png",
-    },
-  },
-  {
-    project: {
-      name: "React-onboarder-tool",
-      skills: ["React", "NPM"],
-      description:
-        "A tool for react to create an onboarding experience for your users.",
-      imageName: "onboarder-tool.png",
-      // imageName: "financeflow.png",
-    },
-  },
+  //     imageName: "guesswords-screenshot.png",
+  //   },
+  // },
+  // {
+  //   project: {
+  //     name: "React-onboarder-tool",
+  //     skills: ["React", "NPM"],
+  //     description:
+  //       "A tool for react to create an onboarding experience for your users.",
+  //     imageName: "onboarder-tool.png",
+  //     // imageName: "financeflow.png",
+  //   },
+  // },
 ];
 
 const ProjectList = (props: Props) => {

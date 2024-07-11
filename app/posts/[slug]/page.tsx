@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense, cache } from "react";
 import { notFound } from "next/navigation";
-import { unstable_noStore as noStore } from "next/cache";
 import { getBlogPosts } from "@/lib/blog";
 import { CustomMDX } from "@/app/components/mdx-remote";
 
@@ -40,7 +39,10 @@ export default function Blog({ params }: any) {
         </Suspense>
         <Suspense fallback={<p className="h-4" />}></Suspense>
       </div>
-      <article className="mt-10 prose prose-quoteless prose-neutral dark:prose-invert w-[85vw] lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mb-20">
+      <article
+        className="mt-10 prose prose-quoteless prose-neutral dark:prose-invert w-[85vw] 
+      lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mb-20 prose-pre:rounded-xl prose-pre:shadow-4"
+      >
         <CustomMDX source={post.content} />
       </article>
     </section>

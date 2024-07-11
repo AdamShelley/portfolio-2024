@@ -54,11 +54,12 @@ const projects = [
 
 const ProjectList = (props: Props) => {
   return (
-    <section className="grid md:grid-cols-2 items-center gap-5 mt-2 lg:mt-0 ">
+    <section className="grid md:grid-cols-2 items-center gap-5 mt-2 lg:mt-0 orchestration">
       {projects.map((project, index) => (
         <Card
           project={project.project}
           // customPage={project?.customPage}
+          stagger={index}
           key={project.project.name}
         />
       ))}

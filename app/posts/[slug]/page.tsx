@@ -3,6 +3,8 @@ import { Suspense, cache } from "react";
 import { notFound } from "next/navigation";
 import { getBlogPosts } from "@/lib/blog";
 import { CustomMDX } from "@/app/components/mdx-remote";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 export default function Blog({ params }: any) {
   let post = getBlogPosts().find((post) => post.slug === params.slug);
@@ -43,6 +45,15 @@ export default function Blog({ params }: any) {
         className="mt-10 prose prose-quoteless prose-neutral dark:prose-invert w-[85vw] 
       lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mb-20 prose-pre:rounded-xl prose-pre:shadow-4"
       >
+        <Link
+          href="/"
+          className="group text-sm text-blue-600 dark:text-blue-400 no-underline hover:underline"
+        >
+          <div className="flex items-center group-hover:text-blue-500 group-hover:dark:text-blue-300">
+            <ArrowLeft size={16} className="mr-2" />
+            <p className="font-semibold">Back</p>
+          </div>
+        </Link>
         <CustomMDX source={post.content} />
       </article>
     </section>

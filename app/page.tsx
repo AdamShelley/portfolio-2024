@@ -23,7 +23,7 @@ export default function Home() {
         style={{ "--stagger": 1 } as React.CSSProperties}
         className="mt-10"
       >
-        <div className="p-3 group flex flex-col w-full hover:bg-gradient-to-r hover:from-slate-200 hover:to-slate-100 dark:hover:from-gray-800 dark:hover:to-gray-90 rounded-md  cursor-pointer transition duration-200">
+        <div className="p-3 group flex flex-col w-full hover-bg rounded-sm cursor-pointer transition duration-200">
           <h3 className="text-lg underline underline-offset-4 decoration-1 decoration-slate-600 transition group-hover:decoration-slate-400 dark:text-slate-200  dark:hover:text-white ">
             Projects
           </h3>
@@ -33,7 +33,7 @@ export default function Home() {
         </div>
       </Link>
       <Link href="/contact" style={{ "--stagger": 3 } as React.CSSProperties}>
-        <div className="p-3 group flex flex-col w-full hover:bg-gradient-to-r hover:from-slate-200 hover:to-slate-100 dark:hover:from-gray-800 dark:hover:to-gray-90 rounded-md  cursor-pointer transition duration-200">
+        <div className="p-3 group flex flex-col w-full hover-bg rounded-sm cursor-pointer transition duration-200 mt-2">
           <h3 className="text-lg  underline underline-offset-4 decoration-1 decoration-slate-600 transition group-hover:decoration-slate-400 dark:text-slate-200  dark:hover:text-white ">
             Contact
           </h3>

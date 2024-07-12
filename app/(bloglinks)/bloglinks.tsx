@@ -16,7 +16,7 @@ const BlogLinks = () => {
               className="flex flex-col space-y-1 mb-4"
               href={`/posts/${post.slug}`}
             >
-              <div className="group p-3 group flex flex-col w-full hover:bg-gradient-to-r hover:from-slate-200 hover:to-slate-100 dark:hover:from-gray-800 dark:hover:to-gray-90 rounded-md  cursor-pointer transition duration-200">
+              <div className="p-3 group flex flex-col w-full hover-bg rounded-sm cursor-pointer transition duration-200">
                 <p className="text-lg dark:text-gray-200 dark:hover:text-white underline underline-offset-4 decoration-1 decoration-slate-500 group-hover:decoration-slate-400 ">
                   {post.metadata.title}
                 </p>

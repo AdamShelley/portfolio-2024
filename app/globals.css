@@ -89,6 +89,36 @@ html,body {
   --delay: 120ms;
 }
 
+.hover-bg {
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  border-radius: 0.5rem;
+}
+
+.hover-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, var(--bg-from, #e2e8f0), var(--bg-to, #f8fafc)); 
+  transform: scale(0.95);
+  opacity: 0;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+  z-index: -1;
+  border-radius: 0.5rem;
+}
+
+.hover-bg:hover::before {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.dark .hover-bg::before {
+  background: linear-gradient(to right, var(--bg-dark-from, #373744), var(--bg-dark-to, #20202328)); 
+}
 
 @keyframes enter {
   from {

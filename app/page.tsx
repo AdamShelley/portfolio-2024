@@ -7,10 +7,15 @@ export default function Home() {
       <div className="p-3 group flex flex-col w-full rounded-md  transition duration-200">
         <h1 className="text-lg dark:text-gray-300 mb-5">About</h1>
         <p className="text-lg text-left  text-gray-800 dark:text-gray-300 leading-7 ">
-          My name is <span className="italic font-semibold">Adam</span>, and I
-          am a developer from the UK. I am currently working as a
-          <span className="italic font-semibold"> Web Developer</span> for a
-          leading Energy Consultancy based in Warwickshire.
+          My name is{" "}
+          <span className="italic font-medium underline decoration-1 decoration-slate-600 underline-offset-4">
+            Adam
+          </span>
+          , and I am a developer from the UK. I am currently working as a{" "}
+          <span className="italic font-medium underline decoration-1 decoration-slate-600 underline-offset-4">
+            Web Developer
+          </span>{" "}
+          for a leading Energy Consultancy based in Warwickshire.
         </p>
 
         <p className="text-lg text-left  text-gray-800 dark:text-gray-300 leading-7 mt-8 ">

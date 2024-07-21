@@ -5,6 +5,7 @@ import React from "react";
 import rehypeHighlight from "rehype-highlight";
 import "./highlighter.css";
 import { CopyToClipboard } from "./copyToClipboard";
+import { GeistMono } from "geist/font/mono";
 
 function RoundedImage(props: any) {
   return <Image alt={props.alt} className="rounded-lg" {...props} />;
@@ -34,7 +35,7 @@ const CodeBlock = (props: any) => {
 
   return (
     <CopyToClipboard>
-      <pre className="bg-transparent border-none">
+      <pre className={`bg-transparent border-none ${GeistMono.className} `}>
         <code>{children}</code>
       </pre>
     </CopyToClipboard>

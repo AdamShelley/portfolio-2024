@@ -43,7 +43,7 @@ export default function Blog({ params }: any) {
       </div>
       <article
         className="mt-10 prose prose-quoteless prose-neutral dark:prose-invert w-[85vw] 
-      lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mb-20 prose-pre:rounded-xl prose-pre:shadow-4"
+      lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mb-20 prose-pre:rounded-xl prose-pre:shadow-4 "
       >
         <Link
           href="/"

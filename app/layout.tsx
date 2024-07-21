@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
 import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
+
 import Header from "./components/header";
 import Footer from "./components/footer";
 

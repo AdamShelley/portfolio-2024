@@ -44,11 +44,11 @@ export const CopyToClipboard = ({ children }: ICopyToClipboard) => {
           type="button"
           style={{ right: "0.5rem", top: "-1rem" }}
           className={clsx(
-            "absolute w-8 h-8 p-1 rounded border-1 border-[#3B3B3E] bg-gray-700 dark:bg-[#1C1C1E]",
+            "absolute w-8 h-8 p-1 rounded-md border border-[#3B3B3E] bg-gray-700 dark:bg-[#1C1C1E] transition",
             {
               "focus:outline-none focus:border-green-400 border-green-400":
                 copied,
-              "hover:border-gray-300": !copied,
+              "hover:border-gray-500": !copied,
             }
           )}
           onClick={onCopy}

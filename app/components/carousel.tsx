@@ -26,14 +26,14 @@ export function CarouselComponent({ images, videoArray }: Props) {
         <CarouselContent>
           {images.map((image, index) => (
             <CarouselItem key={`image-${index}`}>
-              <Card className="border-none bg-transparent shadow-none">
+              <Card className="border-none bg-transparent shadow-none ">
                 <CardContent className="flex items-center justify-center p-0 ">
                   <Image
                     src={image.path}
                     alt={`Carousel Image ${index}`}
                     width={mediaWidth}
                     height={mediaHeight}
-                    className="mb-0 shadow-md"
+                    className="mb-0 shadow-md "
                   />
                 </CardContent>
                 <CardFooter className="flex items-center justify-center pt-5 mx-7">
@@ -47,14 +47,14 @@ export function CarouselComponent({ images, videoArray }: Props) {
           {videoArray?.map((video, index) => (
             <CarouselItem key={`video-${index}`}>
               <Card className="border-none bg-transparent shadow-none">
-                <CardContent className="flex items-center justify-center p-0">
+                <CardContent className="flex items-center justify-center p-0 rounded-lg ">
                   <video
                     width={mediaWidth}
                     autoPlay
                     loop
                     muted
                     playsInline
-                    className="shadow-md mb-0"
+                    className="mb-0 shadow-m rounded-lg "
                   >
                     <source src={video.path} type="video/mp4" />
                     Your browser does not support the video tag.

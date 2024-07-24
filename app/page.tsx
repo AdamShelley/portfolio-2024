@@ -5,14 +5,14 @@ export default function Home() {
   return (
     <main className="w-[85vw] lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mt-10 text-primary translate-x-[-0.5rem] flex flex-col orchestration">
       <div className="p-3 group flex flex-col w-full rounded-md  transition duration-200">
-        <h1 className="text-lg dark:text-gray-300 mb-5">About</h1>
+        <h1 className="text-lg dark:text-gray-400 mb-5">About</h1>
         <p className="text-lg text-left  text-gray-800 dark:text-gray-300 leading-7 ">
           My name is{" "}
-          <span className="italic font-medium underline decoration-1 decoration-slate-600 underline-offset-4">
+          <span className="italic font-medium underline decoration-2 decoration-slate-600 underline-offset-[5px]">
             Adam
           </span>
           , and I am a developer from the UK. I am currently working as a{" "}
-          <span className="italic font-medium underline decoration-1 decoration-slate-600 underline-offset-4">
+          <span className="italic font-medium underline decoration-2 decoration-slate-600 underline-offset-[5px]">
             Web Developer
           </span>{" "}
           for a leading Energy Consultancy based in Warwickshire.
@@ -32,7 +32,7 @@ export default function Home() {
           <h3 className="text-lg underline underline-offset-4 decoration-1 decoration-slate-600 transition group-hover:decoration-slate-400 dark:text-slate-200  dark:hover:text-white ">
             Projects
           </h3>
-          <p className="text-lg text-gray-800 dark:text-gray-400  mt-1">
+          <p className="text-md text-gray-800 dark:text-gray-400  mt-1">
             Check out what I have been working on
           </p>
         </div>
@@ -42,7 +42,7 @@ export default function Home() {
           <h3 className="text-lg  underline underline-offset-4 decoration-1 decoration-slate-600 transition group-hover:decoration-slate-400 dark:text-slate-200  dark:hover:text-white ">
             Contact
           </h3>
-          <p className="text-lg text-gray-800 dark:text-gray-400 g mt-1">
+          <p className="text-md text-gray-800 dark:text-gray-400 g mt-1">
             Send me a message
           </p>
         </div>

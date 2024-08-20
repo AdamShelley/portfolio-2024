@@ -11,8 +11,7 @@ const Badges = ({ badges }: Props) => {
       {badges.map((badge) => (
         <Badge
           key={badge}
-          variant="outline"
-          className="mr-2 text-xs text-semibold dark:text-white dark:bg-gray-800 bg-gray-100"
+          className="mr-2 text-[11px] font-normal dark:bg-teal-600/10 dark:text-teal-300/90"
         >
           {badge}
         </Badge>

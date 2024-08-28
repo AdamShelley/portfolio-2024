@@ -6,6 +6,7 @@ import rehypeHighlight from "rehype-highlight";
 import "./highlighter.css";
 import { CopyToClipboard } from "./copyToClipboard";
 import { GeistMono } from "geist/font/mono";
+import ConfettiMaker from "@/posts/components/ConfettiMaker";
 
 function RoundedImage(props: any) {
   return <Image alt={props.alt} className="rounded-lg" {...props} />;
@@ -47,6 +48,7 @@ let components = {
   Image: RoundedImage,
   a: CustomLink,
   code: CodeBlock,
+  ConfettiMaker: ConfettiMaker,
 };
 
 const options = {

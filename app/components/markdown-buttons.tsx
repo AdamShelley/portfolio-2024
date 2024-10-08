@@ -12,16 +12,18 @@ type Props = {
 const MarkdownButtons = ({ github, demo, npm, download }: Props) => {
   return (
     <div className="my-10 flex w-full">
-      <Button asChild className="mr-2">
-        <Link
-          href={github}
-          rel="noopener noreferrer"
-          target="_blank"
-          className="no-underline"
-        >
-          <span className="pointer-events-none">Github</span>
-        </Link>
-      </Button>
+      {github ? (
+        <Button asChild className="mr-2">
+          <Link
+            href={github}
+            rel="noopener noreferrer"
+            target="_blank"
+            className="no-underline"
+          >
+            <span className="pointer-events-none">Github</span>
+          </Link>
+        </Button>
+      ) : null}
 
       {npm ? (
         <Button asChild className="mr-2">

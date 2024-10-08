@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
+import { Badge } from "@/components/ui/badge";
 
 interface Project {
   project: {
@@ -44,15 +45,15 @@ const Card = ({ project, customPage, stagger }: Project) => {
                 <p className="mt-3 flex-1 text-sm tracking-normal text-gray-300 dark:text-gray-400 leading-5">
                   {description}
                 </p>
-                <div className="flex flex-wrap items-center justify-start w-full pt-1  z-10 ">
+                <div className="flex flex-wrap items-center justify-start w-full pt-1 z-10 -ml-1">
                   {skills &&
                     skills.map((skill, index) => (
-                      <p
+                      <Badge
                         key={index}
-                        className="text-xs text-gray-300 mt-2 [&:not(:first-child)]:pl-2"
+                        className="mr-1 mt-2 text-[10px] font-normal dark:bg-teal-600/10 dark:text-teal-300/90 "
                       >
                         {skill}
-                      </p>
+                      </Badge>
                     ))}
                 </div>
               </div>

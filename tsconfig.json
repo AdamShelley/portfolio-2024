@@ -26,8 +26,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/projects/[projectId]/page.mdx",
-    "app/projects/page.tsx"
-, "app/projects/Breathe/page.mdx", "app/projects/React-onboarder-tool/page.mdx", "app/projects/Guessagram/page.mdx", "app/projects/Electron-tailwind-template/page.mdx"  ],
+    "app/projects-old/[projectId]/page.mdx",
+    "app/projects-old/page.tsx"
+, "app/projects-old/Breathe/page.mdx", "app/projects-old/React-onboarder-tool/page.mdx", "app/projects-old/Guessagram/page.mdx", "app/projects-old/Electron-tailwind-template/page.mdx"  ],
   "exclude": ["node_modules"]
 }

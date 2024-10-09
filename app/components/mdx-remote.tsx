@@ -7,6 +7,9 @@ import "./highlighter.css";
 import { CopyToClipboard } from "./copyToClipboard";
 import { GeistMono } from "geist/font/mono";
 import ConfettiMaker from "@/posts/components/ConfettiMaker";
+import Badges from "./badges";
+import MarkdownButtons from "./markdown-buttons";
+import { CarouselComponent } from "./carousel";
 
 function RoundedImage(props: any) {
   return <Image alt={props.alt} className="rounded-lg" {...props} />;
@@ -49,6 +52,9 @@ let components = {
   a: CustomLink,
   code: CodeBlock,
   ConfettiMaker: ConfettiMaker,
+  Badges: Badges,
+  MarkdownButtons: MarkdownButtons,
+  CarouselComponent: CarouselComponent,
 };
 
 const options = {

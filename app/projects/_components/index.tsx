@@ -4,7 +4,7 @@ import Card from "./card";
 const projects = [
   {
     project: {
-      name: "Dstruct",
+      name: "dstruct",
       skills: ["NextJS", "Typescript", "Cloudflare", "Drizzle"],
       description:
         "A single use self-destructing file sharing platform built with NextJS.",
@@ -13,7 +13,7 @@ const projects = [
   },
   {
     project: {
-      name: "Breathe",
+      name: "breathe",
       skills: ["ReactJS", "Typescript", "Raycast"],
       description:
         "A small extension for Raycast, to give you quick, and simple mindfulness exercises.",
@@ -22,7 +22,7 @@ const projects = [
   },
   {
     project: {
-      name: "LangAI",
+      name: "langAI",
       skills: ["React Native", "NodeJS", "Supabase", "ChatGPT"],
       description:
         "A language learning app that uses AI to generate stories for your level.",
@@ -31,7 +31,7 @@ const projects = [
   },
   {
     project: {
-      name: "Electron-tailwind-template",
+      name: "electron-tailwind-template",
       skills: ["Electron", "Tailwind", "Shadcn", "Template"],
       description:
         "A template for creating electron apps with tailwind and shadcn.",

@@ -7,7 +7,7 @@ type Props = {
 
 const Badges = ({ badges }: Props) => {
   return (
-    <div className="">
+    <div className="mb-10">
       {badges.map((badge) => (
         <Badge
           key={badge}

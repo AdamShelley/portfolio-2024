@@ -1,8 +1,8 @@
-import Link from 'next/link';
-import MdxLayout from "../../components/mdx-layout";
-import {CarouselComponent} from '../../components/carousel';
-import MarkdownButtons from '../../components/markdown-buttons';
-import Badges from '../../components/badges';
+---
+title: 'Lang AI'
+summary: 'A language learning tool that uses AI to help you learn a new language.'
+published: 'true'
+---
 
 <Badges badges={['React Native', 'NodeJS', 'Supabase','ChatGPT']}/>
 
@@ -12,7 +12,7 @@ import Badges from '../../components/badges';
 
 I wanted to create an app that could help me learn a language (specifically Mandarin). One of the major difficulties I found with the learning process was finding enough content at my proficiency level to practice reading with. This is my solution to that problem.
 
-<img src='/assets/LangAI/LangAI1.5-present.png' alt="app-screenshot-1"  fill />
+<Image src="/assets/LangAI/LangAI1.5-present.png" alt="app-screenshot-1"  width={2248} height={1590} />
 
 ## Goals
 
@@ -53,9 +53,3 @@ User-driven narratives, stories can be voted on by users for a more interactive 
     { path:  '/assets/LangAI/voting.mp4', caption: '(Video) Vote for where you want the story to go next' }
   ]}
 />
-
-export default function MDXPage({ children }) {
-  return <MdxLayout>
-    {children}
-  </MdxLayout>
-}

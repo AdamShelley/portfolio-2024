@@ -17,6 +17,10 @@ interface Project {
 const Card = ({ project, customPage, stagger }: Project) => {
   const { name, skills, description, imageName } = project;
 
+  const capitalizeFirstLetter = (name: string) => {
+    return name.charAt(0).toUpperCase() + name.slice(1);
+  };
+
   return (
     <article
       style={{ "--stagger": stagger + 1 } as React.CSSProperties}
@@ -41,7 +45,7 @@ const Card = ({ project, customPage, stagger }: Project) => {
 
             <div className="absolute inset-x-0 bottom-0 flex flex-col justify-start flex-1 w-full p-3 ">
               <div className="p-3 text-white z-20 absolute bottom-0 mb-2 ">
-                <h3 className="text-xl mt-1">{name}</h3>
+                <h3 className="text-xl mt-1">{capitalizeFirstLetter(name)}</h3>
                 <p className="mt-3 flex-1 text-sm tracking-normal text-gray-300 dark:text-gray-400 leading-5">
                   {description}
                 </p>

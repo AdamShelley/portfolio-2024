@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { getProjects } from "@/lib/blog";
 import { CustomMDX } from "@/app/components/mdx-remote";
@@ -7,8 +6,6 @@ import Link from "next/link";
 
 export default function Projects({ params }: any) {
   let projects = getProjects().find((post) => post.slug === params.slug);
-
-  console.log("PROJECTS", projects);
 
   if (!projects) {
     notFound();
@@ -36,20 +33,12 @@ export default function Projects({ params }: any) {
       <p className="text-md mt-1 text-slate-400">
         {projects.metadata.publishedAt}
       </p>
-      <div className="flex justify-between items-center mt-2 mb-5 text-sm max-w-[650px]">
-        <Suspense fallback={<p className="h-4" />}>
-          <p className="text-sm text-neutral-600 dark:text-neutral-400">
-            {/* {formatDate(post.metadata.publishedAt)} */}
-          </p>
-        </Suspense>
-        <Suspense fallback={<p className="h-4" />}></Suspense>
-      </div>
       <article
         className="mt-10 prose prose-quoteless prose-neutral dark:prose-invert w-[85vw] 
       lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mb-20 prose-pre:rounded-xl prose-pre:shadow-4 "
       >
         <Link
-          href="/"
+          href="/projects"
           className="group text-sm text-blue-600 dark:text-blue-400 no-underline hover:underline"
         >
           <div className="flex items-center group-hover:text-blue-500 group-hover:dark:text-blue-300">

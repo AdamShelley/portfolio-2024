@@ -8,4 +8,32 @@ summary: 'A file sharing tool that deletes the file after it has been accessed o
 published: 'true'
 ---
 
-# test
+<Badges badges={['NextJS', 'Typescript', 'Cloudflare', 'Drizzle']}/>
+
+
+# DStruct
+
+<MarkdownButtons  demo="https://dstruct-alpha.vercel.app/" />
+{/* github="https://github.com/AdamShelley/dstruct" */}
+
+This is a project that allows users to upload a file, share a link with someone else, and then once the download has been accessed once - It will be deleted.
+
+For example if you wanted to share an important file with a client, but don't want it stored online forever - This is the tool for you.
+
+<img src='/assets/Dstruct/dstruct1.png' alt="app-screenshot-1"  width={2248} height={1590} />
+
+
+## Stack
+- **NextJS**: Frontend framework
+- **Neon**: PostgreSQL database
+- **Cloudflare & AWS-SDK**: Hosting and infrastructure
+
+You can share a link or QR code with the person you want to share the file with. Once they have accessed the file, it will be deleted from the server.
+
+
+There is a maximum of 24 hours for the file to be accessed, after that it will be deleted. (Other expiry times can be set).
+
+<img src='/assets/Dstruct/dstruct2.png' alt="app-screenshot-1" />
+<img src='/assets/Dstruct/dstruct3.png' alt="app-screenshot-1" />
+
+---

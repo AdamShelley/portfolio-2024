@@ -19,22 +19,20 @@ For example if you wanted to share an important file with a client, but don't wa
 
 
 ## Stack
-- NextJS
-- Neon - a postgres database
-- Cloudflare (With AWS-SDK)
+- **NextJS**: Frontend framework
+- **Neon**: PostgreSQL database
+- **Cloudflare & AWS-SDK**: Hosting and infrastructure
 
 You can share a link or QR code with the person you want to share the file with. Once they have accessed the file, it will be deleted from the server.
 
 
-
-<img src='/assets/Dstruct/dstruct2.png' alt="app-screenshot-1" />
-
-
-<img src='/assets/Dstruct/dstruct3.png' alt="app-screenshot-1" />
-
 There is a maximum of 24 hours for the file to be accessed, after that it will be deleted. (Other expiry times can be set).
 
-<img src='/assets/Dstruct/dstruct4.png' alt="app-screenshot-1" />
+<img src='/assets/Dstruct/dstruct2.png' alt="app-screenshot-1" />
+<img src='/assets/Dstruct/dstruct3.png' alt="app-screenshot-1" />
+
+---
+
 
 
 export default function MDXPage({ children }) {

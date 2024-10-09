@@ -1,14 +1,16 @@
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
-import { getBlogPosts } from "@/lib/blog";
+import { getProjects } from "@/lib/blog";
 import { CustomMDX } from "@/app/components/mdx-remote";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
-export default function Blog({ params }: any) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug);
+export default function Projects({ params }: any) {
+  let projects = getProjects().find((post) => post.slug === params.slug);
 
-  if (!post) {
+  console.log("PROJECTS", projects);
+
+  if (!projects) {
     notFound();
   }
 
@@ -20,18 +22,20 @@ export default function Blog({ params }: any) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline: post.metadata.title,
-            datePublished: post.metadata.publishedAt,
-            dateModified: post.metadata.publishedAt,
-            description: post.metadata.summary,
+            "@type": "Project",
+            headline: projects.metadata.title,
+            datePublished: projects.metadata.publishedAt,
+            dateModified: projects.metadata.publishedAt,
+            description: projects.metadata.summary,
           }),
         }}
       />
       <h1 className="title font-medium text-lg md:text-xl tracking-tighter max-w-[650px] ">
-        {post.metadata.title}
+        {projects.metadata.title}
       </h1>
-      <p className="text-md mt-1 text-slate-400">{post.metadata.publishedAt}</p>
+      <p className="text-md mt-1 text-slate-400">
+        {projects.metadata.publishedAt}
+      </p>
       <div className="flex justify-between items-center mt-2 mb-5 text-sm max-w-[650px]">
         <Suspense fallback={<p className="h-4" />}>
           <p className="text-sm text-neutral-600 dark:text-neutral-400">
@@ -53,7 +57,7 @@ export default function Blog({ params }: any) {
             <p className="font-semibold">Back</p>
           </div>
         </Link>
-        <CustomMDX source={post.content} />
+        <CustomMDX source={projects.content} />
       </article>
     </section>
   );

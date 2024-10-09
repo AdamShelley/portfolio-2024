@@ -10,6 +10,7 @@ type Metadata = {
 };
 
 function parseFrontmatter(fileContent: string) {
+  console.log(fileContent);
   let frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
   let match = frontmatterRegex.exec(fileContent);
   let frontMatterBlock = match![1];
@@ -52,4 +53,8 @@ function getMDXData(dir: any) {
 
 export function getBlogPosts() {
   return getMDXData(path.join(process.cwd(), "posts"));
+}
+
+export function getProjects() {
+  return getMDXData(path.join(process.cwd(), "projects"));
 }

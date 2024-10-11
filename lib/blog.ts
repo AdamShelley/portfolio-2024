@@ -10,7 +10,6 @@ type Metadata = {
 };
 
 function parseFrontmatter(fileContent: string) {
-  console.log(fileContent);
   let frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
   let match = frontmatterRegex.exec(fileContent);
   let frontMatterBlock = match![1];

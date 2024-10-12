@@ -4,7 +4,7 @@ import Card from "./card";
 const projects = [
   {
     project: {
-      name: "dstruct",
+      name: "D-Struct",
       skills: ["NextJS", "Typescript", "Cloudflare", "Drizzle"],
       description:
         "A single use self-destructing file sharing platform built with NextJS.",

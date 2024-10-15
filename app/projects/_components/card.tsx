@@ -24,9 +24,9 @@ const Card = ({ project, customPage, stagger }: Project) => {
   return (
     <article
       style={{ "--stagger": stagger + 1 } as React.CSSProperties}
-      className="flex flex-col px-0 py-3 lg:px-0 lg:py-0 items-center justify-start w-full transition-all ease-in-out duration-300 rounded-2xl relative overflow-hidden  m-0.5 lg:w-full  dark:shadow-none "
+      className="flex flex-col px-0 py-3 lg:px-0 lg:py-0 items-center justify-start w-full transition-all ease-in-out duration-300 rounded-sm relative overflow-hidden  m-0.5 lg:w-full  dark:shadow-none"
     >
-      <div className="relative w-full h-[250px] rounded-2xl overflow-hidden bg-transparent ">
+      <div className="relative w-full h-[250px] rounded-md overflow-hidden bg-transparent border dark:border-none border-slate-400">
         <Link href={customPage || `/projects/${name}`} passHref>
           <div className="w-full h-full relative block cursor-pointer group ">
             <Image
@@ -54,7 +54,7 @@ const Card = ({ project, customPage, stagger }: Project) => {
                     skills.map((skill, index) => (
                       <Badge
                         key={index}
-                        className="mr-1 mt-2 text-[10px] font-normal dark:bg-teal-600/10 dark:text-teal-300/90 "
+                        className="mr-1 mt-2 min-w-[50px] text-[10px] font-normal dark:bg-teal-600/10 dark:text-teal-300/90 dark:border-teal-700 rounded-xs"
                       >
                         {skill}
                       </Badge>

@@ -29,7 +29,7 @@ export default function Home() {
         className="mt-10"
       >
         <div className="p-3 group flex flex-col w-full hover-bg rounded-sm cursor-pointer transition duration-200">
-          <h3 className="text-lg underline underline-offset-4 decoration-1 decoration-slate-600 transition group-hover:decoration-slate-400 dark:text-slate-200  dark:hover:text-white ">
+          <h3 className="text-lg underline underline-offset-4 decoration-1 dark:decoration-slate-200 transition  dark:text-slate-200  dark:hover:text-white">
             Projects
           </h3>
           <p className="text-md text-gray-800 dark:text-gray-400  mt-1">
@@ -39,7 +39,7 @@ export default function Home() {
       </Link>
       <Link href="/contact" style={{ "--stagger": 3 } as React.CSSProperties}>
         <div className="p-3 group flex flex-col w-full hover-bg rounded-sm cursor-pointer transition duration-200 mt-2">
-          <h3 className="text-lg  underline underline-offset-4 decoration-1 decoration-slate-600 transition group-hover:decoration-slate-400 dark:text-slate-200  dark:hover:text-white ">
+          <h3 className="text-lg  underline underline-offset-4 decoration-1 dark:decoration-slate-200 transition  dark:text-slate-200  dark:hover:text-white ">
             Contact
           </h3>
           <p className="text-md text-gray-800 dark:text-gray-400 g mt-1">
@@ -52,7 +52,10 @@ export default function Home() {
         <BlogLinks />
       </div>
 
-      <div className="p-3 mt-10">
+      <div
+        className="p-3 mt-10"
+        style={{ "--stagger": 6 } as React.CSSProperties}
+      >
         <p className="text-md dark:text-gray-300">
           You can see more of my work on{" "}
           <Link

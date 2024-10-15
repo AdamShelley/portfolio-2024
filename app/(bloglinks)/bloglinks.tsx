@@ -10,7 +10,7 @@ const BlogLinks = () => {
 
   return (
     <div className="mt-1">
-      <h2 className="p-3 font-normal text- dark:text-slate-400 ">Posts</h2>
+      <h2 className="p-3 font-normal dark:text-slate-400 ">Posts</h2>
       {isDev && (
         <p className="p-3 font-normal text-red-400">
           DEVELOPMENT MODE (Showing unpublished posts)
@@ -27,7 +27,7 @@ const BlogLinks = () => {
             href={`/posts/${post.slug}`}
           >
             <div className="p-3 group flex flex-col w-full hover-bg rounded-sm cursor-pointer transition duration-200">
-              <p className="text-lg dark:text-gray-200 dark:hover:text-white underline underline-offset-4 decoration-1 decoration-slate-500 group-hover:decoration-slate-400 ">
+              <p className="text-lg dark:text-gray-200  underline underline-offset-4 decoration-1 decoration-slate-200  ">
                 {post.metadata.title}
               </p>
               <p className="text-md text-gray-500 dark:text-gray-400  mt-1 leading-6">

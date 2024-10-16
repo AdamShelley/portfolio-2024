@@ -27,12 +27,12 @@ export default function Projects({ params }: any) {
           }),
         }}
       />
-      <h1 className="title font-medium text-lg md:text-xl tracking-tighter max-w-[650px] ">
+      {/* <h1 className="title font-medium text-lg md:text-xl tracking-tighter max-w-[650px] ">
         {projects.metadata.title}
       </h1>
       <p className="text-md mt-1 text-slate-400">
         {projects.metadata.publishedAt}
-      </p>
+      </p> */}
       <article
         className="mt-10 prose prose-quoteless prose-neutral dark:prose-invert w-[85vw] 
       lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mb-20 prose-pre:rounded-xl prose-pre:shadow-4 "

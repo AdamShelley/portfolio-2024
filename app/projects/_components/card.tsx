@@ -54,7 +54,7 @@ const Card = ({ project, customPage, stagger }: Project) => {
                     skills.map((skill, index) => (
                       <Badge
                         key={index}
-                        className="mr-1 mt-2 min-w-[50px] text-[10px] font-normal dark:bg-teal-600/10 dark:text-teal-300/90 dark:border-teal-700 rounded-xs"
+                        className="mr-2 mt-2 min-w-[50px] text-[10px] font-normal dark:bg-teal-600/10 dark:text-teal-300/90 dark:border-teal-700 rounded-xs"
                       >
                         {skill}
                       </Badge>

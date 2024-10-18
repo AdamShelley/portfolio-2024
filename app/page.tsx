@@ -8,14 +8,14 @@ export default function Home() {
         <h1 className="text-lg dark:text-gray-400 mb-5">About</h1>
         <p className="text-lg text-left  text-gray-800 dark:text-gray-300 leading-7 ">
           My name is{" "}
-          <span className="italic font-medium underline decoration-2 decoration-slate-600 underline-offset-[5px]">
+          <span className="italic font-medium underline decoration-2 decoration-slate-400 underline-offset-[5px]">
             Adam
           </span>
-          , and I am a developer from the UK. I am currently working as a{" "}
-          <span className="italic font-medium underline decoration-2 decoration-slate-600 underline-offset-[5px]">
+          , and I am a developer from the UK. I am a{" "}
+          <span className="italic font-medium underline decoration-2 decoration-slate-400 underline-offset-[5px]">
             Web Developer
           </span>{" "}
-          for a leading Energy Consultancy based in Warwickshire.
+          working for a leading Energy Consultancy based in Warwickshire.
         </p>
 
         <p className="text-lg text-left  text-gray-800 dark:text-gray-300 leading-7 mt-8 ">

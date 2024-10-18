@@ -1,37 +1,63 @@
 "use client";
 
 import * as React from "react";
-import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { Moon, Sun } from "lucide-react";
 
 export function ModeToggle() {
-  const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setIsMounted] = React.useState(false);
+  const [isToggling, setIsToggling] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const handleThemeToggle = () => {
+    setIsToggling(true);
+    setTimeout(() => {
+      setTheme(theme === "dark" ? "light" : "dark");
+      setTimeout(() => {
+        setIsToggling(false);
+      }, 500);
+    }, 500);
+  };
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
-          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 " />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 focus-visible:ring-transparent" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="dark:border-slate-700">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <button
+      onClick={handleThemeToggle}
+      className="relative z-10 bg-slate-700 text-slate-100 dark:bg-yellow-50 dark:text-slate-900 flex items-center justify-center self-center w-10 h-10 ml-8 transition-colors duration-300 ease-in-out rounded-full  bg-text hover:opacity-90 active:scale-95"
+      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+    >
+      {theme === "dark" ? (
+        <Sun
+          size={20}
+          className={`text-body transition-all duration-500 ease-in-out
+            ${
+              isToggling && theme === "dark"
+                ? "translate-y-[-50%] translate-x-full opacity-0"
+                : !isToggling && theme !== "dark"
+                  ? "translate-y-0 opacity-100"
+                  : ""
+            }`}
+        />
+      ) : (
+        <Moon
+          size={20}
+          className={`text-body transition-all duration-500 ease-in-out
+            ${
+              isToggling && theme !== "dark"
+                ? "translate-y-[-30%] translate-x-full opacity-0"
+                : !isToggling && theme === "dark"
+                  ? "translate-y-0 opacity-100"
+                  : ""
+            }`}
+        />
+      )}
+    </button>
   );
 }

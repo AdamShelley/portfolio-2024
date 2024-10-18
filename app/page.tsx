@@ -10,12 +10,12 @@ export default function Home() {
           My name is{" "}
           <span className="italic font-medium underline decoration-2 decoration-slate-400 underline-offset-[5px]">
             Adam
-          </span>
-          , and I am a developer from the UK. I am a{" "}
+          </span>{" "}
+          and I am a developer from the UK. <br /> I am currently working as a{" "}
           <span className="italic font-medium underline decoration-2 decoration-slate-400 underline-offset-[5px]">
             Web Developer
           </span>{" "}
-          working for a leading Energy Consultancy based in Warwickshire.
+          for a leading Energy Consultancy based in Warwickshire.
         </p>
 
         <p className="text-lg text-left  text-gray-800 dark:text-gray-300 leading-7 mt-8 ">

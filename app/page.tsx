@@ -11,7 +11,7 @@ export default function Home() {
           <span className="italic font-medium underline decoration-2 decoration-slate-400 underline-offset-[5px]">
             Adam
           </span>{" "}
-          and I am a developer from the UK. <br /> I am currently working as a{" "}
+          and I am a developer from the UK. I am currently working as a{" "}
           <span className="italic font-medium underline decoration-2 decoration-slate-400 underline-offset-[5px]">
             Web Developer
           </span>{" "}

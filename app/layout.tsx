@@ -40,7 +40,7 @@ export default function RootLayout({
             className="hidden dark:block fixed top-0 z-[-2] h-full min-h-[100%] w-screen bg-neutral-950 
           bg-[radial-gradient(ellipse_90%_80%_at_50%_-15%,rgba(120,119,198,0.2),rgba(255,255,255,0.05))]"
           ></div>
-          <div className="flex flex-col w-screen min-h-screen items-center pt-10 dark:text-white ">
+          <div className="flex flex-col w-screen min-h-screen items-center pt-20 dark:text-white ">
             <Header />
 
             <div className="flex-1 mb-20">{children}</div>

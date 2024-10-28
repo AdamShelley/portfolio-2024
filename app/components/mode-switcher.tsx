@@ -30,7 +30,7 @@ export function ModeToggle() {
   return (
     <button
       onClick={handleThemeToggle}
-      className="relative z-10 bg-slate-700 text-slate-100 dark:bg-white dark:text-yellow-800 flex items-center justify-center self-center w-10 h-10 ml-8 transition-colors duration-300 ease-in-out rounded-full  bg-text hover:opacity-90 active:scale-95"
+      className="relative z-10 text-slate-100 bg-slate-900 dark:bg-transparent  dark:text-slate-100 flex items-center justify-center self-center w-10 h-10 ml-8 transition-colors duration-300 ease-in-out rounded-full  bg-text hover:opacity-90 active:scale-95"
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
     >
       {theme === "dark" ? (

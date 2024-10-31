@@ -5,13 +5,19 @@ import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
 
 export function ModeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, systemTheme } = useTheme();
   const [mounted, setIsMounted] = React.useState(false);
   const [isToggling, setIsToggling] = React.useState(false);
 
   React.useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  React.useEffect(() => {
+    if (mounted && systemTheme) {
+      setTheme(systemTheme);
+    }
+  }, [mounted, setTheme, systemTheme]);
 
   const handleThemeToggle = () => {
     setIsToggling(true);

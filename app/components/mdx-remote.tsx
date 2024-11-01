@@ -10,8 +10,9 @@ import ConfettiMaker from "@/posts/components/ConfettiMaker";
 import Badges from "./badges";
 import MarkdownButtons from "./markdown-buttons";
 import { CarouselComponent } from "./carousel";
+import ClickableImage from "@/projects/components/ClickableImage";
 
-function RoundedImage(props: any) {
+function RoundedImage(props: any, clickAble: boolean = false) {
   return <Image alt={props.alt} className="rounded-lg" {...props} />;
 }
 
@@ -55,6 +56,7 @@ let components = {
   Badges: Badges,
   MarkdownButtons: MarkdownButtons,
   CarouselComponent: CarouselComponent,
+  ClickableImage: ClickableImage,
 };
 
 const options = {

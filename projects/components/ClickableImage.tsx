@@ -27,9 +27,9 @@ const ClickableImage = ({ src, alt, width, height, fill }: Props) => {
   }, [isOpen]);
 
   return (
-    <div className="relative inline-block z-10">
+    <div className="inline-block">
       {/* Thumbnail */}
-      <div className="relative">
+      <div className="relative z-30">
         <Image
           src={src}
           alt={alt}
@@ -45,7 +45,7 @@ const ClickableImage = ({ src, alt, width, height, fill }: Props) => {
         <div
           className="fixed top-0 left-0 w-full h-full z-40 "
           onClick={() => setIsOpen(false)}
-          style={{ backgroundColor: "rgba(0, 0, 0, 0.9)" }}
+          style={{ backgroundColor: "rgba(0, 0, 0, 0.9)", zIndex: 999 }}
         >
           <button
             onClick={() => setIsOpen(false)}

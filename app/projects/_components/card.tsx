@@ -26,7 +26,7 @@ const Card = ({ project, customPage, stagger }: Project) => {
       style={{ "--stagger": stagger + 1 } as React.CSSProperties}
       className="flex flex-col px-0 py-3 lg:px-0 lg:py-0 items-center justify-start w-full transition-all ease-in-out duration-300 rounded-sm relative overflow-hidden  m-0.5 lg:w-full  dark:shadow-none"
     >
-      <div className="relative w-full h-[250px] rounded-md overflow-hidden bg-transparent border dark:border-none border-slate-400">
+      <div className="relative w-full h-[250px] rounded-md overflow-hidden bg-transparent border dark:border-none border-slate-100">
         <Link href={customPage || `/projects/${name}`} passHref>
           <div className="w-full h-full relative block cursor-pointer group ">
             <Image

@@ -27,7 +27,7 @@ const ClickableImage = ({ src, alt, width, height, fill }: Props) => {
   }, [isOpen]);
 
   return (
-    <div className="relative inline-block">
+    <div className="relative inline-block z-10">
       {/* Thumbnail */}
       <div className="relative">
         <Image
@@ -43,20 +43,20 @@ const ClickableImage = ({ src, alt, width, height, fill }: Props) => {
       {/* Modal */}
       {isOpen && (
         <div
-          className="fixed top-0 left-0 w-full h-full z-[100] "
+          className="fixed top-0 left-0 w-full h-full z-40 "
           onClick={() => setIsOpen(false)}
-          style={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }}
+          style={{ backgroundColor: "rgba(0, 0, 0, 0.9)" }}
         >
           <button
             onClick={() => setIsOpen(false)}
-            className="fixed top-4 right-4 p-2 text-white bg-black/50 rounded-full z-[60] hover:bg-black/70"
+            className="fixed top-4 right-4 p-2 text-white bg-black/90 rounded-full z-[60]"
             aria-label="Close"
           >
             <X size={24} />
           </button>
 
-          <div className=" w-full h-full z-50 flex items-center justify-center p-4">
-            <div className="relative w-full h-full max-w-[90vw] max-h-[90vh] overflow-hidden align-self-center">
+          <div className="z-50 flex items-center justify-center p-4 w-full h-full">
+            <div className="relative max-w-[90vw] max-h-[90vh] overflow-hidden align-self-center">
               <Image
                 src={src}
                 alt={alt}

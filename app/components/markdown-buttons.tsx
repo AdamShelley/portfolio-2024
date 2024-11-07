@@ -45,7 +45,7 @@ const MarkdownButtons = ({ github, demo, npm, download }: Props) => {
             target="_blank"
             className="no-underline"
           >
-            <span className="pointer-events-none">Live Demo</span>
+            <span className="pointer-events-none">Live</span>
           </Link>
         </Button>
       ) : null}

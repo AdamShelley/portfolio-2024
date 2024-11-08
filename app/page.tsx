@@ -32,7 +32,7 @@ export default function Home() {
         className="mt-10"
       >
         <div className="p-3 group flex flex-col w-full hover-bg rounded-sm cursor-pointer transition duration-200">
-          <h3 className="text-lg underline underline-offset-4 decoration-1 dark:decoration-slate-200 transition  dark:text-slate-200  dark:hover:text-white">
+          <h3 className="underline underline-offset-4 decoration-1 dark:decoration-slate-200 transition  dark:text-slate-200  dark:hover:text-white">
             Projects
           </h3>
           <p className="text-md text-gray-800 dark:text-gray-400  mt-1">
@@ -41,7 +41,7 @@ export default function Home() {
         </div>
       </Link>
       <Link href="/contact" style={{ "--stagger": 3 } as React.CSSProperties}>
-        <div className="p-3 group flex flex-col w-full hover-bg rounded-sm cursor-pointer transition duration-200 mt-2">
+        <div className="p-3 group flex flex-col w-full hover-bg rounded-sm cursor-pointer transition duration-200 mt-2 hover-bg">
           <h3 className="text-lg  underline underline-offset-4 decoration-1 dark:decoration-slate-200 transition  dark:text-slate-200  dark:hover:text-white ">
             Contact
           </h3>

@@ -86,7 +86,6 @@ body {
 
   --delay: 120ms;
 }
-
 .hover-bg {
   position: relative;
   overflow: hidden;
@@ -104,7 +103,7 @@ body {
   background: linear-gradient(
     to right,
     var(--bg-from, #e2e8f0),
-    var(--bg-to, #f8fafc)
+    var(--bg-to, rgba(248, 250, 252, 0))
   );
   transform: scale(0.95);
   opacity: 0;

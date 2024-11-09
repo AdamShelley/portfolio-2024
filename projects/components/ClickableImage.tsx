@@ -43,9 +43,8 @@ const ClickableImage = ({ src, alt, width, height, fill }: Props) => {
       {/* Modal */}
       {isOpen && (
         <div
-          className="fixed top-0 left-0 w-full h-full z-40 "
+          className="fixed top-0 left-0 w-full h-full z-40 overlay-bg"
           onClick={() => setIsOpen(false)}
-          style={{ backgroundColor: "rgba(0, 0, 0, 0.9)", zIndex: 999 }}
         >
           <button
             onClick={() => setIsOpen(false)}

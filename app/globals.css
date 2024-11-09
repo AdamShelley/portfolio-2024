@@ -130,6 +130,27 @@ body {
   );
 }
 
+.overlay-bg {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.dark .overlay-bg {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.blur-top {
+  opacity: 0.95;
+  backdrop-filter: blur(4px);
+  mask-image: linear-gradient(to bottom, #000 15%, transparent);
+}
+
+.blur-top::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to-bottom, rgba(55, 55, 68, 0.7), transparent);
+}
+
 @keyframes enter {
   from {
     opacity: 0;

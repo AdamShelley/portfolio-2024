@@ -46,23 +46,22 @@ const ClickableImage = ({ src, alt, width, height, fill }: Props) => {
           className="fixed top-0 left-0 w-full h-full z-40 overlay-bg"
           onClick={() => setIsOpen(false)}
         >
-          <button
-            onClick={() => setIsOpen(false)}
-            className="fixed top-4 right-4 p-2 text-white bg-black/90 rounded-full z-50"
-            aria-label="Close"
-          >
-            <X size={24} />
-          </button>
-
           <div className="z-50 flex items-center justify-center p-5 w-full h-full">
-            <div className="relative max-w-[80vw] max-h-[60vh] align-self-center p-3 mt-5">
+            <div className="relative max-w-[80vw] max-h-[60vh] align-self-center p-3 mt-5 not-prose">
+              <button
+                onClick={() => setIsOpen(false)}
+                className="absolute -right-6 -top-6 z-[100] bg-black/70 hover:bg-black/90 rounded-full p-1"
+                aria-label="Close"
+              >
+                <X size={24} color="white" />
+              </button>
               <Image
                 src={src}
                 alt={alt}
                 width={width || 100}
                 height={height || 100}
                 priority
-                className="object-contain rounded-lg"
+                className="object-contain rounded-lg !mt-0"
                 quality={100}
               />
             </div>

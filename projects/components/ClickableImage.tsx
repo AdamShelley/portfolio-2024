@@ -47,7 +47,7 @@ const ClickableImage = ({ src, alt, width, height, fill }: Props) => {
           onClick={() => setIsOpen(false)}
         >
           <div className="z-50 flex items-center justify-center p-5 w-full h-full">
-            <div className="relative max-w-[80vw] max-h-[60vh] align-self-center p-3 mt-5 not-prose">
+            <div className="relative max-w-[95vw] max-h-[80vh] md:max-w-[90vw] md:max-h-[70vh] align-self-center p-1 md:p-3 mt-5 not-prose">
               <button
                 onClick={() => setIsOpen(false)}
                 className="absolute -right-6 -top-6 z-[100] bg-black/70 hover:bg-black/90 rounded-full p-1"

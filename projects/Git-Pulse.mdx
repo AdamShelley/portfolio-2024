@@ -2,7 +2,7 @@
 ---
 title: 'Git-Pulse'
 summary: 'Simple Github desktop client.'
-published: 'true'
+published: 'false'
 ---
 
 <Badges badges={['Tauri','Typescript', 'React', 'Rust']}/>
@@ -10,28 +10,44 @@ published: 'true'
 
 
 # Git-Pulse
+I wanted to make a minimal **Github** client in which I could list the issues I am working on, make comments, 
+and plug in my own API key and have it summarise or export issues I've completed. 
 
+Writing changelogs are something that gets forgotten about or ignored (**[Keep A Changelog](https://keepachangelog.com/en/1.1.0/)**), so I wanted to automate that part.
 
-eiusmod esse enim in mollit commodo enim adipisicing ullamco qui in cillum duis fugiat velit laboris commodo ipsum incididunt Lorem aute exercitation ullamco aute dolore fugiat velit irure labore cillum incididunt dolor consequat quis aliqua mollit quis commodo ea in irure pariatur tempor consectetur consectetur incididunt ex culpa ipsum proident
 
 <ClickableImage src='/assets/GitPulse/gitpulse1.png' alt="app-screenshot-1"  width={2248} height={1590} />
 
 ##  Challenge
 
+This was my first time working with Tauri, which recently released version 2. I have also never used Rust before, 
+so it was a steep learning curve. This is where using AI can shine, since I know Javascript/Typescript I am able to use AI like Claude 
+to help understand the different systems (like the way the types work & syntax), and problem-solve when the AI is not fully accurate.
+
 <ClickableImage src='/assets/GitPulse/gitpulse2.png' alt="app-screenshot-1"  width={2248} height={1590} />
 
 
+
 ## Features
+- Minimal Github client
+- Can list issues
+- Can create, edit, and delete commnets
+- Can summarise an issue into a changelog using Anthropics AI **[Claude](https://claude.ai/)**.
+- Download the info to a .md file.
 
 
 
-### Usage
 
-
-<ClickableImage src='/assets/GitPulse/gitpulse3.png' alt="app-screenshot-1"  width={2248} height={1590} />
+<ClickableImage src='/assets/GitPulse/gitpulse3.png' alt="app-screenshot-1"  width={500} height={1590} />
 
 
 ### Download
 WIP
 
 <MarkdownButtons github="https://github.com/AdamShelley/git-pulse"/>
+
+### Links
+
+[Tauri V2](https://v2.tauri.app/)
+[Rust](https://www.rust-lang.org/)
+[Claude](https://claude.ai/)

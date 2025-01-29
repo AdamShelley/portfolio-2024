@@ -7,12 +7,13 @@ import { X } from "lucide-react";
 type Props = {
   src: string;
   alt: string;
+  caption?: string;
   width?: number;
   height?: number;
   fill?: boolean;
 };
 
-const ClickableImage = ({ src, alt, width, height, fill }: Props) => {
+const ClickableImage = ({ src, alt, width, height, fill, caption }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -35,9 +36,10 @@ const ClickableImage = ({ src, alt, width, height, fill }: Props) => {
           alt={alt}
           width={width}
           height={height}
-          className="rounded-lg cursor-pointer"
+          className="rounded-lg cursor-pointer mb-2"
           onClick={() => setIsOpen(true)}
         />
+        <p className="text-sm font-semibold w-[100%] text-center">{caption}</p>
       </div>
 
       {/* Modal */}

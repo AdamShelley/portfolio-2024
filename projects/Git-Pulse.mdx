@@ -2,7 +2,7 @@
 ---
 title: 'Git-Pulse'
 summary: 'Simple Github desktop client.'
-published: 'false'
+published: 'true'
 ---
 
 <Badges badges={['Tauri','Typescript', 'React', 'Rust']}/>
@@ -20,8 +20,10 @@ Writing changelogs are something that gets forgotten about or ignored (**[Keep A
 
 ##  Challenge
 
-This was my first time working with Tauri, which recently released version 2. I have also never used Rust before, 
-so it was a steep learning curve. This is where using AI can shine, since I know Javascript/Typescript I am able to use AI like Claude 
+This was my first time working with Tauri, which recently released version 2. Tauri uses Javascript or Typescript on the Frontend, and Rust on the backend.
+I had never used Rust before, so it was a steep learning curve. 
+
+This is where using AI can shine, since I know Javascript/Typescript I am able to use AI like Claude 
 to help understand the different systems (like the way the types work & syntax), and problem-solve when the AI is not fully accurate.
 
 <ClickableImage src='/assets/GitPulse/gitpulse2.png' alt="app-screenshot-1"  width={2248} height={1590} caption="The issue detail page" />
@@ -32,8 +34,8 @@ to help understand the different systems (like the way the types work & syntax),
 - Minimal Github client
 - Can list issues
 - Can create, edit, and delete commnets
-- Can summarise an issue into a changelog using Anthropics AI **[Claude](https://claude.ai/)**.
-- Download the info to a .md file.
+- You can add your own API Key and have it summarise an issue into a changelog using Anthropics AI **[Claude](https://claude.ai/)**.
+- Download the summarised info to a .md file.
 
 
 <ClickableImage src='/assets/GitPulse/gitpulse3.png' alt="app-screenshot-1" caption="Example of the AI generated changelog"  width={2248} height={1590} />
@@ -44,8 +46,8 @@ WIP
 
 <MarkdownButtons github="https://github.com/AdamShelley/git-pulse"/>
 
-### Links
+### Helpful Links
 
-[Tauri V2](https://v2.tauri.app/)
-[Rust](https://www.rust-lang.org/)
-[Claude](https://claude.ai/)
+- [Tauri V2](https://v2.tauri.app/)
+- [Rust](https://www.rust-lang.org/)
+- [Claude](https://claude.ai/)

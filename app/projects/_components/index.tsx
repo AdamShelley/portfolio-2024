@@ -10,7 +10,7 @@ const projects = [
       skills: ["Tauri", "Typescript", "React", "Rust"],
       description: "A minimal GitHub desktop client",
       imageName: "gitpulse-screenshot.png",
-      published: false,
+      published: true,
     },
   },
   {

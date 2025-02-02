@@ -66,6 +66,9 @@ const ClickableImage = ({ src, alt, width, height, fill, caption }: Props) => {
                 className="object-contain rounded-lg !mt-0"
                 quality={100}
               />
+              <p className="text-md font-semibold w-[100%] text-center mt-2">
+                {caption}
+              </p>
             </div>
           </div>
         </div>

@@ -11,6 +11,7 @@ import Footer from "./components/footer";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import BlurredTopBar from "@/components/blurred-top";
+import Navbar from "./components/navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 const myFont = localFont({ src: "../public/font.otf" });
@@ -46,7 +47,7 @@ export default function RootLayout({
             ></div>
             <div className="flex flex-col w-screen min-h-screen items-center pt-10 lg:pt-20 dark:text-white ">
               <Header />
-
+              {/* <Navbar /> */}
               <div className="flex-1 mb-20">{children}</div>
               <Analytics />
               <Footer />

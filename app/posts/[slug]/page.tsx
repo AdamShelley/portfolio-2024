@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getBlogPosts } from "@/lib/blog";
 import { CustomMDX } from "@/app/components/mdx-remote";
 import { ArrowLeft } from "lucide-react";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 
 export default function Blog({ params }: any) {
   let post = getBlogPosts().find((post) => post.slug === params.slug);

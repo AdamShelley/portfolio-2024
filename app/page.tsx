@@ -9,45 +9,15 @@ export default function Home() {
         style={{ "--stagger": 1 } as React.CSSProperties}
       >
         <h1 className="text-lg dark:text-gray-400 mb-5">About</h1>
-        <p className="text-lg text-left  text-gray-800 dark:text-gray-300 leading-8 ">
-          My name is <span className="italic font-medium ">Adam</span> and I am
-          a developer from the UK. I am currently working as a{" "}
-          <span className="italic font-medium ">Web Developer</span> for a
-          leading Energy Consultancy based in Warwickshire.
+        <p className="text-[15px] text-left  text-gray-800 dark:text-gray-300 leading-8 ">
+          My name is <span className=" font-semibold ">Adam</span> and I am a
+          Web Developer from the UK. I am currently working for a leading Energy
+          Consultancy based in the Midlands.
         </p>
 
-        <p className="text-lg text-left  text-gray-800 dark:text-gray-300 leading-7 mt-8 ">
+        <p className="text-[15px] text-left  text-gray-800 dark:text-gray-300 leading-7 mt-8 ">
           I am open to opportunities and excited to explore new challenges.
         </p>
-      </div>
-
-      <Link
-        href="/projects"
-        style={{ "--stagger": 2 } as React.CSSProperties}
-        className="mt-10"
-      >
-        <div className="p-3 group flex flex-col w-full hover-bg rounded-sm cursor-pointer transition duration-200">
-          <h3 className="transition  dark:text-slate-200  dark:hover:text-white">
-            Projects
-          </h3>
-          <p className="text-md text-gray-800 dark:text-gray-400  mt-1">
-            Check out what I have been working on
-          </p>
-        </div>
-      </Link>
-      <Link href="/contact" style={{ "--stagger": 3 } as React.CSSProperties}>
-        <div className="p-3 group flex flex-col w-full hover-bg rounded-sm cursor-pointer transition duration-200 mt-2 hover-bg">
-          <h3 className="text-lg transition  dark:text-slate-200  dark:hover:text-white ">
-            Contact
-          </h3>
-          <p className="text-md text-gray-800 dark:text-gray-400 g mt-1">
-            Send me a message
-          </p>
-        </div>
-      </Link>
-
-      <div className="mt-20" style={{ "--stagger": 4 } as React.CSSProperties}>
-        <BlogLinks />
       </div>
 
       <div

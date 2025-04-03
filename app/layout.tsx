@@ -43,11 +43,12 @@ export default function RootLayout({
             <div className="dark:hidden block fixed top-0 z-[-2] h-screen w-screen min-h-[100%] bg-white bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.1),rgba(255,255,255,0))]"></div>
             <div
               className="hidden dark:block fixed top-0 z-[-2] h-full min-h-[100%] w-screen bg-neutral-950 
-          bg-[radial-gradient(ellipse_90%_80%_at_50%_-15%,rgba(120,119,198,0.15),rgba(255,255,255,0.05))]"
+              bg-[radial-gradient(ellipse_90%_80%_at_50%_-15%,rgba(120,119,198,0.15),rgba(255,255,255,0.05))]"
             ></div>
+
             <div className="flex flex-col w-screen min-h-screen items-center pt-10 lg:pt-20 dark:text-white ">
+              <Navbar />
               <Header />
-              {/* <Navbar /> */}
               <div className="flex-1 mb-20">{children}</div>
               <Analytics />
               <Footer />

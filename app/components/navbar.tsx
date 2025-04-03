@@ -1,32 +1,37 @@
+"use client";
+
 import { Link } from "next-view-transitions";
+import { usePathname } from "next/navigation";
+import { ModeToggle } from "./mode-switcher";
+
+const NavLink = (props: React.ComponentProps<typeof Link>) => {
+  const pathname = usePathname();
+  const { href } = props;
+  const isActive = pathname === href || pathname.startsWith(href + "/");
+
+  return (
+    <li className="">
+      <Link
+        {...props}
+        className={`px-2 transition dark:text-slate-200 dark:hover:text-white ${
+          isActive ? "text-blue-500 dark:text-zinc-300/80" : ""
+        }`}
+      >
+        {props.children}
+      </Link>
+    </li>
+  );
+};
 
 const Navbar = () => {
   return (
-    <div>
-      <Link
-        href="/projects"
-        style={{ "--stagger": 2 } as React.CSSProperties}
-        className="mt-10"
-      >
-        <div className="p-3 group flex flex-col w-full hover-bg rounded-sm cursor-pointer transition duration-200">
-          <h3 className="underline underline-offset-4 decoration-1 dark:decoration-slate-200 transition  dark:text-slate-200  dark:hover:text-white">
-            Projects
-          </h3>
-          <p className="text-md text-gray-800 dark:text-gray-400  mt-1">
-            Check out what I have been working on
-          </p>
-        </div>
-      </Link>
-      <Link href="/contact" style={{ "--stagger": 3 } as React.CSSProperties}>
-        <div className="p-3 group flex flex-col w-full hover-bg rounded-sm cursor-pointer transition duration-200 mt-2 hover-bg">
-          <h3 className="text-lg  underline underline-offset-4 decoration-1 dark:decoration-slate-200 transition  dark:text-slate-200  dark:hover:text-white ">
-            Contact
-          </h3>
-          <p className="text-md text-gray-800 dark:text-gray-400 g mt-1">
-            Send me a message
-          </p>
-        </div>
-      </Link>
+    <div className="w-[85vw] lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] flex items-center justify-end mb-5">
+      <ul className="flex items-center justify-center text-md">
+        <NavLink href="/">Home</NavLink>
+        <NavLink href="/projects">Projects</NavLink>
+        <NavLink href="/posts">Posts</NavLink>
+        <ModeToggle />
+      </ul>
     </div>
   );
 };

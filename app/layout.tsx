@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
 import { GeistSans } from "geist/font/sans";
+import { ViewTransitions } from "next-view-transitions";
 
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -28,29 +29,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={GeistSans.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <BlurredTopBar />
-          <div className="dark:hidden block fixed top-0 z-[-2] h-screen w-screen min-h-[100%] bg-white bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
-          <div
-            className="hidden dark:block fixed top-0 z-[-2] h-full min-h-[100%] w-screen bg-neutral-950 
+    <ViewTransitions>
+      <html lang="en" suppressHydrationWarning>
+        <body className={GeistSans.className}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <BlurredTopBar />
+            <div className="dark:hidden block fixed top-0 z-[-2] h-screen w-screen min-h-[100%] bg-white bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+            <div
+              className="hidden dark:block fixed top-0 z-[-2] h-full min-h-[100%] w-screen bg-neutral-950 
           bg-[radial-gradient(ellipse_90%_80%_at_50%_-15%,rgba(120,119,198,0.2),rgba(255,255,255,0.05))]"
-          ></div>
-          <div className="flex flex-col w-screen min-h-screen items-center pt-10 lg:pt-20 dark:text-white ">
-            <Header />
+            ></div>
+            <div className="flex flex-col w-screen min-h-screen items-center pt-10 lg:pt-20 dark:text-white ">
+              <Header />
 
-            <div className="flex-1 mb-20">{children}</div>
-            <Analytics />
-            <Footer />
-          </div>
-        </ThemeProvider>
-      </body>
-    </html>
+              <div className="flex-1 mb-20">{children}</div>
+              <Analytics />
+              <Footer />
+            </div>
+          </ThemeProvider>
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

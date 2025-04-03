@@ -9,6 +9,14 @@ const confettiConfig = {
   elementCount: 150,
 };
 
+const suggestions = [
+  { id: 1, value: "apple" },
+  { id: 2, value: "banana" },
+  { id: 3, value: "cherry" },
+  { id: 4, value: "date" },
+  { id: 5, value: "elderberry" },
+];
+
 export default function ConfettiMaker() {
   const { reward, isAnimating } = useReward("rewardId", "confetti", {
     ...confettiConfig,

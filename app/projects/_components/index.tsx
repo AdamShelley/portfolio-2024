@@ -61,6 +61,7 @@ const ProjectList = () => {
       {projects
         .filter((project) => IS_DEV || project.project.published)
         .map((project, index) => (
+          // <div key={project.project.name}>{project.project.name}</div>
           <Card
             project={project.project}
             stagger={index}

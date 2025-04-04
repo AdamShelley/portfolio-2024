@@ -38,7 +38,7 @@ const Card = ({ project, customPage, stagger }: Project) => {
               className="absolute top-0 left-0 w-full h-full pointer-events-none 
             bg-gradient-to-t from-black/90 via-black/70 to-transparent dark:bg-custom-gradient group-hover:from-black/70 group-hover:via-black/50 
             dark:group-hover:bg-custom-gradient-hover 
-            transition-all duration-300 ease-in-out z-10 opacity-95 group-hover:opacity-90"
+            transition-all duration-300 ease-in-out z-10 opacity-85 group-hover:opacity-80"
             ></div>
 
             <div className="absolute inset-x-0 bottom-0 flex flex-col justify-start flex-1 w-full p-3 ">

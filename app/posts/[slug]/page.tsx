@@ -37,7 +37,7 @@ export default function Blog({ params }: any) {
       lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mb-20 prose-pre:rounded-xl prose-pre:shadow-4 "
       >
         <Link
-          href="/"
+          href="/posts"
           className="group text-sm text-blue-600 dark:text-blue-400 no-underline hover:underline"
         >
           <div className="flex items-center group-hover:text-blue-500 group-hover:dark:text-blue-300">

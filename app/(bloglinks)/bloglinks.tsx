@@ -10,7 +10,7 @@ const BlogLinks = () => {
 
   return (
     <div className="mt-1">
-      <h2 className=" font-normal dark:text-slate-400 mb-5">Posts</h2>
+      {/* <h2 className=" font-normal dark:text-slate-400 mb-5">Posts</h2> */}
       {isDev && (
         <p className=" font-normal text-red-200">
           Dev mode: Showing unpushlished posts
@@ -27,8 +27,8 @@ const BlogLinks = () => {
             className="flex flex-col space-y-1 mb-4"
             href={`/posts/${post.slug}`}
           >
-            <div className="group flex flex-col w-full hover-bg rounded-sm cursor-pointer transition duration-200 mt-2">
-              <p className="transition  dark:text-slate-200  dark:hover:text-white">
+            <div className="group flex flex-col w-full rounded-sm cursor-pointer transition duration-200 mt-2">
+              <p className="transition dark:text-slate-200  dark:hover:text-white">
                 {post.metadata.title}
               </p>
               <p className="text-md text-gray-500 dark:text-gray-400  mt-1 leading-6">

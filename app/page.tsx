@@ -8,7 +8,7 @@ export default function Home() {
         className="p-3 group flex flex-col w-full rounded-md  transition duration-200"
         style={{ "--stagger": 1 } as React.CSSProperties}
       >
-        <h1 className="text-lg dark:text-gray-400 mb-5">About</h1>
+        {/* <h1 className="text-lg dark:text-gray-400 mb-5">About</h1> */}
         <p className="text-[15px] text-left  text-gray-800 dark:text-gray-300 leading-8 ">
           My name is <span className=" font-semibold ">Adam</span> and I am a
           Web Developer from the UK. I am currently working for a leading Energy

@@ -13,8 +13,8 @@ const NavLink = (props: React.ComponentProps<typeof Link>) => {
     <li className="">
       <Link
         {...props}
-        className={`px-2 transition dark:text-slate-200 dark:hover:text-white ${
-          isActive ? "text-blue-500 dark:text-zinc-300/80" : ""
+        className={`pr-2 transition dark:text-slate-200 dark:hover:text-white ${
+          isActive ? "text-zinc-500 dark:text-zinc-300/80" : ""
         }`}
       >
         {props.children}
@@ -25,11 +25,13 @@ const NavLink = (props: React.ComponentProps<typeof Link>) => {
 
 const Navbar = () => {
   return (
-    <div className="w-[85vw] lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] flex items-center justify-end mb-5">
-      <ul className="flex items-center justify-center text-md">
-        <NavLink href="/">Home</NavLink>
-        <NavLink href="/projects">Projects</NavLink>
-        <NavLink href="/posts">Posts</NavLink>
+    <div className="w-[85vw] lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] flex items-center justify-start mb-10">
+      <ul className="flex w-full items-center justify-between">
+        <div className="flex items-center justify-center text-md">
+          <NavLink href="/">About</NavLink>
+          <NavLink href="/projects">Projects</NavLink>
+          <NavLink href="/posts">Posts</NavLink>
+        </div>
         <ModeToggle />
       </ul>
     </div>

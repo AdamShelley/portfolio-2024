@@ -13,7 +13,7 @@ const NavLink = (props: React.ComponentProps<typeof Link>) => {
     <li className="">
       <Link
         {...props}
-        className={`pr-2 transition dark:text-slate-200 dark:hover:text-white ${
+        className={`pr-3 transition dark:text-slate-200 dark:hover:text-white ${
           isActive ? "text-zinc-500 dark:text-zinc-300/80" : ""
         }`}
       >

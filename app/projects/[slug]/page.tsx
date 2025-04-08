@@ -34,12 +34,12 @@ export default function Projects({ params }: any) {
         {projects.metadata.publishedAt}
       </p> */}
       <article
-        className="mt-10 prose prose-quoteless prose-neutral dark:prose-invert w-[85vw] 
+        className="prose prose-quoteless prose-neutral dark:prose-invert w-[85vw] 
       lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mb-20 prose-pre:rounded-xl prose-pre:shadow-4 "
       >
         <Link
           href="/projects"
-          className="group text-sm text-blue-600 dark:text-blue-400 no-underline hover:underline"
+          className="group text-sm text-blue-600 dark:text-zinc-100 no-underline transition"
         >
           <div className="flex items-center group-hover:text-blue-500 group-hover:dark:text-blue-300">
             <ArrowLeft size={16} className="mr-2" />

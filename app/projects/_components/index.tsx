@@ -57,7 +57,7 @@ const projects = [
 
 const ProjectList = () => {
   return (
-    <section className="grid md:grid-cols-1 items-center gap-10 mt-2 lg:mt-0 orchestration">
+    <section className="grid md:grid-cols-1 items-center gap-10 lg:mt-0 orchestration">
       {projects
         .filter((project) => IS_DEV || project.project.published)
         .map((project, index) => (

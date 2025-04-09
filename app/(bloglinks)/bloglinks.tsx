@@ -32,7 +32,7 @@ const BlogLinks = () => {
                 <p className="transition dark:text-slate-200  dark:hover:text-white">
                   {post.metadata.title}
                 </p>
-                <p className="text-md text-gray-500 dark:text-gray-400  mt-1 leading-6">
+                <p className="text-md text-zinc-500/90 dark:text-zinc-400  mt-1 leading-6">
                   {post.metadata.summary}
                 </p>
               </div>

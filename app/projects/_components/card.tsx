@@ -72,7 +72,9 @@ const Card = ({ project, customPage, stagger }: Project) => {
           <h3 className="hover:text-zinc-400 transition-all">
             {capitalizeFirstLetter(name)}
           </h3>
-          <p className="mt-1 text-zinc-400 text-md">{description}</p>
+          <p className="mt-1 text-zinc-500/90 dark:text-zinc-400 text-md">
+            {description}
+          </p>
           <div className="flex flex-wrap items-center justify-start w-full pt-1 z-10 -ml-1">
             {skills &&
               skills.map((skill, index) => (

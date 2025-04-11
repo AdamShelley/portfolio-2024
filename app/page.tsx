@@ -8,12 +8,19 @@ export default function Home() {
         className="p-3 group flex flex-col w-full rounded-md  transition duration-200"
         style={{ "--stagger": 1 } as React.CSSProperties}
       >
-        {/* <h1 className="text-lg dark:text-gray-400 mb-5">About</h1> */}
         <p className="text-[15px] text-left  text-gray-800 dark:text-gray-300 leading-8 ">
-          My name is <span className=" font-semibold ">Adam</span> and I am a
-          Web Developer from the UK. I am currently working for a leading Energy
-          Consultancy based in the Midlands.
+          My name is <span className="font-semibold ">Adam</span> and I am a Web
+          Developer from the UK. I am currently working for a leading{" "}
+          <span className="underline underline-offset-4 decoration-zinc-400">
+            Energy Consultancy
+          </span>{" "}
+          based in the Midlands, developing products and tools to help the
+          United Kingdom hit Net Zero Carbon emissions target by 2050.
         </p>
+
+        {/* <p className="text-[15px] text-left  text-gray-800 dark:text-gray-300 leading-8 mt-8 ">
+          During my time, I have developed internal dashboards and custom CRM's. 
+        </p> */}
 
         <p className="text-[15px] text-left  text-gray-800 dark:text-gray-300 leading-7 mt-8 ">
           I am open to opportunities and excited to explore new challenges.

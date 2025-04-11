@@ -26,11 +26,11 @@ const NoiseBackground = ({
 
       {/* Dark mode specific noise with higher visibility */}
       <div
-        className="absolute inset-0 w-full h-full hidden dark:block dark:opacity-[30%]"
+        className="absolute inset-0 w-full h-full hidden dark:block dark:opacity-[25%]"
         style={{
           backgroundImage: `url("/noise-texture.png")`,
           backgroundRepeat: "repeat",
-          backgroundSize: "110px",
+          backgroundSize: "200px",
           mixBlendMode: "overlay",
         }}
       />

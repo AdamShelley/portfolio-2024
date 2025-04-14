@@ -11,7 +11,8 @@ const Projects = (props: Props) => {
       </h2>
 
       <p className="text-primary-muted dark:text-gray-300 mb-5">
-        Aside from my professional work (which is not publicly accessible).
+        Aside from my professional work (which is not publicly accessible). Here
+        are some things I made for fun.
       </p>
       <ProjectList />
     </div>

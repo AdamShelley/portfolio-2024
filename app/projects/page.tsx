@@ -10,7 +10,7 @@ const Projects = (props: Props) => {
         Projects
       </h2>
 
-      <p className="text-primary-muted dark:text-gray-300 mb-5">
+      <p className="text-primary-muted dark:text-gray-300 mb-8 text-[15px]">
         Aside from my professional work (which is not publicly accessible). Here
         are some things I made for fun.
       </p>

@@ -7,7 +7,7 @@ import { ModeToggle } from "./mode-switcher";
 const NavLink = (props: React.ComponentProps<typeof Link>) => {
   const pathname = usePathname();
   const { href } = props;
-  const isActive = pathname === href || pathname.startsWith(href + "/");
+  const isActive = pathname === href || pathname?.startsWith(href + "/");
 
   return (
     <li className="">

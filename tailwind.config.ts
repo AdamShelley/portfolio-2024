@@ -116,6 +116,7 @@ const config: Config = {
     },
   },
   plugins: [require("@tailwindcss/typography")],
+  safelist: ["not-prose"],
 };
 
 export default config;

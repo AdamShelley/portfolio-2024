@@ -11,6 +11,13 @@ import Badges from "./badges";
 import MarkdownButtons from "./markdown-buttons";
 import { CarouselComponent } from "./carousel";
 import ClickableImage from "@/projects/components/ClickableImage";
+import { SearchBar } from "./SearchBar";
+
+const ProseExemptSearchBar = (props: any) => (
+  <div className="not-prose my-4">
+    <SearchBar {...props} />
+  </div>
+);
 
 function RoundedImage(props: any, clickAble: boolean = false) {
   return <Image alt={props.alt} className="rounded-lg" {...props} />;
@@ -64,6 +71,7 @@ let components = {
   MarkdownButtons: MarkdownButtons,
   CarouselComponent: CarouselComponent,
   ClickableImage: ClickableImage,
+  SearchBar: ProseExemptSearchBar,
 };
 
 const options = {

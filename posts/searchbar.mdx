@@ -1,0 +1,98 @@
+---
+title: 'Building a Custom Search Bar Component'
+publishedAt: '2025-05-06'
+summary: 'My attempt at a custom react search bar component.'
+published: 'false'
+---
+
+
+Wanting to craft something 
+Animated nicely, but subtle
+Functional
+
+
+## Demos
+
+
+#### Basic Usage
+```tsx
+// Basic Usage
+import { SearchBar } from "@/components/ui/searchbar";
+
+ <SearchBar
+    dropdownOptions={[
+    { id: 1, label: "Apples" },
+    { id: 2, label: "Bananas" },
+    ]}
+/>
+
+```
+
+<div class="not-prose">
+ <SearchBar
+    dropdownOptions={[
+    { id: 1, label: "Apples" },
+    { id: 2, label: "Bananas" },
+    ]}
+/>
+</div>
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
+
+#### Minimizable
+```tsx
+// Minimizable
+import { SearchBar } from "@/components/ui/searchbar";
+
+ <SearchBar
+    dropdownOptions={[
+    { id: 1, label: "Apples" },
+    { id: 2, label: "Bananas" },
+    ]}
+    minimizable
+/>
+
+```
+
+
+
+<div class="not-prose">
+ <SearchBar
+    dropdownOptions={[
+    { id: 1, label: "Apples" },
+    { id: 2, label: "Bananas" },
+    ]}
+    minimizable
+/>
+</div>
+
+#### Highlight Matches
+
+```tsx
+// Highlight matches
+import { SearchBar } from "@/components/ui/searchbar";
+
+ <SearchBar
+    dropdownOptions={[
+    { id: 1, label: "Apples" },
+    { id: 2, label: "Bananas" },
+    ]}
+    minimizable
+    highlightMatches
+/>
+
+```
+
+
+ <SearchBar
+  dropdownOptions={[
+    { id: 1, label: "Apples" },
+    { id: 2, label: "Bananas" },
+    ]}
+    highlightMatches
+    placeholder="Search for a fruit..."
+/>

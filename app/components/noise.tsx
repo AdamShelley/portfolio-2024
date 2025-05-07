@@ -15,11 +15,11 @@ const NoiseBackground = ({
 
       {/* Light mode noise texture */}
       <div
-        className="absolute inset-0 w-full h-full opacity-[15%] dark:hidden"
+        className="absolute inset-0 w-full h-full opacity-[10%] dark:hidden"
         style={{
           backgroundImage: `url("/noise-texture.png")`,
           backgroundRepeat: "repeat",
-          backgroundSize: "110px",
+          backgroundSize: "100px",
           mixBlendMode: "multiply",
         }}
       />

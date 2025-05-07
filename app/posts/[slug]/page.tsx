@@ -43,7 +43,8 @@ export default function Blog({ params }: any) {
       <p className="text-md mt-1 text-slate-400">{post.metadata.publishedAt}</p>
       <article
         className="mt-10 prose prose-quoteless prose-neutral dark:prose-invert w-[85vw] 
-      lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mb-20 prose-pre:rounded-xl prose-pre:shadow-4 "
+      lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mb-20 prose-pre:rounded-xl prose-pre:shadow-4 
+      prose-headings:font-normal prose-p:text-base prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-li:text-base"
       >
         <CustomMDX source={post.content} />
       </article>

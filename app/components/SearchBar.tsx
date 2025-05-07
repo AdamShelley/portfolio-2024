@@ -2,9 +2,9 @@
 
 import * as React from "react";
 import { useState, useRef, useEffect, useCallback } from "react";
-import { AnimatePresence } from "motion/react";
-import * as motion from "motion/react-client";
+import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import { useTheme } from "next-themes";
 
 // -------------------- Types --------------------
 
@@ -50,6 +50,17 @@ export interface SuggestionDropdownProps {
   customLoader?: React.ReactNode;
   isDarkMode?: boolean;
 }
+
+// -------------------- Themed Wrapper --------------------
+
+export const ThemedSearchBar: React.FC<Omit<SearchBarProps, "darkMode">> = (
+  props
+) => {
+  const { theme } = useTheme();
+  const isDarkMode = theme === "dark";
+
+  return <SearchBar {...props} darkMode={isDarkMode} />;
+};
 
 // -------------------- Components --------------------
 

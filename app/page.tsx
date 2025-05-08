@@ -18,10 +18,6 @@ export default function Home() {
           United Kingdom hit Net Zero Carbon emissions target by 2050.
         </p>
 
-        {/* <p className="text-[15px] text-left  text-gray-800 dark:text-gray-300 leading-8 mt-8 ">
-          During my time, I have developed internal dashboards and custom CRM's. 
-        </p> */}
-
         <p className="text-[15px] text-left  text-gray-800 dark:text-gray-300 leading-7 mt-8 ">
           I am open to opportunities and excited to explore new challenges.
         </p>

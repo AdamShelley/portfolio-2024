@@ -16,7 +16,7 @@ import { SearchBar } from "./SearchBar";
 const ProseExemptSearchBar = (props: any) => (
   <div className="not-prose search-bar !p-0 !m-0 !my-8 ">
     <div className="[&_*]:!leading-normal [&_a]:!no-underline [&_p]:!m-0 [&_span]:!m-0">
-      <SearchBar {...props} />
+      <SearchBar {...props} darkMode={true} />
     </div>
   </div>
 );

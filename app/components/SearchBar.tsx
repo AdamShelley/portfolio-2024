@@ -449,7 +449,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
                 }}
                 onChange={onChangeHandler}
                 value={displayValue}
-                onKeyDown={(e) => handleKeyDown(e)}
+                onKeyDown={handleKeyDown}
                 animate={{
                   paddingLeft: "8px",
                   opacity: 1,

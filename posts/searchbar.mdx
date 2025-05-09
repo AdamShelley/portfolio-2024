@@ -23,8 +23,7 @@ import { SearchBar } from "@/components/ui/searchbar";
     dropdownOptions={[
     { id: 1, label: "Apples" },
     { id: 2, label: "Bananas" },
-    ]}
-    
+    ]}  
 />
 
 ```
@@ -94,3 +93,62 @@ import { SearchBar } from "@/components/ui/searchbar";
     highlightMatches
     placeholder="Search for a fruit..."
 />
+
+
+   <div className="p-6 rounded-lg">
+          <SearchBar
+            dropdownOptions={[
+    { id: 1, label: "Apples" },
+    { id: 2, label: "Bananas" },
+    ]}
+            width="300px"
+            height="60px"
+            placeholder="Custom sized search bar..."
+          />
+        </div>
+
+
+{/* #### Custom dropdown renderer
+ 
+```tsx
+// Highlight matches
+import { SearchBar } from "@/components/ui/searchbar";
+
+ <SearchBar
+    dropdownOptions={[
+    { id: 1, label: "Apples" },
+    { id: 2, label: "Bananas" },
+    ]}
+    minimizable
+    highlightMatches
+    renderDropdown={(options) => (
+      <div className="bg-white border border-gray-300 rounded-md shadow-lg">
+        {options.map((option) => (
+          <div key={option.id} className="p-2 hover:bg-gray-100">
+            {option.label}
+          </div>
+        ))}
+      </div>
+    )}
+/>
+
+```
+
+
+ <SearchBar
+  dropdownOptions={[
+    { id: 1, label: "Apples" },
+    { id: 2, label: "Bananas" },
+    ]}
+    highlightMatches
+    placeholder="Search for a fruit..."
+    renderDropdown={(options) => (
+      <div className="bg-white border border-gray-300 rounded-md shadow-lg">
+        {options.map((option) => (
+          <div key={option.id} className="p-2 hover:bg-gray-100">
+            {option.label}
+          </div>
+        ))}
+      </div>
+    )}
+/> */}

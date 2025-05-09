@@ -11,15 +11,7 @@ import Badges from "./badges";
 import MarkdownButtons from "./markdown-buttons";
 import { CarouselComponent } from "./carousel";
 import ClickableImage from "@/projects/components/ClickableImage";
-import { SearchBar } from "./SearchBar";
-
-const ProseExemptSearchBar = (props: any) => (
-  <div className="not-prose search-bar !p-0 !m-0 !my-8 ">
-    <div className="[&_*]:!leading-normal [&_a]:!no-underline [&_p]:!m-0 [&_span]:!m-0">
-      <SearchBar {...props} darkMode={true} />
-    </div>
-  </div>
-);
+import { ProseExemptSearchBar } from "./prose-exempt-searchbar";
 
 function RoundedImage(props: any, clickAble: boolean = false) {
   return <Image alt={props.alt} className="rounded-lg" {...props} />;

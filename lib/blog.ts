@@ -51,7 +51,14 @@ function getMDXData(dir: any) {
 }
 
 export function getBlogPosts() {
-  return getMDXData(path.join(process.cwd(), "posts"));
+  const posts = getMDXData(path.join(process.cwd(), "posts"));
+
+  return posts.sort((a, b) => {
+    return (
+      new Date(b.metadata.publishedAt).getTime() -
+      new Date(a.metadata.publishedAt).getTime()
+    );
+  });
 }
 
 export function getProjects() {

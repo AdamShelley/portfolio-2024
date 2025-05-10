@@ -5,6 +5,10 @@ summary: 'My attempt at a custom react search bar component.'
 published: 'false'
 ---
 
+export const suggestions = [
+    { id: 1, label: "Apples" },
+    { id: 2, label: "Bananas" },
+]
 
 Wanting to craft something 
 Animated nicely, but subtle
@@ -20,19 +24,13 @@ Functional
 import { SearchBar } from "@/components/ui/searchbar";
 
  <SearchBar
-    dropdownOptions={[
-    { id: 1, label: "Apples" },
-    { id: 2, label: "Bananas" },
-    ]}  
+    dropdownOptions={suggestions}  
 />
 
 ```
 
  <SearchBar
-    dropdownOptions={[
-    { id: 1, label: "Apples" },
-    { id: 2, label: "Bananas" },
-    ]}
+    dropdownOptions={suggestions}
 />
 
 &nbsp;
@@ -106,6 +104,23 @@ import { SearchBar } from "@/components/ui/searchbar";
             placeholder="Custom sized search bar..."
           />
         </div>
+
+
+
+
+ <SearchBar
+            dropdownOptions={[
+    { id: 1, label: "Apples" },
+    { id: 2, label: "Bananas" },
+    ]}
+            showClearButton={true}
+            placeholder="Type to search..."
+            darkMode={false}
+  />
+
+
+
+
 
 
 {/* #### Custom dropdown renderer

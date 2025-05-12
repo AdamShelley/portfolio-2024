@@ -7,7 +7,7 @@ export const ProseExemptSearchBar = (props: any) => {
   const { theme } = useTheme();
 
   return (
-    <div className="not-prose !p-0 !m-0 !my-8 ">
+    <div className="z-[999] not-prose !p-0 !m-0 !my-8 ">
       <div className="[&_*]:!leading-normal [&_a]:!no-underline [&_p]:!m-0 [&_span]:!m-0">
         <SearchBar {...props} darkMode={theme === "dark"} />
       </div>

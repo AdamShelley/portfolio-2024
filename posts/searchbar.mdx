@@ -5,15 +5,16 @@ summary: 'My attempt at a custom react search bar component.'
 published: 'false'
 ---
 
-export const suggestions = [
-    { id: 1, label: "Apples" },
-    { id: 2, label: "Bananas" },
-]
+Inspired by the likes sonner and shadcn, I wanted to create a searchbar component that is minimalist and nice to use.
 
-Wanting to craft something 
-Animated nicely, but subtle
-Functional
 
+There are many props to feed into the SearchBar, but here are a couple of demos below to get the general idea.
+It's built with React, Tailwind, and **Motion** for the animations. 
+
+This component forced me to think about how the user might need to interact with a Search bar, especially if the user is using 
+an accessibility tool like a screen reader.
+
+{/* TODO - Add to the component a tabbable interface currently it doesnt tab too - not accessible! */}
 
 ## Demos
 
@@ -24,46 +25,29 @@ Functional
 import { SearchBar } from "@/components/ui/searchbar";
 
  <SearchBar
-    dropdownOptions={suggestions}  
+    dropdownOptions={[
+    { id: 4, label: "Apple" },
+    { id: 5, label: "Banana" },
+    { id: 6, label: "Orange" },
+    { id: 7, label: "Pineapple" },
+  ]}  
 />
 
 ```
 
  <SearchBar
-    dropdownOptions={suggestions}
-/>
-
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-
-
-#### Minimizable
-```tsx
-// Minimizable
-import { SearchBar } from "@/components/ui/searchbar";
-
- <SearchBar
     dropdownOptions={[
-    { id: 1, label: "Apples" },
-    { id: 2, label: "Bananas" },
-    ]}
-    minimizable
+    { id: 4, label: "Apple" },
+    { id: 5, label: "Banana" },
+    { id: 6, label: "Orange" },
+    { id: 7, label: "Pineapple" },
+  ]}
 />
 
-```
-
-
-
-
- <SearchBar
-    dropdownOptions={[
-    { id: 1, label: "Apples" },
-    { id: 2, label: "Bananas" },
-    ]}
-    minimizable
-/>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 #### Highlight Matches
 
@@ -73,9 +57,17 @@ import { SearchBar } from "@/components/ui/searchbar";
 
  <SearchBar
     dropdownOptions={[
-    { id: 1, label: "Apples" },
-    { id: 2, label: "Bananas" },
-    ]}
+    { id: 1, label: "🍎 Apple" },
+    { id: 2, label: "🍌 Banana" },
+    { id: 3, label: "🍊 Orange" },
+    { id: 4, label: "🍍 Pineapple" },
+    { id: 5, label: "🍓 Strawberry" },
+    { id: 6, label: "🥭 Mango" },
+    { id: 7, label: "🫐 Blueberry" },
+    { id: 8, label: "🍇 Grapes" },
+    { id: 9, label: "🍉 Watermelon" },
+    { id: 10, label: "🥝 Kiwi" },
+  ]}
     minimizable
     highlightMatches
 />
@@ -85,85 +77,20 @@ import { SearchBar } from "@/components/ui/searchbar";
 
  <SearchBar
   dropdownOptions={[
-    { id: 1, label: "Apples" },
-    { id: 2, label: "Bananas" },
-    ]}
+    { id: 1, label: "🍎 Apple" },
+    { id: 2, label: "🍌 Banana" },
+    { id: 3, label: "🍊 Orange" },
+    { id: 4, label: "🍍 Pineapple" },
+    { id: 5, label: "🍓 Strawberry" },
+    { id: 6, label: "🥭 Mango" },
+    { id: 7, label: "🫐 Blueberry" },
+    { id: 8, label: "🍇 Grapes" },
+    { id: 9, label: "🍉 Watermelon" },
+    { id: 10, label: "🥝 Kiwi" },
+  ]}
     highlightMatches
     placeholder="Search for a fruit..."
 />
 
 
-   <div className="p-6 rounded-lg">
-          <SearchBar
-            dropdownOptions={[
-    { id: 1, label: "Apples" },
-    { id: 2, label: "Bananas" },
-    ]}
-            width="300px"
-            height="60px"
-            placeholder="Custom sized search bar..."
-          />
-        </div>
-
-
-
-
- <SearchBar
-            dropdownOptions={[
-    { id: 1, label: "Apples" },
-    { id: 2, label: "Bananas" },
-    ]}
-            showClearButton={true}
-            placeholder="Type to search..."
-            darkMode={false}
-  />
-
-
-
-
-
-
-{/* #### Custom dropdown renderer
- 
-```tsx
-// Highlight matches
-import { SearchBar } from "@/components/ui/searchbar";
-
- <SearchBar
-    dropdownOptions={[
-    { id: 1, label: "Apples" },
-    { id: 2, label: "Bananas" },
-    ]}
-    minimizable
-    highlightMatches
-    renderDropdown={(options) => (
-      <div className="bg-white border border-gray-300 rounded-md shadow-lg">
-        {options.map((option) => (
-          <div key={option.id} className="p-2 hover:bg-gray-100">
-            {option.label}
-          </div>
-        ))}
-      </div>
-    )}
-/>
-
-```
-
-
- <SearchBar
-  dropdownOptions={[
-    { id: 1, label: "Apples" },
-    { id: 2, label: "Bananas" },
-    ]}
-    highlightMatches
-    placeholder="Search for a fruit..."
-    renderDropdown={(options) => (
-      <div className="bg-white border border-gray-300 rounded-md shadow-lg">
-        {options.map((option) => (
-          <div key={option.id} className="p-2 hover:bg-gray-100">
-            {option.label}
-          </div>
-        ))}
-      </div>
-    )}
-/> */}
+&nbsp;

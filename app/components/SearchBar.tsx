@@ -50,6 +50,7 @@ export interface SuggestionDropdownProps {
   highlightMatchesStyles?: string;
   customLoader?: React.ReactNode;
   isDarkMode?: boolean;
+  setSelectedIndex?: (index: number) => void;
 }
 
 // -------------------- Themed Wrapper --------------------
@@ -511,6 +512,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
                     highlightMatchesStyles={highlightMatchesStyles}
                     customLoader={customLoader}
                     isDarkMode={isDarkMode}
+                    setSelectedIndex={setSelectedIndex}
                   />
                 )}
             </>
@@ -535,6 +537,7 @@ const SuggestionDropdown = ({
   highlightMatchesStyles,
   customLoader,
   isDarkMode = false,
+  setSelectedIndex,
 }: SuggestionDropdownProps) => {
   return (
     <AnimatePresence>
@@ -600,6 +603,16 @@ const SuggestionDropdown = ({
                       role="option"
                       aria-selected={isSelected}
                       id={`suggestion-${suggestion.id}`}
+                      tabIndex={0}
+                      onFocus={() =>
+                        setSelectedIndex && setSelectedIndex(index)
+                      }
+                      onKeyDown={(e: KeyboardEvent) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                          onSuggestionClick(suggestion);
+                        }
+                      }}
                       initial={{ opacity: 0, x: -5 }}
                       animate={{
                         opacity:
@@ -646,6 +659,14 @@ const SuggestionDropdown = ({
                     role="option"
                     id={`suggestion-${suggestion.id}`}
                     aria-selected={isSelected}
+                    tabIndex={0}
+                    onFocus={() => setSelectedIndex && setSelectedIndex(index)}
+                    onKeyDown={(e: KeyboardEvent) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        onSuggestionClick(suggestion);
+                      }
+                    }}
                     initial={{ opacity: 0, x: -5 }}
                     animate={{
                       opacity:

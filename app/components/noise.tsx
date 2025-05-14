@@ -10,12 +10,12 @@ const NoiseBackground = ({
       {/* Base background with gradient for dark mode */}
       <div
         className="hidden dark:block absolute inset-0 w-full h-full
-              bg-[radial-gradient(ellipse_90%_80%_at_50%_-15%,rgba(120,119,198,0.15),rgba(255,255,255,0.05))]"
+              bg-[radial-gradient(ellipse_90%_80%_at_50%_-30%,rgba(120,119,198,0.15),rgba(255,255,255,0.05))]"
       ></div>
 
       {/* Light mode noise texture */}
       <div
-        className="absolute inset-0 w-full h-full opacity-[10%] dark:hidden"
+        className="absolute inset-0 w-full h-full opacity-[8%] dark:hidden"
         style={{
           backgroundImage: `url("/noise-texture.png")`,
           backgroundRepeat: "repeat",

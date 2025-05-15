@@ -6,10 +6,29 @@ const IS_DEV = process.env.NODE_ENV === "development";
 const projects = [
   {
     project: {
+      name: "Search-bar",
+      skills: ["ReactJS", "Motion", "Tailwind"],
+      description: "A search bar component for React/Next.",
+      imageNamE: "search-bar-screenshot.png",
+      published: false,
+    },
+  },
+  {
+    project: {
       name: "Git-Pulse",
       skills: ["Tauri", "Typescript", "React", "Rust"],
       description: "A minimal GitHub desktop client",
       imageName: "gitpulse-screenshot.png",
+      published: true,
+    },
+  },
+  {
+    project: {
+      name: "electron-tailwind-template",
+      skills: ["Electron", "Tailwind", "Shadcn", "Template"],
+      description:
+        "A template for creating electron apps with tailwind and shadcn.",
+      imageName: "template-screenshot.png",
       published: true,
     },
   },
@@ -40,16 +59,6 @@ const projects = [
       description:
         "A language learning app that uses AI to generate stories for your level.",
       imageName: "LangAI-screenshot.png",
-      published: true,
-    },
-  },
-  {
-    project: {
-      name: "electron-tailwind-template",
-      skills: ["Electron", "Tailwind", "Shadcn", "Template"],
-      description:
-        "A template for creating electron apps with tailwind and shadcn.",
-      imageName: "template-screenshot.png",
       published: true,
     },
   },

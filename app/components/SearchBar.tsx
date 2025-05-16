@@ -323,16 +323,16 @@ export const SearchBar: React.FC<SearchBarProps> = ({
           className={`relative flex items-center rounded-lg border box-border 
             ${
               isDarkMode
-                ? "bg-zinc-800 !border-zinc-600"
+                ? "bg-zinc-800 !border-zinc-700"
                 : "bg-white !border-zinc-200"
             } 
           ${
             isFocused
               ? isDarkMode
-                ? "border-zinc-400"
+                ? "!border-zinc-600"
                 : "border-zinc-500"
               : isDarkMode
-                ? "border-zinc-700"
+                ? "!border-zinc-700"
                 : "border-zinc-200"
           }`}
           initial={{ width: minimizable ? "48px" : width }}
@@ -544,8 +544,8 @@ const SuggestionDropdown = ({
       <motion.div
         className={`z-[999] absolute w-full shadow-lg top-full left-0 right-0 rounded-b-xl border border-t-0 box-border overflow-hidden ${
           isDarkMode
-            ? "bg-zinc-800 border-zinc-600"
-            : "bg-white border-zinc-500"
+            ? "bg-zinc-800 !border-zinc-700"
+            : "bg-white !border-zinc-200"
         }`}
         style={{
           top: "calc(100% - 1px)",

@@ -10,7 +10,7 @@ const projects = [
       filename: "search-bar",
       skills: ["ReactJS", "Motion", "Tailwind"],
       description: "A search bar component for React/Next.",
-      published: false,
+      published: true,
     },
   },
   {

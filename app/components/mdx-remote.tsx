@@ -44,11 +44,13 @@ function CustomLink(props: any) {
 
 const CodeBlock = (props: any) => {
   const { className, children } = props;
-  const language = className ? className.replace("language-", "") : "";
+  // const language = className ? className.replace("language-", "") : "";
 
   return (
     <CopyToClipboard>
-      <pre className={`bg-transparent border-none ${GeistMono.className} `}>
+      <pre
+        className={`bg-transparent border-none ${GeistMono.className} max-h-[20vh] overflow-auto `}
+      >
         <code>{children}</code>
       </pre>
     </CopyToClipboard>

@@ -5,7 +5,9 @@ import { ArrowLeft } from "lucide-react";
 import { Link } from "next-view-transitions";
 
 export default function Projects({ params }: any) {
-  let projects = getProjects().find((post) => post.slug === params.slug);
+  let projects = getProjects().find(
+    (post) => post.slug.toLowerCase() === params.slug.toLowerCase()
+  );
 
   if (!projects) {
     notFound();

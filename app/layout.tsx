@@ -47,7 +47,6 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <BlurredTopBar />
-            {/* <div className="dark:hidden block fixed top-0 z-[-2] h-screen w-screen min-h-[100%] bg-white bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.1),rgba(255,255,255,0))]"></div> */}
             <NoiseBackground className="min-h-screen ">
               <div className="flex flex-col w-screen min-h-screen items-center pt-10 lg:pt-20 dark:text-white ">
                 <Navbar />

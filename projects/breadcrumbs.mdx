@@ -1,0 +1,73 @@
+---
+title: 'Breadcrumbs'
+summary: 'Beautiful minimalist breadcrumbs'
+published: 'false'
+---
+
+<Badges badges={['React', 'Motion', "Tailwind"]}/>
+
+# Breadcrumbs
+
+It is built using React, Framer Motion, and Tailwind CSS.
+
+
+
+
+&nbsp;
+
+<Breadcrumbs mode="url"/>
+
+&nbsp;
+
+###  Description
+A breadcrumb component that can be copied into any React or Next app. 
+The breadcrumbs can be built based on the users URL or manually as a if you want to really customise.
+
+&nbsp;
+
+
+
+
+### Usage
+1. Install the dependencies
+
+&nbsp;
+
+
+**NPM**
+```bash
+npm install motion tailwind tailwindmerge clsx
+```
+**Bun**
+```bash
+bun add motion tailwind tailwindmerge clsx
+```
+
+2. Add the util file for tailwind merge 
+<span className="ml-2 bg-[#fdfdfd] p-1 text-gray-900 rounded-md">@/utils/cn.ts</span>
+
+```tsx
+import { type ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+```
+
+2. Copy the source code in your project
+<span className="ml-2 bg-[#fdfdfd] p-1 text-gray-900 rounded-md">@/components/breadcrumbs.tsx</span>
+
+```tsx
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
+```
+
+
+#### Basic Usage
+```tsx
+
+```
+
+For a full list of props - see the github link.
+
+<MarkdownButtons github="https://github.com/AdamShelley/adui/tree/main/SearchBar"/>

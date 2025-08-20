@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState, useCallback } from "react";
 import { ChevronRight, Home } from "lucide-react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
+
 import { cn } from "@/lib/utils";
 
 export interface BreadcrumbItem {

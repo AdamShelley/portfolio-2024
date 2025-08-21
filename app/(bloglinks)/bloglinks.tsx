@@ -2,6 +2,7 @@ import { getBlogPosts } from "@/lib/blog";
 import { Link } from "next-view-transitions";
 import { Suspense } from "react";
 import { format } from "date-fns";
+import { Badge } from "@/components/ui/badge";
 
 const BlogLinks = () => {
   let allBlogs = getBlogPosts();
@@ -36,9 +37,13 @@ const BlogLinks = () => {
                   {post.metadata.summary}
                 </p>
               </div>
-              <span className="text-sm font-normal text-slate-500 dark:text-slate-300 self-center">
+              <Badge
+                variant="skill"
+                className="mr-2 mt-2 min-w-[50px] text-[12px] font-normal rounded-sm"
+              >
                 {format(new Date(post.metadata.publishedAt), "yyyy.MM.dd")}
-              </span>
+              </Badge>
+              {/* <span className="text-sm font-normal text-slate-500 dark:text-slate-300 self-center"></span> */}
               <Suspense fallback={<p className="h-6" />}></Suspense>
             </div>
           </Link>

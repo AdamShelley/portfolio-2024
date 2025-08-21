@@ -63,7 +63,7 @@ const projects = [
   },
   {
     separator: true,
-    label: "Deprecated - leaving for historical purposes",
+    label: "Deprecated - But still interesting",
     style: "deprecated",
   },
   {
@@ -101,19 +101,19 @@ const Separator = ({
 
   const styleVariants: Record<string, { label: string; line: string }> = {
     default: {
-      label: "text-gray-400 bg-white dark:bg-gray-900/10",
+      label: "text-gray-400 bg-white/10 dark:bg-gray-900/10",
       line: "bg-gray-200 dark:bg-gray-700",
     },
     wip: {
-      label: "text-orange-500 bg-white dark:bg-gray-900",
+      label: "text-orange-500 bg-white/10 dark:bg-gray-900",
       line: "bg-orange-200 dark:bg-orange-800",
     },
     experimental: {
-      label: "text-purple-500 bg-white dark:bg-gray-900",
+      label: "text-purple-500 bg-white/10 dark:bg-gray-900",
       line: "bg-purple-200 dark:bg-purple-800",
     },
     deprecated: {
-      label: "text-gray-400 bg-white dark:bg-gray-900",
+      label: "text-gray-400 bg-white/10 dark:bg-gray-900/50",
       line: "bg-gray-300 dark:bg-gray-600",
     },
   };

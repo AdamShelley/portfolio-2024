@@ -12,6 +12,8 @@ const badgeVariants = cva(
         secondary: "bg-secondary text-secondary-foreground ",
         destructive: "bg-destructive text-destructive-foreground ",
         outline: "text-foreground",
+        skill:
+          "bg-white/60 text-muted-foreground border-transparent dark:bg-teal-600/10 dark:text-teal-300/90 hover:bg-zinc-700 hover:bg-white/20 dark:hover:bg-teal-600/20 transition-colors",
       },
     },
     defaultVariants: {

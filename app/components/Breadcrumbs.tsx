@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
+// Types
 export interface BreadcrumbItem {
   label: string;
   href?: string;
@@ -30,6 +31,7 @@ export interface BreadcrumbProps {
   noAnimations?: boolean;
 }
 
+// Basic Line Separator (instead of chevron)
 export const LineSeparator = () => (
   <div className="flex items-center justify-center">
     <div className="h-[1px] w-3 bg-gray-800 rounded-xs dark:bg-white"></div>

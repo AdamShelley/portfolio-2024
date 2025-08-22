@@ -15,7 +15,7 @@ const projects = [
       filename: "breadcrumbs",
       skills: ["ReactJS", "Motion", "Tailwind"],
       description: "A minimalist breadcrumbs component for React/Next.",
-      published: false,
+      published: true,
     },
   },
   {

@@ -28,7 +28,7 @@ const BlogLinks = () => {
             className="flex flex-col space-y-1 mb-4"
             href={`/posts/${post.slug}`}
           >
-            <div className="group flex justify-between align-center w-full rounded-sm cursor-pointer transition duration-200 mt-2">
+            <div className="group flex justify-between align-center w-full rounded-sm cursor-pointer transition duration-200 mt-2 gap-2">
               <div className="flex flex-col">
                 <p className="transition dark:text-slate-200  dark:hover:text-white">
                   {post.metadata.title}
@@ -39,7 +39,7 @@ const BlogLinks = () => {
               </div>
               <Badge
                 variant="skill"
-                className="mr-2 mt-2 min-w-[50px] text-[12px] font-normal rounded-sm"
+                className="text-[12px] font-normal rounded-sm h-[2rem]"
               >
                 {format(new Date(post.metadata.publishedAt), "yyyy.MM.dd")}
               </Badge>

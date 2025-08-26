@@ -13,7 +13,7 @@ const MarkdownButtons = ({ github, demo, npm, download }: Props) => {
   return (
     <div className="my-10 flex w-full">
       {github ? (
-        <Button asChild className="mr-2">
+        <Button asChild className="mr-2" variant="outline">
           <Link
             href={github}
             rel="noopener noreferrer"

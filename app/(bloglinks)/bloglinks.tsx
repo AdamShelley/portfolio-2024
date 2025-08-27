@@ -37,12 +37,14 @@ const BlogLinks = () => {
                   {post.metadata.summary}
                 </p>
               </div>
-              <Badge
-                variant="skill"
-                className="text-[12px] font-normal rounded-sm h-[2rem]"
-              >
-                {format(new Date(post.metadata.publishedAt), "yyyy.MM.dd")}
-              </Badge>
+              <div className="flex items-center justify-center">
+                <Badge
+                  variant="skill"
+                  className="text-[10px] font-normal rounded-sm h-[2rem]"
+                >
+                  {format(new Date(post.metadata.publishedAt), "yyyy.MM.dd")}
+                </Badge>
+              </div>
               {/* <span className="text-sm font-normal text-slate-500 dark:text-slate-300 self-center"></span> */}
               <Suspense fallback={<p className="h-6" />}></Suspense>
             </div>

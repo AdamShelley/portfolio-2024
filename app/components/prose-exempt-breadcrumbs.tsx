@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { Breadcrumb } from "./Breadcrumbs";
 
 export const ProseExemptBreadcrumbs = (props: any) => {

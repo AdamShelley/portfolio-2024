@@ -15,7 +15,6 @@ const Header = (props: Props) => {
           Web Developer
         </h2>
       </div>
-      {/* <ModeToggle /> */}
     </div>
   );
 };

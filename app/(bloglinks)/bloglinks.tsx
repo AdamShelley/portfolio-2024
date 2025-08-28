@@ -11,7 +11,6 @@ const BlogLinks = () => {
 
   return (
     <div className="orchestration">
-      {/* <h2 className=" font-normal dark:text-slate-400 mb-5">Posts</h2> */}
       {isDev && (
         <p className=" font-normal text-red-200">
           Dev mode: Showing unpushlished posts
@@ -45,7 +44,6 @@ const BlogLinks = () => {
                   {format(new Date(post.metadata.publishedAt), "yyyy.MM.dd")}
                 </Badge>
               </div>
-              {/* <span className="text-sm font-normal text-slate-500 dark:text-slate-300 self-center"></span> */}
               <Suspense fallback={<p className="h-6" />}></Suspense>
             </div>
           </Link>

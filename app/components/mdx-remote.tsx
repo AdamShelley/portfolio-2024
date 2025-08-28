@@ -46,7 +46,6 @@ function CustomLink(props: any) {
 
 const CodeBlock = (props: any) => {
   const { className, children } = props;
-  // const language = className ? className.replace("language-", "") : "";
 
   return (
     <CopyToClipboard>

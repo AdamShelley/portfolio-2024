@@ -14,9 +14,6 @@ import BlurredTopBar from "@/components/blurred-top";
 import Navbar from "./components/navbar";
 import NoiseBackground from "./components/noise";
 
-const inter = Inter({ subsets: ["latin"] });
-const myFont = localFont({ src: "../public/font.otf" });
-
 export const metadata: Metadata = {
   title: "Adam Shelley",
   description: "Adam Shelley's Web Development Portfolio",

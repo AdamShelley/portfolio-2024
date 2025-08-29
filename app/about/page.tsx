@@ -1,8 +1,6 @@
 import React from "react";
 
-type Props = {};
-
-const AboutPage = (props: Props) => {
+const AboutPage = () => {
   return (
     <div className="w-[85vw] lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] min-h-screen mt-20 flex items-start justify-center">
       <div className="rounded-lg w-1/2">

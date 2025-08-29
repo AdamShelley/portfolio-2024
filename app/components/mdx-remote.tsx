@@ -12,10 +12,9 @@ import MarkdownButtons from "./markdown-buttons";
 import { CarouselComponent } from "./carousel";
 import ClickableImage from "@/projects/components/ClickableImage";
 import { ProseExemptSearchBar } from "./prose-exempt-searchbar";
-import { Breadcrumb } from "./Breadcrumbs";
 import { ProseExemptBreadcrumbs } from "./prose-exempt-breadcrumbs";
 
-function RoundedImage(props: any, clickAble: boolean = false) {
+function RoundedImage(props: any) {
   return <Image alt={props.alt} className="rounded-lg" {...props} />;
 }
 

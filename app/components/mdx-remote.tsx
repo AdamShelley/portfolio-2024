@@ -6,13 +6,24 @@ import rehypeHighlight from "rehype-highlight";
 import "./highlighter.css";
 import { CopyToClipboard } from "./copyToClipboard";
 import { GeistMono } from "geist/font/mono";
-import ConfettiMaker from "@/posts/components/ConfettiMaker";
+import dynamic from "next/dynamic";
 import Badges from "./badges";
 import MarkdownButtons from "./markdown-buttons";
-import { CarouselComponent } from "./carousel";
-import ClickableImage from "@/projects/components/ClickableImage";
 import { ProseExemptSearchBar } from "./prose-exempt-searchbar";
 import { ProseExemptBreadcrumbs } from "./prose-exempt-breadcrumbs";
+
+const ConfettiMaker = dynamic(
+  () => import("@/posts/components/ConfettiMaker"),
+  { ssr: false }
+);
+const CarouselComponent = dynamic(
+  () => import("./carousel").then((mod) => mod.CarouselComponent),
+  { ssr: false }
+);
+const ClickableImage = dynamic(
+  () => import("@/projects/components/ClickableImage"),
+  { ssr: false }
+);
 
 function RoundedImage(props: any) {
   return <Image alt={props.alt} className="rounded-lg" {...props} />;
@@ -62,11 +73,11 @@ let components = {
   Image: RoundedImage,
   a: CustomLink,
   code: CodeBlock,
-  ConfettiMaker: ConfettiMaker,
-  Badges: Badges,
-  MarkdownButtons: MarkdownButtons,
-  CarouselComponent: CarouselComponent,
-  ClickableImage: ClickableImage,
+  ConfettiMaker,
+  Badges,
+  MarkdownButtons,
+  CarouselComponent,
+  ClickableImage,
   SearchBar: ProseExemptSearchBar,
   Breadcrumbs: ProseExemptBreadcrumbs,
 };

@@ -1,12 +1,12 @@
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
-import { getBlogPostBySlug } from "@/lib/blog";
+import { getBlogPosts } from "@/lib/blog";
 import { CustomMDX } from "@/app/components/mdx-remote";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "next-view-transitions";
 
 export default function Blog({ params }: any) {
-  const post = getBlogPostBySlug(params.slug);
+  let post = getBlogPosts().find((post) => post.slug === params.slug);
 
   if (!post) {
     notFound();
@@ -43,10 +43,16 @@ export default function Blog({ params }: any) {
       <p className="text-md mt-1 text-slate-400">{post.metadata.publishedAt}</p>
       <article
         className="mt-10 prose prose-quoteless prose-neutral dark:prose-invert w-[85vw] 
-      lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mb-20 prose-pre:rounded-xl prose-pre:shadow-4 
-      prose-headings:font-normal prose-p:text-base prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-li:text-base"
+        lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mb-20 prose-pre:rounded-xl prose-pre:shadow-4 
+        prose-headings:font-normal prose-p:text-base prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-li:text-base"
       >
-        <CustomMDX source={post.content} />
+        <Suspense
+          fallback={
+            <div className="text-center text-slate-400 py-8">Loading post…</div>
+          }
+        >
+          <CustomMDX source={post.content} />
+        </Suspense>
       </article>
     </section>
   );

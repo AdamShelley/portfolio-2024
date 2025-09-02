@@ -1,9 +1,16 @@
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
-import { getBlogPostBySlug } from "@/lib/blog";
+import { getBlogPostBySlug, getBlogPosts } from "@/lib/blog";
 import { CustomMDX } from "@/app/components/mdx-remote";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "next-view-transitions";
+
+export function generateStaticParams() {
+  const posts = getBlogPosts();
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
 
 export default function Blog({ params }: any) {
   let post = getBlogPostBySlug(params.slug);

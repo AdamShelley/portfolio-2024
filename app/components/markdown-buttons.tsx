@@ -3,7 +3,7 @@ import { Link } from "next-view-transitions";
 import React from "react";
 
 type Props = {
-  github: string;
+  github?: string;
   demo?: string;
   npm?: string;
   download?: string;

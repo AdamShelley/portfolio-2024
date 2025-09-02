@@ -1,8 +1,15 @@
 import { notFound } from "next/navigation";
-import { getProjectBySlug } from "@/lib/blog";
+import { getProjectBySlug, getProjects } from "@/lib/blog";
 import { CustomMDX } from "@/app/components/mdx-remote";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "next-view-transitions";
+
+export async function generateStaticParams() {
+  const projects = getProjects();
+  return projects.map((project) => ({
+    slug: project.slug,
+  }));
+}
 
 export default function Projects({ params }: any) {
   let projects = getProjectBySlug(params.slug);

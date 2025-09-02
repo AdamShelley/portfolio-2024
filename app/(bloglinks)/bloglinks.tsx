@@ -41,7 +41,9 @@ const BlogLinks = () => {
                   variant="skill"
                   className="text-[10px] font-normal rounded-sm h-[2rem]"
                 >
-                  {format(new Date(post.metadata.publishedAt), "yyyy.MM.dd")}
+                  {post.metadata.publishedAt
+                    ? format(new Date(post.metadata.publishedAt), "yyyy.MM.dd")
+                    : "No date"}
                 </Badge>
               </div>
               <Suspense fallback={<p className="h-6" />}></Suspense>

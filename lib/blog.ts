@@ -3,7 +3,7 @@ import path from "path";
 
 type Metadata = {
   title: string;
-  publishedAt: string;
+  publishedAt?: string;
   summary: string;
   image?: string;
   published: string;
@@ -49,10 +49,13 @@ function getMDXData(dir: string) {
 export function getBlogPosts() {
   const posts = getMDXData(path.join(process.cwd(), "posts"));
   return posts.sort((a, b) => {
-    return (
-      new Date(b.metadata.publishedAt).getTime() -
-      new Date(a.metadata.publishedAt).getTime()
-    );
+    const aDate = a.metadata.publishedAt
+      ? new Date(a.metadata.publishedAt).getTime()
+      : 0;
+    const bDate = b.metadata.publishedAt
+      ? new Date(b.metadata.publishedAt).getTime()
+      : 0;
+    return bDate - aDate;
   });
 }
 

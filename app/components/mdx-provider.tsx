@@ -7,11 +7,18 @@ import Badges from "./badges";
 import MarkdownButtons from "./markdown-buttons";
 import { ProseExemptSearchBar } from "./prose-exempt-searchbar";
 import { ProseExemptBreadcrumbs } from "./prose-exempt-breadcrumbs";
+import ClickableImage from "@/projects/components/ClickableImage";
 
 // Dynamic imports for heavy components
-const ConfettiMaker = dynamic(() => import("@/posts/components/ConfettiMaker"), { ssr: false });
-const CarouselComponent = dynamic(() => import("./carousel").then(mod => ({ default: mod.CarouselComponent })), { ssr: false });
-const ClickableImage = dynamic(() => import("@/projects/components/ClickableImage"), { ssr: false });
+const ConfettiMaker = dynamic(
+  () => import("@/posts/components/ConfettiMaker"),
+  { ssr: false }
+);
+const CarouselComponent = dynamic(
+  () =>
+    import("./carousel").then((mod) => ({ default: mod.CarouselComponent })),
+  { ssr: false }
+);
 
 function RoundedImage(props: any) {
   return <Image alt={props.alt} className="rounded-lg" {...props} />;

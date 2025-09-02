@@ -61,6 +61,18 @@ export function getBlogPosts() {
   });
 }
 
-export function getProjects() {
-  return getMDXData(path.join(process.cwd(), "projects"));
+export function getBlogPostBySlug(slug: string) {
+  const postsDir = path.join(process.cwd(), "posts");
+  const filePath = path.join(postsDir, slug + ".mdx");
+  if (!fs.existsSync(filePath)) return null;
+  const { metadata, content } = readMDXFile(filePath);
+  return { metadata, slug, content };
+}
+
+export function getProjectBySlug(slug: string) {
+  const projectsDir = path.join(process.cwd(), "projects");
+  const filePath = path.join(projectsDir, slug + ".mdx");
+  if (!fs.existsSync(filePath)) return null;
+  const { metadata, content } = readMDXFile(filePath);
+  return { metadata, slug, content };
 }

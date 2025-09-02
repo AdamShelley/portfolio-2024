@@ -1,15 +1,12 @@
 import { notFound } from "next/navigation";
-import { getProjects } from "@/lib/blog";
+import { getProjectBySlug } from "@/lib/blog";
 import { CustomMDX } from "@/app/components/mdx-remote";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "next-view-transitions";
 
 export default function Projects({ params }: any) {
-  let projects = getProjects().find(
-    (post) => post.slug.toLowerCase() === params.slug.toLowerCase()
-  );
-
-  if (!projects) {
+  const project = getProjectBySlug(params.slug.toLowerCase());
+  if (!project) {
     notFound();
   }
 
@@ -22,18 +19,14 @@ export default function Projects({ params }: any) {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Project",
-            headline: projects.metadata.title,
-            datePublished: projects.metadata.publishedAt,
-            dateModified: projects.metadata.publishedAt,
-            description: projects.metadata.summary,
+            headline: project.metadata.title,
+            datePublished: project.metadata.publishedAt,
+            dateModified: project.metadata.publishedAt,
+            description: project.metadata.summary,
           }),
         }}
       />
-
-      <article
-        className="prose prose-quoteless prose-neutral dark:prose-invert w-[85vw] 
-      lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mb-20 prose-pre:rounded-xl prose-pre:shadow-4 "
-      >
+      <article className="prose prose-quoteless prose-neutral dark:prose-invert w-[85vw] lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mb-20 prose-pre:rounded-xl prose-pre:shadow-4 ">
         <Link
           href="/projects"
           className="group text-sm text-blue-600 dark:text-zinc-100 no-underline transition"
@@ -43,7 +36,7 @@ export default function Projects({ params }: any) {
             <p className="font-semibold">Back</p>
           </div>
         </Link>
-        <CustomMDX source={projects.content} />
+        <CustomMDX source={project.content} />
       </article>
     </section>
   );

@@ -1,13 +1,11 @@
 import { notFound } from "next/navigation";
-import { getProjects } from "@/lib/blog";
+import { getProjectBySlug } from "@/lib/blog";
 import { CustomMDX } from "@/app/components/mdx-remote";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "next-view-transitions";
 
 export default function Projects({ params }: any) {
-  let projects = getProjects().find(
-    (post) => post.slug.toLowerCase() === params.slug.toLowerCase()
-  );
+  let projects = getProjectBySlug(params.slug);
 
   if (!projects) {
     notFound();

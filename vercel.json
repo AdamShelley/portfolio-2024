@@ -1,7 +1,0 @@
-{
-  "functions": {
-    "app/projects/[slug]/page.tsx": {
-      "maxDuration": 30
-    }
-  }
-}

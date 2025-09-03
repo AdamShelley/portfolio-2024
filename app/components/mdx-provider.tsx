@@ -8,7 +8,6 @@ import MarkdownButtons from "./markdown-buttons";
 import { ProseExemptSearchBar } from "./prose-exempt-searchbar";
 import { ProseExemptBreadcrumbs } from "./prose-exempt-breadcrumbs";
 
-// Dynamic imports for heavy components - MATCH mdx-remote.tsx
 const ConfettiMaker = dynamic(
   () => import("@/posts/components/ConfettiMaker"),
   { ssr: false }

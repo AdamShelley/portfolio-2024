@@ -20,7 +20,7 @@ const projects = [
   },
   {
     project: {
-      name: "Search Bar",
+      name: "search-bar",
       filename: "search-bar",
       skills: ["ReactJS", "Motion", "Tailwind"],
       description: "A search bar component for React/Next.",
@@ -34,7 +34,7 @@ const projects = [
   },
   {
     project: {
-      name: "Git-Pulse",
+      name: "git-pulse",
       filename: "git-pulse",
       skills: ["Tauri", "Typescript", "React", "Rust"],
       description: "A minimal GitHub desktop client",
@@ -68,7 +68,7 @@ const projects = [
   },
   {
     project: {
-      name: "D-Struct",
+      name: "d-struct",
       filename: "d-struct",
       skills: ["NextJS", "Typescript", "Cloudflare", "Drizzle"],
       description:

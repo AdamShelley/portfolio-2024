@@ -11,18 +11,18 @@ export function generateStaticParams() {
       slug: project.slug,
     }));
   } catch (error) {
-    console.error('Error in generateStaticParams:', error);
+    console.error("Error in generateStaticParams:", error);
     return [];
   }
 }
 
 export default function Projects({ params }: any) {
   let projects;
-  
+
   try {
     projects = getProjectBySlug(params.slug);
   } catch (error) {
-    console.error('Error loading project:', error);
+    console.error("Error loading project:", error);
     notFound();
   }
 
@@ -40,8 +40,10 @@ export default function Projects({ params }: any) {
             "@context": "https://schema.org",
             "@type": "Project",
             headline: projects.metadata.title,
-            datePublished: projects.metadata.publishedAt,
-            dateModified: projects.metadata.publishedAt,
+            ...(projects.metadata.publishedAt && {
+              datePublished: projects.metadata.publishedAt,
+              dateModified: projects.metadata.publishedAt,
+            }),
             description: projects.metadata.summary,
           }),
         }}

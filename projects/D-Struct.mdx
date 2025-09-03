@@ -8,38 +8,5 @@ published: 'true'
 <Badges badges={['NextJS', 'Typescript', 'Cloudflare', 'Drizzle', 'Hono']}/>
 
 
-# D-Struct
-
-<MarkdownButtons  demo="https://dstruct-alpha.vercel.app/" />
-{/* github="https://github.com/AdamShelley/dstruct" */}
-
-**D-Struct** is a file-sharing tool that I built to explore AWS style file handling. The idea is simple: users upload a file, generate a link or QR code to send to a colleague/client/friend, and the file is deleted after it’s accessed once. It’s a practical tool for one-time file sharing, where security and temporary storage are important.
-
-The core challenge was implementing file expiration logic that ensures files are securely deleted from the server either after being accessed or after 24 hours, whichever comes first. To achieve this, I used Cloudflare for edge hosting and integrated AWS-SDK for file management.
-
-
-<ClickableImage src='/assets/Dstruct/dstruct1.png' alt="app-screenshot-1"  width={2248} height={1590} />
-
-
-## Features
-- **One-time access:** Files are automatically deleted from the server once the recipient downloads them.
-- **24-hour max expiry:** If the file is not accessed within 24 hours, it is deleted, shorter expiration times can also be selected.
-- **QR code sharing:** Generate a QR code to make sharing links easier and more flexible.
-
-
-## Stack
-- **NextJS**, a fun way to integrate both front-end and back-end logic in a single application. 
-- **Drizzle ORM**, used to interact with the database.
-- **Hono**, web framework similar to express, used in my NextJS backend to handle all the API requests.
-- **Neon**, a PostgreSQL database, I used it to track file metadata, such as upload time and download status.
-- **Cloudflare R2 Object Storage** and **AWS-SDK** are used for file storage, ensuring fast, secure access to the files with minimal latency.
-
-You can share a link or QR code with the person you want to share the file with. Once they have accessed the file, it will be deleted from the server.
-
-
-There is a maximum of 24 hours for the file to be accessed, after that it will be deleted. (Other expiry times can be set).
-
-<ClickableImage src='/assets/Dstruct/dstruct2.png' alt="app-screenshot-1" width={2248} height={1590}/>
-<ClickableImage src='/assets/Dstruct/dstruct3.png' alt="app-screenshot-1" width={2248} height={1590}/>
 
 ---

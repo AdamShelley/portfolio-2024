@@ -151,6 +151,11 @@ body {
   background: linear-gradient(to-bottom, rgba(55, 55, 68, 0.7), transparent);
 }
 
+.prose-quoteless blockquote p:first-of-type::before,
+.prose-quoteless blockquote p:last-of-type::after {
+  content: none !important;
+}
+
 @keyframes enter {
   from {
     opacity: 0;

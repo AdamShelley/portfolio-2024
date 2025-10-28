@@ -1,0 +1,132 @@
+---
+title: 'Building a BitTorrent Client - Part 1'
+publishedAt: '2025-10-28'
+summary: 'Start of the journey'
+published: 'true'
+---
+
+![laptop](https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fGNvZGluZ3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900)
+
+I'm subscribed to the emails that [John Crickett](https://codingchallenges.substack.com/) sends out for coding challenges and found the latest one rather intriguing, so I thought I would document my progress on actually building something.
+This calls for building a **BitTorrent client**. 
+
+As a Web Developer, there is so much I don't know - especially about Networking, Buffers, Bytes - and things that I don't have to think about in the day-to-day of doing my job (centering a div takes a lot of mental bandwidth, after all!)
+
+Part 1 is about building something to Decode and Encode Bencode (pronounced Bee-encode) - Okay, this is the first time I've ever heard of Bencoding, let alone being able to parse it. But thats why I am doing this. I want to find gaps in my knowledge and try to improve.
+
+Oh, I am also building this in TypeScript. Because that's what I know. And another rule I'm setting myself is not allowing AI to help me code, I will allow it to give hints for error messages, basically using it as a fancy search engine, and try to rely on my own critical thinking. 
+
+> **Note: I don't know if the way I am doing this will be final and/or correct. This is a learning experience.**
+
+Taken from the BitTorrent spec: [BitTorrent Spec](https://www.bittorrent.org/beps/bep_0003.html)
+
+```# bencoding
+- Strings are length-prefixed base ten followed by a colon and the string. For example 4:spam corresponds to 'spam'.
+- Integers are represented by an 'i' followed by the number in base 10 followed by an 'e'. For example i3e corresponds to 3 and i-3e corresponds to -3. Integers have no size limitation. i-0e is invalid. All encodings with a leading zero, such as i03e, are invalid, other than i0e, which of course corresponds to 0.
+- Lists are encoded as an 'l' followed by their elements (also bencoded) followed by an 'e'. For example l4:spam4:eggse corresponds to ['spam', 'eggs'].
+- Dictionaries are encoded as a 'd' followed by a list of alternating keys and their corresponding values followed by an 'e'. For example, d3:cow3:moo4:spam4:eggse corresponds to {'cow': 'moo', 'spam': 'eggs'} and d4:spaml1:a1:bee corresponds to {'spam': ['a', 'b']}. Keys must be strings and appear in sorted order (sorted as raw strings, not alphanumerics).
+```
+
+I thought I would start simple and assume the provided values to my decoder will be strings (this will change to allow Buffers later).
+
+**Step 1: Decoding** 
+
+For the most part this was not too bad, just manipulated the string to get the value you expected. e.g. plug in "4:spam" and you should get "spam" back.
+
+Lists/Dictionaries were trickier, but in the end its just plugging those values back into the decodeString or decodeNumber function and returning the object as shown above. 
+
+
+**Step 2: Encoding**
+This was even easier, e.g. given a string "spam", just return its length with a colon ":" -> 4:spam.
+Encoding numbers are similar:
+
+```ts
+const encodeString = (value: string): string => {
+	return `${value.length}:${value}`;
+};
+
+const encodeNumber = (value: number): string => {
+	return `i${value}e`;
+};
+```
+
+
+List and dictionaries could just follow the same pattern of calling the type they found:
+
+```ts
+const encodeArray = (value: Array<any>): string => {
+	let finalstr = value.map((val) => encode(val)).join("");
+	return `l${finalstr}e`;
+};
+
+  
+const encodeObject = (value: { [key: string]: any }): string => {
+	const keys = Object.keys(value).sort();
+	let finalStr = keys.map((key) => {
+		return encodeString(key) + encode(value[key]);
+	}).join("");
+
+	return `d${finalStr}e`;
+};
+```
+
+**Step 3: Modify to handle Buffers**
+After a bit of back and forth, I decided that to allow both strings and buffers in the decode function, 
+I would just convert any String to buffer and then decode like that. 
+This included modifying the checks to account for the charCodeAt instead of directly checking strings like 'i', 'l', 'd'.
+
+```ts
+  // Example of getting the char code
+  buffer[start] === "i".charCodeAt(0)
+```
+
+
+**Step 4: Test on a real torrent file**
+So I downloaded the .torrent file from LibreOffice to test out my new decoder, imported with a simple CLI script - and what happened? It didn't work...
+
+It turns out I had missed a few edge cases, I mixed up some return indexes, I forgot to return in certain locations, but after a while, success!
+
+I received this in the console :
+
+```
+{
+  decodedValue: {
+    announce: <Buffer 68 74 74 70 3a 2f 2f 74 72 61 63 6b 65 72 2e 64 6f 63 75 6d 65 6e 74 66 6f 75 6e 64 61 74 69 6f 6e 2e 6f 72 67 3a 36 39 36 39 2f 61 6e 6e 6f 75 6e 63 ... 1 more byte>,
+    'announce-list': [ [Array] ],
+    comment: <Buffer 4c 69 62 72 65 4f 66 66 69 63 65 5f 32 35 2e 38 2e 32 5f 4d 61 63 4f 53 5f 61 61 72 63 68 36 34 2e 64 6d 67>,
+    'created by': <Buffer 4d 69 72 72 6f 72 42 72 61 69 6e 2f 32 2e 31 39 2e 30>,
+    'creation date': 1759479565,
+    info: {
+      length: 300898753,
+      md5sum: <Buffer 33 36 36 32 65 33 38 33 65 37 61 65 66 31 36 39 31 32 63 64 32 64 30 32 33 35 64 32 35 37 30 32>,
+      name: <Buffer 4c 69 62 72 65 4f 66 66 69 63 65 5f 32 35 2e 38 2e 32 5f 4d 61 63 4f 53 5f 61 61 72 63 68 36 34 2e 64 6d 67>,
+      'piece length': 262144,
+      pieces: <Buffer 6a 53 6d b4 c2 63 1f f6 6a 24 90 d4 0c 22 84 d1 9e 2c 43 2e b6 21 a8 f0 36 b0 75 72 38 9b 1d f5 72 64 e2 3a b8 ed 86 38 ef 56 82 ad ee 80 76 0f 0b bf ... 22910 more bytes>,
+      sha1: <Buffer f2 b2 38 c0 0b 12 cc 0e f0 1a 60 cb ea 41 7e 4f 07 d5 34 87>,
+      sha256: <Buffer f6 e4 88 1a 78 71 34 dd b8 62 18 30 a5 8d c1 27 92 1a 3b 96 5e 29 9c b6 b8 c7 d6 83 9c fa 7b 68>
+    },
+    sources: [
+      <Buffer 68 74 74 70 73 3a 2f 2f 6d 69 72 72 6f 72 2e 66 72 65 65 64 69 66 2e 6f 72 67 2f 54 44 46 2f 6c 69 62 72 65 6f 66 66 69 63 65 2f 73 74 61 62 6c 65 2f ... 55 more bytes>,
+      <Buffer 68 74 74 70 73 3a 2f 2f 64 6f 77 6e 6c 6f 61 64 2e 6e 75 73 2e 65 64 75 2e 73 67 2f 6d 69 72 72 6f 72 2f 74 64 66 2f 6c 69 62 72 65 6f 66 66 69 63 65 ... 63 more bytes>
+    ],
+    'url-list': [
+      <Buffer 68 74 74 70 73 3a 2f 2f 6d 69 72 72 6f 72 2e 66 72 65 65 64 69 66 2e 6f 72 67 2f 54 44 46 2f 6c 69 62 72 65 6f 66 66 69 63 65 2f 73 74 61 62 6c 65 2f ... 55 more bytes>,
+      <Buffer 68 74 74 70 73 3a 2f 2f 64 6f 77 6e 6c 6f 61 64 2e 6e 75 73 2e 65 64 75 2e 73 67 2f 6d 69 72 72 6f 72 2f 74 64 66 2f 6c 69 62 72 65 6f 66 66 69 63 65 ... 63 more bytes>
+    ]
+  },
+  index: 23909
+}
+
+```
+
+A beautiful mess.
+
+The next step will be finding out what all this means and attempts to extract the relevant data from this *.torrent* file, create a **HTTP GET** request and retrieve the list of peers. 
+
+That's what I will be looking forward to doing in Part 2
+
+---
+ ### Helpful Links
+ - [BitTorrent Spec](https://www.bittorrent.org/beps/bep_0003.html)
+ - [Bencoding - Wikipedia](https://en.wikipedia.org/wiki/Bencode)
+ - [Buffer Documentation](https://nodejs.org/api/buffer.html)

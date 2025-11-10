@@ -37,6 +37,7 @@ Lists/Dictionaries were trickier, but in the end its just plugging those values 
 
 
 **Step 2: Encoding**
+
 This was even easier, e.g. given a string "spam", just return its length with a colon ":" -> 4:spam.
 Encoding numbers are similar:
 
@@ -71,6 +72,7 @@ const encodeObject = (value: { [key: string]: any }): string => {
 ```
 
 **Step 3: Modify to handle Buffers**
+
 After a bit of back and forth, I decided that to allow both strings and buffers in the decode function, 
 I would just convert any String to buffer and then decode like that. 
 This included modifying the checks to account for the charCodeAt instead of directly checking strings like 'i', 'l', 'd'.
@@ -82,6 +84,7 @@ This included modifying the checks to account for the charCodeAt instead of dire
 
 
 **Step 4: Test on a real torrent file**
+
 So I downloaded the .torrent file from LibreOffice to test out my new decoder, imported with a simple CLI script - and what happened? It didn't work...
 
 It turns out I had missed a few edge cases, I mixed up some return indexes, I forgot to return in certain locations, but after a while, success!

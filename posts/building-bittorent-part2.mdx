@@ -1,13 +1,155 @@
 ---
 title: 'Building a BitTorrent Client - Part 2'
 publishedAt: '2025-11-13'
-summary: 'Not so buff now'
+summary: 'Not so buff now.'
 published: 'false'
 ---
 
-![laptop](https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fGNvZGluZ3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900)
+![laptop](https://images.unsplash.com/photo-1625535069654-cfeb8f829088?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNvbXB1dGVyJTIwc2NpZW5jZXxlbnwwfHwwfHx8MA%3D%3D)
+
+If you missed **Part 1** you can find it [here](https://www.adamshelley.com/posts/building-bittorent-part1)
+
+Onwards we go! The next step will be to extract the relevant data from this .torrent file, create a HTTP GET request and retrieve the list of peers. 
 
 
+**Step 0**
+
+Before doing anything I need to read the torrent file into my node app. To do this I simply run the file with the .torrent file location as an arg. Like a mini-cli. I set this up so I could just run this and it works.
+
+> node cli.ts ../torrents/test.torrent
+
+
+**Step 1**
+
+The goal of this step is to decode the "announce" and "info" objects. This can be done using our handy bencoding functions we did in part 1.
+
+I pulled out separately the whole decoded message and the info section (I found out I needed the raw version of this later on).
+
+```ts
+const searchString = "4:info";
+const position = buffer.indexOf(searchString);
+const infoStart = position + searchString.length;
+const decoded = decode(buffer, 0);
+const infoSection = decode(buffer, infoStart);
+```
+
+This got me in a place where I could start to build out the http request and assembler the headers.
+
+**Step 2**
+
+This step deals with getting the right data to build the header object.
+
+In this part I created a function to help pull out relevant parts of the torrent file so the resulting object looked like this: 
+
+```ts
+return {
+	url: announceURL.toString("utf8"),
+	info_hash: hashedInfo,
+	peer_id: createPeerId(),
+	port: 6881,
+	uploaded: 0,
+	downloaded: 0,
+	left: length,
+	compact: 1,
+};
+```
+
+I followed the BitTorrent spec to find out what these should be: 
+
+**URL**: a utf-8 string of the announce URL pulled from the decoded bencoded torrent object.
+
+**info_hash**: this is the raw info section I pulled from earlier as "infoSection", the info had to be hashed as per the spec: 
+
+```ts
+const hashedInfo = crypto.createHash("sha1").update(rawInfoBytes).digest();
+```
+
+**peer_id**: The spec said this needed to be a random 12 bytes prefixed with an ID you give your client. The AS001 could be anything, this is how I handled it:
+
+```ts
+const createPeerId = () => {
+	const prefix = Buffer.from("-AS0001-");
+	const random = crypto.randomBytes(12);
+	return Buffer.concat([prefix, random]);
+};
+```
+
+**port**: defaulted to 6881
+
+**uploaded**: defaulted to 0
+
+**left**: Calculated from the info.length
+
+**compact**: Defaulted to 1
+
+
+With that the all the pieces are in place to assemble the URL to fetch the peer information required.
+
+**Step 3**
+
+The goal of this section is to get a peer list of IPs and PORTS.
+
+This is how the end URL looked:
+
+```ts
+const assembledURL = `${trackerUrl}?info_hash=${info_hash_converted}&peer_id=${peer_id_converted}&port=${port}&uploaded=${uploaded}&downloaded=${downloaded}&left=${left}&compact=${compact}`;
+``` 
+
+Out of all these values that need to be slotted in, two need to be modified before we do send the request
+
+- info_hash
+- peer_id
+
+These two need to be modified by converting buffer to hex and adding a % to the start. Which I did like so: 
+
+```ts
+const bufferToHex = (buffer: Buffer) => {
+	return [...new Uint8Array(buffer)]
+	.map((x) => "%" + x.toString(16).padStart(2, "0"))
+	.join("");
+};
+```
+
+How did I find this out? I tried all the wrong ways first! I directly put in the url - didn't work, missed out the '%' - didn't work, etc etc.
+
+This will return a response, which I converted to a buffer and decoded with the newly created bencoder functions (turning out to be very helpful!)
+
+The peers IP and port are given per 6 bytes of the buffer, so loop through every 6 bytes and split the first 4 to become the IP and the last 2 to become PORT.
+
+Something like:
+
+```ts
+  
+const parsePeer = (peerBuffer: Buffer) => {
+	const IP = peerBuffer.subarray(0, 4);
+	const PORT = peerBuffer.subarray(4, 6);
+	const stringIP = Array.from(IP).join(".");
+	const stringPORT = PORT.readUInt16BE(0);
+
+	return { ip: stringIP, port: stringPORT };
+};
+```
+
+
+> Just a side note, I had no idea what any of these Buffer methods (.subarray(), .readUInt16BE()) did before exploring this project. So I had to read documentation, and Google to find out what does what.
+
+
+When all is said and done (with tweaks and fixes here and there) the result appeared in the console:
+
+```
+STATUS: 200
+Got  50  peers
+Peer 0 is ip: 192.99.233.115 port: 6130
+Peer 1 is ip: 67.169.223.61 port: 6889
+Peer 2 is ip: 71.161.110.90 port: 60000
+Peer 3 is ip: 185.111.109.15 port: 42933
+Peer 4 is ip: 71.126.144.178 port: 6881
+Peer 5 is ip: 85.119.221.147 port: 6001
+...
+```
+
+
+**Part 3** will look into the peer encoding and decoding and performing the handshake. I suspect this will be a more complicated job but I'm ready for the challenge!
 
 ---
  ### Helpful Links

@@ -1,0 +1,148 @@
+---
+title: 'Building a BitTorrent Client, Part 3'
+publishedAt: '2026-01-24'
+summary: 'A healthy handshake.'
+published: 'true'
+---
+
+![Data](https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?q=80&w=2674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+
+See the previous 2 parts here:
+
+[Part 1 - The start of the journey](https://www.adamshelley.com/posts/building-bittorent-part1)
+
+[Part 2 - Not so buff now](https://www.adamshelley.com/posts/building-bittorent-part2)
+
+In this part I am going to build the peer protocol, connect to a peer, and get a handshake back. This part took me longer for me to figure out, there is more fiddling with buffers directly and required a lot of trial and error.
+
+First of all, what is a peer protocol? What is a peer? What is a handshake? 
+
+Again I am referencing the BitTorrent Spec for this: [Spec](https://www.bittorrent.org/beps/bep_0003.html). This document is dense with information and requires a bit of re-reading, or at least it did for me.
+
+My understanding is this: 
+
+**A peer protocol** is the way that BitTorrent peers exchange data, a handshake is performed and then a stream of messages.
+
+**A peer** is the end user, both downloader and uploader.
+
+**A handshake** is the initial contact between peers. The format is set, and ensures both peers are working on the same torrent file.
+
+### Building the peer protocol
+
+The main purpose of this is to encode and decode the messages with the correct IDs and provide data if required, e.g. Choke, Unchoke, request etc.
+
+For the most part its just going through the BitTorrent spec one-by-one and creating a way for the buffers to be encoded or decoded into the correct format, and passed onto other parts of the code correctly.
+
+I wont go through each one, but I will link the GitHub code for reference. (This is my attempt, again probably not the best/fastest/strongest way).
+
+
+**Decoding the handshake**
+
+```ts
+export const decodeHandshake = (encoded: Buffer) => {
+  const protocolLength = encoded[0];
+  const protocol = encoded.subarray(1, 20).toString("utf8");
+  const reserved = encoded.subarray(20, 28);
+  const infoHash = encoded.subarray(28, 48);
+  const peerId = encoded.subarray(48, 68);
+
+  if (protocolLength !== 19) throw new Error("Protocol Length is incorrect");
+  if (protocol !== "BitTorrent protocol")
+    throw new Error("Protocol is incorrect");
+
+  return {
+    first_byte: protocolLength,
+    bittorrentProtocol: protocol,
+    reserved,
+    info_hash: infoHash,
+    peer_id: peerId,
+  };
+};
+```
+
+The information pulled out of the initial Buffer is:
+1) Protocol Length (byte 0) - should be 19 according to the spec
+2) Protocol String (bytes 1-19) - The string 'BitTorrent protocol'
+3) Reserved Bytes (bytes 20-27) - Future protocol extensions
+4) Info Hash (bytes 28-47) - 20-byte SHA1 hash identifying the torrent
+5) Peer Id (bytes 48-67) - identify the specific peer
+
+
+Subarray allows us to take parts of the buffer. Like **.slice()** does in regular ol' Javascript.
+In this case, I am taking the buffer sent to us, and grabbing certain parts of it to check for the correct information.
+
+Another example, this is for encoding a *request* to send to the socket connection.
+
+```ts
+export const encodeRequest = (
+  pieceIndex: number,
+  offset: number,
+  length: number
+) => {
+	  const buffer = Buffer.alloc(17);
+	  buffer.writeUInt32BE(13, 0);
+	  buffer[4] = 6;
+	
+	  buffer.writeUInt32BE(pieceIndex, 5);
+	  buffer.writeUInt32BE(offset, 9);
+	  buffer.writeUInt32BE(length, 13);
+	
+	  return buffer;
+};
+```
+
+In this function I created the buffer, allocated the correct amount of bytes and then filled the buffer with the byte version of the ID, index, offset, and length.
+
+I followed the spec, and created a function to encode and decode each type of message in the protocol.
+See the link here for the full file: [peer-protocol.ts](https://raw.githubusercontent.com/AdamShelley/bittorent-client/refs/heads/3.-connect-to-peers/src/peer-protocol/peer-protocol.ts)
+
+---
+### How to use this protocol?
+
+In another file, I used the encode handshake I had just created with the info_hash and the peer_id gained from the previous steps.
+I then created the socket and sent the handshake, at first I tried to just get 1 peer to respond.
+
+The result was a handshake back - which my decode handshake function can then handle. 
+
+```ts
+const socket = net.createConnection(PEER_PORT, PEER_IP, () => {
+	console.log(`Connected to ${PEER_IP}:${PEER_PORT}`);
+	socket.write(handshake);
+	console.log("Handshake sent.");
+});
+
+socket.on("connect", () => {
+	console.log("Connected");
+});
+
+socket.on("data", (data) => {
+	if (!isHandshakeDone) {
+		const res = decodeHandshake(data);
+		console.log("🤝 Handshake received:", res);
+		isHandshakeDone = true;
+	} else {
+		parseMessage(data);
+	}
+});
+```
+
+To handle all the different requests I thought I would be best to create a couple of classes. 
+
+1) A Coordinator Class - Handles the overall download, to select pieces, assign downloads for each peer.
+2) A Peer Class - This will be a class for each peer I connect to, to push through requests and received data.
+
+In doing this I could then handle a peer instance for each peer in my peerlist. The coordinator could keep track of all of these peers and send the various handshakes, and piece requests. 
+
+In the end, success - a handshake is made, and so far - no data at all is transferred. So we are still a little ways off from a working torrenting program. But we are getting there. 
+
+---
+
+I found this part both interesting and challenging, Its definitely pushing me out of my comfort zone dealing with buffers and bytes, so I am glad I took up this project.
+
+The next part will continue with the final piece of the puzzle to get a torrent downloaded: Requesting pieces, assembling pieces, building final files, closing the torrent.
+
+
+---
+ ### Helpful Links
+ - [BitTorrent Spec](https://www.bittorrent.org/beps/bep_0003.html)
+ - [Buffer Documentation](https://nodejs.org/api/buffer.html)

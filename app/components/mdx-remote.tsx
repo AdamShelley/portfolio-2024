@@ -14,15 +14,15 @@ import { ProseExemptBreadcrumbs } from "./prose-exempt-breadcrumbs";
 
 const ConfettiMaker = dynamic(
   () => import("@/posts/components/ConfettiMaker"),
-  { ssr: false }
+  { ssr: false },
 );
 const CarouselComponent = dynamic(
   () => import("./carousel").then((mod) => mod.CarouselComponent),
-  { ssr: false }
+  { ssr: false },
 );
 const ClickableImage = dynamic(
   () => import("@/projects/components/ClickableImage"),
-  { ssr: false }
+  { ssr: false },
 );
 
 function RoundedImage(props: any) {

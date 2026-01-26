@@ -4,6 +4,20 @@ import Card from "./card";
 const IS_DEV = process.env.NODE_ENV === "development";
 
 const projects = [
+    {
+    separator: true,
+    label: "New",
+    style: "default",
+  },
+  {
+    project: {
+      name: "BitTorrent Client",
+      filename: "bittorrent-client",
+      skills: ["NodeJS", "Electron", "React"],
+      description: "A BitTorrent Client from scratch",
+      published: false,
+    },
+  },
   {
     separator: true,
     label: "UI Components",

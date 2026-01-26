@@ -28,23 +28,23 @@ const BlogLinks = () => {
             href={`/posts/${post.slug}`}
           >
             <div className="group flex justify-between align-center w-full rounded-sm cursor-pointer transition duration-200 mt-2 gap-2">
-              <div className="flex flex-col">
-                <p className="transition dark:text-slate-200  dark:hover:text-white">
-                  {post.metadata.title}
-                </p>
-                <p className="text-md text-zinc-500/90 dark:text-zinc-400  mt-1 leading-6">
-                  {post.metadata.summary}
-                </p>
-              </div>
+              <div className="flex flex-col flex-1 min-w-0">
+                  <p className="transition dark:text-slate-200 dark:hover:text-white break-words">
+                    {post.metadata.title}
+                  </p>
+                  <p className="text-md text-zinc-500/90 dark:text-zinc-400 mt-1 leading-6 break-words">
+                    {post.metadata.summary}
+                  </p>
+                </div>
               <div className="flex items-center justify-center">
                 <Badge
-                  variant="skill"
-                  className="text-[10px] font-normal rounded-sm h-[2rem]"
-                >
-                  {post.metadata.publishedAt
-                    ? format(new Date(post.metadata.publishedAt), "yyyy.MM.dd")
-                    : "No date"}
-                </Badge>
+                variant="skill"
+                className="text-[10px] font-normal rounded-sm h-[2rem] w-[5.5rem] flex items-center justify-center shrink-0"
+              >
+                {post.metadata.publishedAt
+                  ? format(new Date(post.metadata.publishedAt), "yyyy.MM.dd")
+                  : "No date"}
+              </Badge>
               </div>
               <Suspense fallback={<p className="h-6" />}></Suspense>
             </div>

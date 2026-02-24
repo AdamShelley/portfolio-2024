@@ -16,7 +16,8 @@ type Props = {
 };
 
 export function CarouselComponent({ images, videoArray }: Props) {
-  const hasContent = images.length > 0 || (videoArray && videoArray.length > 0);
+  const hasContent =
+    images?.length > 0 || (videoArray && videoArray.length > 0);
   const mediaWidth = 250;
   const mediaHeight = 200;
 
@@ -24,7 +25,7 @@ export function CarouselComponent({ images, videoArray }: Props) {
     <div className="flex justify-center items-center w-full ">
       <Carousel className="w-full md:max-w-md lg:max-w-lg justify-center ">
         <CarouselContent>
-          {images.map((image, index) => (
+          {images?.map((image, index) => (
             <CarouselItem key={`image-${index}`}>
               <Card className="border-none bg-transparent shadow-none ">
                 <CardContent className="flex items-center justify-center p-0 ">

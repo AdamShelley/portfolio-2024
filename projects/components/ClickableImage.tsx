@@ -28,14 +28,14 @@ const ClickableImage = ({ src, alt, width, height, fill, caption }: Props) => {
   }, [isOpen]);
 
   return (
-    <div className="inline-block">
+    <div className="inline-block w-full h-full">
       {/* Thumbnail */}
-      <div className="relative z-30">
+      <div className="relative z-30 w-[100%] h-[100%]">
         <Image
           src={src}
           alt={alt}
-          width={width}
-          height={height}
+          width={width ?? 2248}
+          height={height ?? 100}
           className="rounded-lg cursor-pointer mb-2"
           onClick={() => setIsOpen(true)}
         />
@@ -60,7 +60,7 @@ const ClickableImage = ({ src, alt, width, height, fill, caption }: Props) => {
               <Image
                 src={src}
                 alt={alt}
-                width={width || 100}
+                width={width || 2248}
                 height={height || 100}
                 priority
                 className="object-contain rounded-lg !mt-0"

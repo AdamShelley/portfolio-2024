@@ -26,7 +26,9 @@ const ClickableImage = dynamic(
 );
 
 function RoundedImage(props: any) {
-  return <Image alt={props.alt} className="rounded-lg" {...props} />;
+  return (
+    <Image fill={true} alt={props.alt} className="rounded-lg" {...props} />
+  );
 }
 
 function CustomLink(props: any) {

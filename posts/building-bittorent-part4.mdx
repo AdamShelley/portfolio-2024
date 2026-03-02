@@ -1,0 +1,192 @@
+---
+title: 'Building a BitTorrent Client, Part 4'
+publishedAt: '2026-03-02'
+summary: 'All the pieces fall into place.'
+published: 'true'
+---
+
+![Data](https://images.unsplash.com/photo-1506818144585-74b29c980d4b?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTB8fGRhdGF8ZW58MHx8MHx8fDA%3D)
+
+See the previous 3 parts here:
+
+[Part 1 - The start of the journey](https://www.adamshelley.com/posts/building-bittorent-part1)
+
+[Part 2 - Not so buff now](https://www.adamshelley.com/posts/building-bittorent-part2)
+
+[Part 3 - A Healthy Handshake](https://www.adamshelley.com/posts/building-bittorent-part3)
+
+
+In what I think will be the fourth and final part of this quest to build a BitTorrent client, I will be trying to link with other peers, request pieces from them, assemble the pieces, put all pieces together, and then close the torrent. 
+
+This part was quite the monster to work on, there are a lot of moving parts just to get one piece downloaded, and its quite difficult to test during this process. 
+
+**First things first - Coordinating the whole thing** 
+
+Last time I discussed using a coordinator class to handle the peers in a download, and thats exactly what I did. The idea being that the coordinator can orchestrate the whole download, manage file pieces, keep track of whats being downloaded and requested from each peer. 
+
+When pulling in the torrent file, I pass the file, headers and all, to the Coordinator, the coordinator then sends the requests to each peer like so:
+
+```ts
+startPeerConnection = () => {
+	if (!this.peerList || !this.peerList.length || !this.headers) return;
+	// Connect to up to 50 peers
+	
+	const peersToConnect = this.peerList.slice(0, 250);
+	
+	peersToConnect.forEach((peer) =>
+		this.peers.push(
+			new Peer(
+			peer,
+			this.headers!,
+			this.pieceManager.completedPieces,
+			this.totalPieces
+			)
+		)
+	);
+	console.log(`Connecting to ${this.peers.length} peers...`);
+	this.peers.forEach((peer: Peer) => this.attachListeners(peer));
+};
+```
+
+Note: I later added a Piece Manager and a File Manager class to separate the logic for assembling pieces and reading/writing to files.
+
+The peer then connects, handles its own handshake, and emits various events back to the coordinator, this depends on the ID as decoded in the peer-protocol.
+
+For example:
+
+```ts
+ if (parsed.id === 2) {
+            // Interested
+            this.emit("interested");
+            this.peerInterested = true;
+          } else if (parsed.id === 3) {
+            // Not interested
+            this.emit("not-interested");
+            this.peerInterested = false;
+          } else if (parsed.id === 5) {
+            if (parsed?.result?.bitfield) {
+              this.bitfield = parsed.result.bitfield;
+            }
+          } else if (parsed.id === 1) {
+          
+          ... And so on
+
+```
+
+This is then caught in the coordinator:
+
+```ts
+  attachListeners(peer: Peer) {
+    peer.on("unchoke", () => this.onPeerUnchoked(peer));
+    peer.on("piece", (pieceData) => this.onPeerReceivePiece(peer, pieceData));
+    peer.on("disconnected", () => this.onPeerDisconnected(peer));
+    peer.on("request", (pieceData) => this.peerRequestPiece(peer, pieceData));
+    peer.on("interested", () => this.onPeerInterested(peer));
+    peer.on("not-interested", () => this.onPeerNotInterested(peer));
+  }  
+```
+
+
+The most important of these was onPeerReceivePiece. When triggered, it passed the incoming data to the Piece Manager, which verified the SHA1 hash, checked whether all blocks for that piece had arrived, and updated the internal state. Tracking what was complete, what was still in progress, and what still needed to be requested.
+
+
+**A note about UDP**
+
+When attempted to test this all out, I quickly found out that a good portion of Bittorrent trackers are in fact UDP (User Datagram Protocol), not HTTP. And so, to take a step forward, I had to take a couple of steps back and work on a separate version of the contact-tracker. Another protocol I had never heard of before this project!
+
+The basis for this is the Bittorrent UDP spec: [here](https://www.bittorrent.org/beps/bep_0015.html).
+Following that and after many hours of trial and error I was able to build a workable version. 
+
+An example of UDP requests:
+
+```ts
+const socket = dgram.createSocket("udp4");
+    let connectTransactionId: number;
+    let announceTransactionId: number;
+
+    const buffer = Buffer.alloc(16);
+    buffer.writeBigUInt64BE(4497486125440n, 0); // Magic Number
+    buffer.writeUInt32BE(0, 8); // action = connect
+    connectTransactionId = Math.floor(Math.random() * 0xffffffff);
+    buffer.writeUInt32BE(connectTransactionId, 12);    
+```
+
+In the end, it was about writing to the buffers and firing them off to the peer, the final results gives me something like this: 
+
+<ClickableImage src='/assets/bittorrent/pic2.png' alt="udp-success"  caption="" width={2248} height={1590} />
+
+**Piecing it all together**
+
+The Piece Manager class I mentioned earlier handles the pieces received to the coordinator, it then verifies the SHA1 hash, writes the piece to a file.
+I also decided to maintain a json file, that gets updated as every piece comes in - so the download could be stopped and restarted without having to download everything again. 
+
+When the coordinator detects all pieces are pieces have arrived, it then will request that the file is closed. 
+
+**And that is it - it works, and it downloads whole files now!**
+
+![Yes Meme](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.explicit.bing.net%2Fth%2Fid%2FOIP.0MSNehBmtvpW_z7NRMQsEAAAAA%3Fpid%3DApi&f=1&ipt=1d9bab4ae2a71dbc5df290eb282b14f3479ba61a572261e55d0b12905c929c28&ipo=images)
+
+But there are still improvements to be made.
+
+**Why is it so slow?**
+
+At first, the downloading was working - huzzah! But I found it to be incredibly slow. 1Mb/s? Is that all my torrenter could muster when I have gigabyte internet? What did I do wrong? 
+
+*Here are the main culprits I found*
+- Well after testing a few things, I realised that I was writing to the resume file after every piece, and it was synchronous. It was blocking the next piece from writing. I fixed this by debouncing the write to every 50 pieces or 30 seconds.
+- I was only requesting 5 blocks per piece at first, and every time a piece would arrive I would request the new one. This left peers idle and waiting for the next request.I fixed this by increasing the initial number of blocks to request, and kept the pipeline of requests full at all times. 
+
+**Endgame Mode**
+
+You will find if you build this that the last few pieces of the torrent take a rather long time, comparatively. This is likely because the pieces are rarer. 
+
+To solve this, you have to apply a scatter shot approach. When approaching the last 20 of so pieces, you set a flag to request the same piece from multiple peers at a time. Then the data gets saved from whatever peer sends the data first. Duplicate data will be arrived but ignored. 
+
+So you can see in the code, if in endgame mode, and the piece has already been requested - request again from another peer.
+```ts
+  for (let piece of this.piecesNeeded) {
+      if (
+        peer.hasPiece(piece) &&
+        (this.isEndgameMode || !this.inProgressPieces.has(piece))
+      ) {
+        peersPieces.push(piece);
+      }
+    }    
+```
+
+
+---
+
+
+**What have I learnt building this?**
+
+This wasn't really about building a successful torrenting app. They exist already, this was just a challenge to see if I could do it, and it turns out, over many evenings, and weekends - I can! 
+
+It was nice to delve into areas I have never played around with before, methods and functions I have never had to use in my day-to-day activities at work. Above all its about doing interesting things, for the sake of doing them. 
+
+
+**What is next?**
+
+There are so many areas that we could improve this program, just a few ideas: 
+
+**Seeding** - Bad form to just take, take, take!
+
+**Frontend app** - Currently this is just a CLI app, would be nice to have a way to interact with some UI.
+
+Magnet links - A much more convenient way of dealing with torrents.
+
+
+I think I will continue on with this a while and see where interest takes me. 
+
+---
+
+This was not meant to be a step by step guide for anyone to build a BitTorrent app, just a series of thoughts, challenges, and reflections I went through while building it. If you take something on like this, I wish you good luck!
+
+And If you made it this far, thank you for reading.
+
+
+---
+ ### Helpful Links
+ - [UDP Spec](https://www.bittorrent.org/beps/bep_0015.html)
+ - [BitTorrent Spec](https://www.bittorrent.org/beps/bep_0003.html)
+ - [Buffer Documentation](https://nodejs.org/api/buffer.html)

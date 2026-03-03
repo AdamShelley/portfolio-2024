@@ -2,13 +2,18 @@ import React from "react";
 import { Badge } from "@/components/ui/badge";
 
 type Props = {
-  badges: string[];
+  badges: string[] | string;
 };
 
 const Badges = ({ badges }: Props) => {
+  const badgeList = Array.isArray(badges)
+    ? badges
+    : typeof badges === "string"
+      ? badges.split(",").map((b) => b.trim())
+      : [];
   return (
     <div className="mb-10 mt-10">
-      {badges?.map((badge) => (
+      {badgeList.map((badge) => (
         <Badge
           key={badge}
           variant="skill"

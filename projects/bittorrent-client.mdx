@@ -1,7 +1,7 @@
 ---
 title: 'BitTorrent Client'
-summary: 'A demo of a BitTorrent Client from scratch'
-published: 'false'
+summary: 'A BitTorrent Client from scratch'
+published: 'true'
 ---
 
 <Badges badges="Node.js, Electron, React"/>
@@ -9,7 +9,7 @@ published: 'false'
 
 # BitTorrent Client
 
-> A functional BitTorrent Client built From scratch in node.js and Typescript without using any third-party BitTorrent libraries. Capable of downloading and seeding files across a peer-to-peer network.
+> A functional BitTorrent Client built from scratch in node.js and Typescript without using any third-party BitTorrent libraries. Capable of downloading and seeding files across a peer-to-peer network.
 
 {/* [GitHub Link](#) | [Blog Series](#) */}
 
@@ -32,21 +32,22 @@ to include magnet link support and a frontend UI.
 
 ## Features
 
-- **Torrent file downloads** - A working BitTorrent app built in Typescript, accepts .torrent files and downloads as expected.
 - **Multi-torrent support** - Handles multiple torrents at the same time. 
 - **Magnet link support** - Handles magnet links to download torrents.
-- **UDP tracker support** - Both HTTP and UDP are handled.
-- **Seeding** - To make sure we don't just take, take, take.
-- **Resume interrupted downloads** - Persistent downloads, pauses the pieces and continues on restart.
+- **UDP tracker support** - Implements BEP 15 connection and handshake flow, distinct from the HTTP tracker protocol.
+- **Seeding** - Implements the full upload side of the protocol, so the client gives back to the swarm rather than just consuming it.
+- **Resume interrupted downloads** - Persistent downloads, downloads survive restarts without requesting completed pieces.
 - **Electron desktop frontend** - A minimal desktop application for proof of concept.
 
 ---
 
 ## How It Works
 
-Short paragraph explaining the high level flow - torrent file in, tracker contact, peer connections, piece assembly, file out. 
+A .torrent file is read in, using a custom bencoding implementation, trackers communicate over HTTP or UDP (BEP15), and peer connections
+are established via the BitTorrent protocol. 
 
-![Insert screenshot of download progress test.com)
+An Orchestration layer coordinates piece requests across peers, managing state across concurrent connections. Once all pieces are verified against
+their SHA1 hashes, they are assembled into the final file structure and the torrent is marked as complete.
 
 <ClickableImage src='/assets/bittorrent/pic3.png' alt="app-screenshot-1"  caption="Options" width={2248} height={1590} />
 <ClickableImage src='/assets/bittorrent/pic4.png' alt="app-screenshot-1"  caption="Multi-torrent support" width={2248} height={1590} />
@@ -63,7 +64,14 @@ Short paragraph explaining the high level flow - torrent file in, tracker contac
 
 ## What I Learned
 
-Insert 2-3 sentences from your part 4 conclusion - the honest reflection on what this taught you.
+Building this forced me to work closer to the metal than Web Development usually does. 
+Manually parsing Buffers, managing sockets, and learning the hard way that writing to disk too frequently can silently strangle your download speed.
+
+The protocol is also unforgiving, sending the wrong message type to a peer and they'll just disconnect, no explanation. 
+Debugging that kind of thing taught me to read specs carefully.
+
+The biggest lesson was how fast a single coordinator class turns into a mess. 
+By the end it was juggling piece tracking, peer state, and file I/O all at once, pulling it apart was painful but worth it.
 
 ---
 

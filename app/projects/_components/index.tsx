@@ -15,7 +15,7 @@ const projects = [
       filename: "bittorrent-client",
       skills: ["Node.js", "Electron", "React"],
       description: "A BitTorrent Client from scratch",
-      published: false,
+      published: true,
     },
   },
   {

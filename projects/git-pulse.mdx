@@ -1,50 +1,75 @@
 ---
-title: 'git-pulse'
-summary: 'Simple Github desktop client.'
+title: 'Git-Pulse'
+summary: 'A minimal GitHub desktop client with AI-powered changelog generation'
 published: 'true'
 ---
 
-
-<Badges badges={['Tauri','Typescript', 'React', 'Rust']}/>
-
+<Badges badges="Tauri, TypeScript, React, Rust"/>
 
 
 # Git-Pulse
-Git-Pulse is a minimal **Github** client which was born out of my desire for a Github system to list the issues I am working on, make comments, 
-and plug in my own AI API key and have it summarise or export issues I've completed. And to learn more about desktop applications - of course!
 
-
-<ClickableImage src='/assets/GitPulse/gitpulse1.png' alt="app-screenshot-1" caption="The dashboard"  />
-
-##  Challenge
-
-This was my first time working with Tauri, which recently released version 2. Tauri uses Javascript or Typescript on the Frontend, 
-and Rust on the backend. Having never used Rust before, it was a steep learning curve. 
-
-This is where using AI can shine, since I know Javascript/Typescript I am able to use AI like Claude 
-to help understand the different systems (like the way the types work & syntax), and then problem-solve when the AI is not fully accurate.
-
-
-<ClickableImage src='/assets/GitPulse/gitpulse2.png' alt="app-screenshot-1"  caption="The issue detail page" />
-
-
-
-## Features
-- Minimal Github client
-- Can list issues
-- Can create, edit, and delete commnets
-- You can add your own API Key and have it summarise an issue into a changelog using Anthropics AI **[Claude](https://claude.ai/)**.
-- Download the summarised info to a .md file.
-- Writing changelogs are something that gets forgotten about or ignored (**[Keep A Changelog](https://keepachangelog.com/en/1.1.0/)**), so I wanted to automate that part.
-
-
-
-<ClickableImage src='/assets/GitPulse/gitpulse3.png' alt="app-screenshot-1" caption="Example of the AI generated changelog"   />
-
+> A minimal GitHub desktop client for managing issues, writing comments, and generating AI-powered changelogs — built to scratch my own itch and learn Tauri along the way.
 
 <MarkdownButtons github="https://github.com/AdamShelley/git-pulse"/>
 
-### Helpful Links
+---
+
+## Overview
+
+<ClickableImage src='/assets/GitPulse/gitpulse1.png' alt="app-screenshot-1" caption="The dashboard" />
+
+Git-Pulse was born out of a frustration with GitHub's interface for day-to-day issue tracking. I wanted something minimal that let me list the issues I'm working on,
+make comments, and plug in my own AI API key to summarise or export completed issues as changelogs. It also became a vehicle for learning desktop app development with Tauri.
+
+---
+
+## Features
+
+- **Issue management** - List, view, and track GitHub issues in a clean minimal interface.
+- **Comment support** - Create, edit, and delete comments directly from the app.
+- **AI changelog generation** - Bring your own Anthropic API key and have [Claude](https://claude.ai/) summarise an issue into a formatted changelog entry.
+- **Markdown export** - Download the AI-generated summary as a `.md` file.
+- **Changelog automation** - Writing changelogs is easy to forget ([Keep A Changelog](https://keepachangelog.com/en/1.1.0/)); this automates the tedious part.
+
+---
+
+## How It Works
+
+The frontend is built in React/TypeScript and communicates with a Rust backend via Tauri's IPC bridge. GitHub's REST API handles issue and comment data,
+while the Anthropic API is called client-side using a user-supplied API key.
+
+Issue content is passed to Claude with a structured prompt, and the returned summary is formatted as a changelog entry ready to download.
+
+<ClickableImage src='/assets/GitPulse/gitpulse2.png' alt="app-screenshot-2" caption="The issue detail page" />
+<ClickableImage src='/assets/GitPulse/gitpulse3.png' alt="app-screenshot-3" caption="AI-generated changelog output" />
+
+---
+
+## Tech Stack
+
+- **Tauri v2** - Desktop app shell and Rust/JS IPC bridge
+- **Rust** - Backend logic and native OS integration
+- **React** - Frontend UI
+- **TypeScript** - Frontend logic and API communication
+
+---
+
+## What I Learned
+
+This was my first time using both Tauri and Rust. Tauri's v2 release dropped right as I started, which meant the ecosystem was still catching up — 
+documentation gaps and breaking changes were part of the deal.
+
+Rust's type system and ownership model are unforgiving in a way that JavaScript never is. Knowing TypeScript helped me reason about types conceptually,
+but the borrow checker is its own thing entirely. Using AI to bridge the gap — understanding syntax and idioms — worked well as long as I stayed critical
+about what it produced rather than copy-pasting blindly.
+
+The biggest takeaway was how useful constraints are. A small, focused app with a clear purpose is a much better learning project than something sprawling.
+Git-Pulse does one thing well, and that made it easier to finish.
+
+---
+
+## Helpful Links
 
 - [Tauri V2](https://v2.tauri.app/)
 - [Rust](https://www.rust-lang.org/)

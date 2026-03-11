@@ -51,7 +51,8 @@ export default function Projects({ params }: any) {
 
       <article
         className="prose prose-quoteless prose-neutral dark:prose-invert w-[85vw] 
-      lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mb-20 prose-pre:rounded-xl prose-pre:shadow-4 [&_li]:text-md"
+  lg:w-[50vw] xl:w-[45vw] 2xl:w-[30vw] mb-20 prose-pre:rounded-xl prose-pre:shadow-4 
+  [&_li]:text-md [&_li]:my-0 [&_li_code]:text-sm [&_li_p]:my-0 [&_li_p]:inline"
       >
         <Link
           href="/projects"

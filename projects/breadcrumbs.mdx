@@ -8,31 +8,23 @@ published: 'true'
 
 # Breadcrumbs
 
-It is built using React, Framer Motion, and Tailwind CSS.
+> A breadcrumb component that can be copied into any React or Next app. The breadcrumbs can be built based on the users URL or manually if you want to really customise.
 
+<MarkdownButtons github="https://github.com/AdamShelley/adui/tree/main/packages/Breadcrumb"/>
 
+---
 
+## Demo
 
-&nbsp;
 
 <Breadcrumbs mode="url"/>
 
-&nbsp;
 
-###  Description
-A breadcrumb component that can be copied into any React or Next app. 
-The breadcrumbs can be built based on the users URL or manually as a if you want to really customise.
+---
 
-&nbsp;
+## Installation
 
-
-
-
-### Usage
 1. Install the dependencies
-
-&nbsp;
-
 
 **NPM**
 ```bash
@@ -43,7 +35,7 @@ npm install motion tailwind tailwindmerge clsx
 bun add motion tailwind tailwindmerge clsx
 ```
 
-2. Add the util file for tailwind merge 
+2. Add the util file for tailwind merge
 <span className="ml-2 bg-[#eeeeee] p-1 px-3 text-black rounded-sm">@/utils/cn.ts</span>
 
 ```tsx
@@ -55,7 +47,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 ```
 
-2. Copy the source code into your project
+3. Copy the source code into your project
 <span className="ml-2 bg-[#eeeeee] p-1 px-3 text-black rounded-sm">@/components/breadcrumbs.tsx</span>
 
 ```tsx
@@ -126,7 +118,6 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
       ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
       : false;
 
-  // Use explicit user preference if provided, otherwise respect system preference
   const shouldDisableAnimations =
     noAnimations !== undefined ? noAnimations : prefersReducedMotion;
 
@@ -148,19 +139,16 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
 
   const checkIfCurrentPath = useCallback(
     (href: string) => {
-      // Normalize paths by removing trailing slashes and ensuring they start with /
       const normalizedCurrentPath =
         currentPath === "" ? "/" : currentPath.replace(/\/$/, "");
       const normalizedHref = href.replace(/\/$/, "") || "/";
 
-      // Special case for home button
       if (normalizedHref === homeHref || normalizedHref === "/") {
         return (
           normalizedCurrentPath === "/" || normalizedCurrentPath === homeHref
         );
       }
 
-      // For other paths, check if they match exactly
       return normalizedCurrentPath === normalizedHref;
     },
     [currentPath, homeHref]
@@ -178,14 +166,11 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
         };
       });
 
-      // Limit the number of items based on maxItems
       if (newItems.length > maxItems) {
         const startIndex = newItems.length - maxItems;
         const newItemsToShow = newItems.slice(startIndex);
         setVisibleItems(newItemsToShow);
-
         const hiddenItemsReversed = newItems.slice(0, startIndex).reverse();
-
         setHiddenItems(hiddenItemsReversed);
       } else {
         setVisibleItems(newItems);
@@ -267,7 +252,6 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
           </motion.a>
         ) : null}
 
-        {/* Home separator - only show if home is visible and there are visible items */}
         {showHome && visibleItems.length > 0 && variant === "default" ? (
           <div className="flex items-center justify-center h-full text-gray-400 size-4">
             {separator === "chevron" && <ChevronRight />}
@@ -330,9 +314,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
                           whileHover={
                             shouldDisableAnimations
                               ? undefined
-                              : {
-                                  transition: { duration: 0.1 },
-                                }
+                              : { transition: { duration: 0.1 } }
                           }
                           onClick={() => {
                             if (onItemClick) {
@@ -393,14 +375,12 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
                   key={index}
                   className="flex items-center justify-center gap-1"
                 >
-                  {/* LOGO */}
                   {item.icon ? (
                     <span className="text-slate-400 dark:text-white/80">
                       {item.icon}
                     </span>
                   ) : null}
 
-                  {/* LINK */}
                   {item.href && !checkIfCurrentPath(item.href) ? (
                     <motion.a
                       className={cn(
@@ -415,9 +395,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
                       whileHover={
                         shouldDisableAnimations
                           ? undefined
-                          : {
-                              transition: { duration: 0.1 },
-                            }
+                          : { transition: { duration: 0.1 } }
                       }
                       onClick={() => {
                         if (onItemClick) {
@@ -460,21 +438,52 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
     </nav>
   );
 };
+```
+
+---
+
+## Usage
+
+#### Basic
+```tsx
+export const YourComponent = () => {
+  return (
+
+    <Breadcrumb mode="url"/>
+
+  )
+}
+```
+
+#### Custom items
+```tsx
+
+<Breadcrumb
+  mode="custom"
+  items={[
+    { label: "Home", href: "/" },
+    { label: "Projects", href: "/projects" },
+    { label: "Breadcrumbs" },
+  ]}
+/>
 
 ```
 
-#### Basic Usage
-```ts
-  export const YourComponent = () => {
-    return (
-      <Breadcrumb mode="url"/>
+---
 
-      // Your content or {children} etc
-    )
-  }
-```
+## Props
 
-
-For a full list of props - see the github link.
-
-<MarkdownButtons github="https://github.com/AdamShelley/adui/tree/main/packages/Breadcrumb"/>
+- **`mode`** `"url" | "custom"` — Build crumbs from the URL or supply them manually
+- **`items`** `BreadcrumbItem[]` — Required when `mode="custom"`
+- **`separator`** `"chevron" | "slash" | "line" | "custom"` — Separator style *(default: `"chevron"`)*
+- **`customSeparator`** `ReactNode` — Custom separator element when `separator="custom"`
+- **`showHome`** `boolean` — Show a home icon at the start *(default: `true`)*
+- **`homeLabel`** `string` — Label next to the home icon
+- **`homeHref`** `string` — href for the home link *(default: `"/"`)*
+- **`variant`** `"default" | "pills" | "bordered"` — Visual style *(default: `"default"`)*
+- **`maxItems`** `number` — Max visible crumbs before collapsing into `...` *(default: `5`)*
+- **`collapsible`** `boolean` — Allow the breadcrumb to be collapsed *(default: `false`)*
+- **`noAnimations`** `boolean` — Disable animations (respects `prefers-reduced-motion` by default)
+- **`onItemClick`** `(item, index) => void` — Click handler for crumb items
+- **`navClassName`** `string` — Class name for the `<nav>` wrapper
+- **`crumbClassNames`** `string` — Class name for individual crumb items

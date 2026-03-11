@@ -3,6 +3,7 @@ import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import React from "react";
 import rehypeHighlight from "rehype-highlight";
+import remarkGfm from "remark-gfm";
 import "./highlighter.css";
 import { CopyToClipboard } from "./copyToClipboard";
 import { GeistMono } from "geist/font/mono";
@@ -59,10 +60,20 @@ function CustomLink(props: any) {
 const CodeBlock = (props: any) => {
   const { className, children } = props;
 
+  if (!className) {
+    return (
+      <code
+        className={`${GeistMono.className} text-sm bg-white/10 rounded px-1 py-0.5`}
+      >
+        {children}
+      </code>
+    );
+  }
+
   return (
     <CopyToClipboard>
       <pre
-        className={`bg-transparent border-none ${GeistMono.className} max-h-[20vh] overflow-auto `}
+        className={`bg-transparent border-none ${GeistMono.className} max-h-[20vh] overflow-auto`}
       >
         <code>{children}</code>
       </pre>
@@ -86,7 +97,7 @@ let components = {
 
 const options = {
   mdxOptions: {
-    remarkPlugins: [],
+    remarkPlugins: [remarkGfm],
     rehypePlugins: [rehypeHighlight],
   },
 };

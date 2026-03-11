@@ -31,7 +31,6 @@ export interface BreadcrumbProps {
   noAnimations?: boolean;
 }
 
-// Basic Line Separator (instead of chevron)
 export const LineSeparator = () => (
   <div className="flex items-center justify-center">
     <div className="h-[1px] w-3 bg-gray-800 rounded-xs dark:bg-white"></div>
@@ -57,15 +56,17 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
   const [visibleItems, setVisibleItems] = React.useState<BreadcrumbItem[]>([]);
   const [hiddenItems, setHiddenItems] = React.useState<BreadcrumbItem[]>([]);
   const [showHiddenDropdown, setShowHiddenDropdown] = useState<boolean>(false);
-  const [currentPath, setCurrentPath] = useState("");
+  const [currentPath, setCurrentPath] = useState<string | null>(null);
   const [collapsed, setCollapsed] = useState<boolean>(collapsible);
 
-  const prefersReducedMotion =
-    typeof window !== "undefined"
-      ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      : false;
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
-  // Use explicit user preference if provided, otherwise respect system preference
+  useEffect(() => {
+    setPrefersReducedMotion(
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    );
+  }, []);
+
   const shouldDisableAnimations =
     noAnimations !== undefined ? noAnimations : prefersReducedMotion;
 
@@ -87,26 +88,24 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
 
   const checkIfCurrentPath = useCallback(
     (href: string) => {
-      // Normalize paths by removing trailing slashes and ensuring they start with /
+      if (!currentPath) return false;
       const normalizedCurrentPath =
         currentPath === "" ? "/" : currentPath.replace(/\/$/, "");
       const normalizedHref = href.replace(/\/$/, "") || "/";
 
-      // Special case for home button
       if (normalizedHref === homeHref || normalizedHref === "/") {
         return (
           normalizedCurrentPath === "/" || normalizedCurrentPath === homeHref
         );
       }
 
-      // For other paths, check if they match exactly
       return normalizedCurrentPath === normalizedHref;
     },
-    [currentPath, homeHref]
+    [currentPath, homeHref],
   );
 
   const generateCrumbsFromUrl = useCallback(() => {
-    if (mode === "url") {
+    if (mode === "url" && currentPath) {
       const pathParts = currentPath.split("/").filter(Boolean);
       const newItems: BreadcrumbItem[] = pathParts.map((part, index) => {
         const href = `/${pathParts.slice(0, index + 1).join("/")}`;
@@ -117,15 +116,10 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
         };
       });
 
-      // Limit the number of items based on maxItems
       if (newItems.length > maxItems) {
         const startIndex = newItems.length - maxItems;
-        const newItemsToShow = newItems.slice(startIndex);
-        setVisibleItems(newItemsToShow);
-
-        const hiddenItemsReversed = newItems.slice(0, startIndex).reverse();
-
-        setHiddenItems(hiddenItemsReversed);
+        setVisibleItems(newItems.slice(startIndex));
+        setHiddenItems(newItems.slice(0, startIndex).reverse());
       } else {
         setVisibleItems(newItems);
       }
@@ -135,16 +129,15 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
   }, [mode, currentPath, maxItems, items]);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setCurrentPath(window.location.pathname);
-    }
-
+    setCurrentPath(window.location.pathname);
     if (mode === "url") {
       generateCrumbsFromUrl();
     } else if (mode === "custom" && items?.length) {
       setVisibleItems(items);
     }
   }, [mode, generateCrumbsFromUrl, items]);
+
+  if (!currentPath) return null;
 
   return (
     <nav
@@ -192,7 +185,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
               variant === "pills" &&
                 "rounded-full border dark:border-gray-600 px-3 py-1",
               variant === "bordered" &&
-                "rounded-sm border dark:border-gray-600 px-3 py-1"
+                "rounded-sm border dark:border-gray-600 px-3 py-1",
             )}
             href={homeHref}
             onClick={() => {
@@ -206,7 +199,6 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
           </motion.a>
         ) : null}
 
-        {/* Home separator - only show if home is visible and there are visible items */}
         {showHome && visibleItems.length > 0 && variant === "default" ? (
           <div className="flex items-center justify-center h-full text-gray-400 size-4">
             {separator === "chevron" && <ChevronRight />}
@@ -236,7 +228,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
                   "absolute top-6 left-0 bg-white rounded-sm z-10 mt-1 dark:bg-transparent",
                   variant !== "default" && "mt-6",
                   variant === "bordered" &&
-                    "rounded-sm border dark:border-gray-600 px-3 py-1 mt-5"
+                    "rounded-sm border dark:border-gray-600 px-3 py-1 mt-5",
                 )}
               >
                 {hiddenItems.map((item, index) => (
@@ -263,15 +255,13 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
                           className={cn(
                             "text-gray-500 hover:text-gray-900 transition-colors duration-200 overflow-auto whitespace-nowrap dark:text-white/90 hover:dark:text-white/80",
                             variant === "pills" &&
-                              "rounded-full border dark:border-gray-600 px-3 py-1 mt-2"
+                              "rounded-full border dark:border-gray-600 px-3 py-1 mt-2",
                           )}
                           href={item.href}
                           whileHover={
                             shouldDisableAnimations
                               ? undefined
-                              : {
-                                  transition: { duration: 0.1 },
-                                }
+                              : { transition: { duration: 0.1 } }
                           }
                           onClick={() => {
                             if (onItemClick) {
@@ -287,7 +277,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
                             "overflow-auto whitespace-nowrap",
                             checkIfCurrentPath(item.href || "")
                               ? "text-blue-600 font-semibold"
-                              : ""
+                              : "",
                           )}
                           onClick={() => {
                             if (onItemClick) {
@@ -332,14 +322,12 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
                   key={index}
                   className="flex items-center justify-center gap-1"
                 >
-                  {/* LOGO */}
                   {item.icon ? (
                     <span className="text-slate-400 dark:text-white/80">
                       {item.icon}
                     </span>
                   ) : null}
 
-                  {/* LINK */}
                   {item.href && !checkIfCurrentPath(item.href) ? (
                     <motion.a
                       className={cn(
@@ -348,15 +336,13 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
                           "rounded-full border dark:border-gray-600 px-3 py-1",
                         variant === "bordered" &&
                           "rounded-sm border dark:border-gray-600 px-3 py-1",
-                        crumbClassNames
+                        crumbClassNames,
                       )}
                       href={item.href}
                       whileHover={
                         shouldDisableAnimations
                           ? undefined
-                          : {
-                              transition: { duration: 0.1 },
-                            }
+                          : { transition: { duration: 0.1 } }
                       }
                       onClick={() => {
                         if (onItemClick) {
@@ -377,7 +363,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
                           "rounded-full border dark:border-gray-600 px-3 py-1",
                         variant === "bordered" &&
                           "rounded-sm border dark:border-gray-600 px-3 py-1",
-                        crumbClassNames
+                        crumbClassNames,
                       )}
                       onClick={() => {
                         if (onItemClick) {
